@@ -20,22 +20,31 @@ $(function(){
     var stateCountry = {name: 'New York', value: 'NY'};
     var city = {name: 'New York City', value: 'New_York_City'};
 
-    console.log(stateCountry.value, city.value);
-
-
     var monthUrls = {
-        January: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_01010131/q/' + stateCountry.value + '/' + city.value + '.json',
-        February: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_02010228/q/' + stateCountry.value + '/' + city.value + '.json',
-        March: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_03010331/q/' + stateCountry.value + '/' + city.value + '.json',
-        April: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_04010430/q/' + stateCountry.value + '/' + city.value + '.json',
-        May: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_05010531/q/' + stateCountry.value + '/' + city.value + '.json',
-        June: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_06010630/q/' + stateCountry.value + '/' + city.value + '.json',
-        July: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_07010731/q/' + stateCountry.value + '/' + city.value + '.json',
-        August: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_08010831/q/' + stateCountry.value + '/' + city.value + '.json',
-        September: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_09010930/q/' + stateCountry.value + '/' + city.value + '.json',
-        October: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_10011031/q/' + stateCountry.value + '/' + city.value + '.json',
-        November: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_11011130/q/' + stateCountry.value + '/' + city.value + '.json',
-        December: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_12011231/q/' + stateCountry.value + '/' + city.value + '.json'
+        January: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_01010131/q/'
+        + stateCountry.value + '/' + city.value + '.json',
+        February: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_02010228/q/'
+        + stateCountry.value + '/' + city.value + '.json',
+        March: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_03010331/q/'
+        + stateCountry.value + '/' + city.value + '.json',
+        April: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_04010430/q/'
+        + stateCountry.value + '/' + city.value + '.json',
+        May: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_05010531/q/'
+        + stateCountry.value + '/' + city.value + '.json',
+        June: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_06010630/q/'
+        + stateCountry.value + '/' + city.value + '.json',
+        July: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_07010731/q/'
+        + stateCountry.value + '/' + city.value + '.json',
+        August: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_08010831/q/'
+        + stateCountry.value + '/' + city.value + '.json',
+        September: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_09010930/q/'
+        + stateCountry.value + '/' + city.value + '.json',
+        October: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_10011031/q/'
+        + stateCountry.value + '/' + city.value + '.json',
+        November: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_11011130/q/'
+        + stateCountry.value + '/' + city.value + '.json',
+        December: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_12011231/q/'
+        + stateCountry.value + '/' + city.value + '.json'
     }
 
     function getMonthWeather(month) {
@@ -63,12 +72,13 @@ $(function(){
         var selectedMonth = $('#monthSelect').val();
         var selectedAdvice = $('#adviceSelect').val();
 
-        if($('select:visible option:selected').text() === 'Austin, Texas'){
-            console.log('NYC');
-            city.value = 'Austin';
-            stateCountry.value = 'TX';
-        }
 
+        city.value = $( "#citySelect option:selected" ).text().split(", ")[0];
+        stateCountry.value = $( "#citySelect option:selected" ).text().split(", ")[1];
+
+
+        console.log('city ' + city.value);
+        console.log('state ' + stateCountry.value);
 
         $('#city').text(selectedCity);
         $('#monthTxt').text(selectedMonth);
@@ -77,7 +87,7 @@ $(function(){
         $('#weatherBox').show();
         $('#loginForm').hide();
         $('#signupForm').hide();
-        getMonthWeather(monthUrls.August);
+        getMonthWeather(monthUrls[selectedMonth]);
     });
 
     $('button#loginBtn').click(function(){
