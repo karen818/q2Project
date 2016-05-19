@@ -1,3 +1,192 @@
 /*font-family: 'Overlock', cursive;
 
-font-family: 'Special Elite', cursive;*/
+font-family: 'Special Elite', cursive;
+
+$color1: #3d348b; //rgba(61, 52, 139, 100)
+$color2: #5479e3; //rgba(118, 120, 237, 100)
+$color3: #f7b801; //rgba(247, 184, 1, 100)
+$color4: #f18701; //rgba(241, 135, 1, 100)
+$color5: #f35b04; //rgba(243, 91, 4, 100)
+*/
+
+
+html,
+body {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	font-family: 'Overlock', sans-serif;
+	font-weight: 400;
+	font-size: 1em;
+	text-rendering: optimizeLegibility;
+	box-sizing: border-box;
+	height: 100vh;
+}
+
+h3,
+h4,
+h5 {
+
+	text-align: center;
+}
+
+h3 {
+	font-family: 'Special Elite', cursive;
+	font-weight: bold;
+	margin-top: 10px;
+}
+
+footer {
+	/*margin-top: 13%;*/
+	position: fixed;
+	top: 95%;
+	width: 100%;
+	background: #222;
+}
+
+footer p {
+	color: #888;
+	text-align: center;
+	padding: 10px 0;
+}
+
+div.transbox {
+    margin: 30px;
+    background-color: #ffffff;
+    border: 1px solid #3a3a3a;
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+	border-radius: 5px;
+}
+
+button.btn-block {
+	background-color: #5479e3;
+	color: #fff;
+	font-family: 'Special Elite', cursive;
+	font-weight: 400;
+}
+
+button.navBtn {
+	background-color: #f35b04;
+	color: #fff;
+	font-family: 'Special Elite', cursive;
+	font-weight: 400;
+	margin: 5px 10px;
+	font-size: 110%;
+}
+
+ul {
+	list-style: none;
+}
+
+
+.ion-ios-snowy,
+.ion-ios-sunny {
+	font-size: 50px;
+	align-self: flex-start;
+}
+
+.well-sm {
+	border-radius: 5px;
+
+}
+
+.well-sm p {
+	text-align: center;
+	font-size: 130%;
+	display: inline;
+	font-weight: 700;
+}
+
+.well-lg p {
+	font-family: 'Special Elite', cursive;
+	color: #3d348b;
+	font-size: 110%;
+}
+
+.logo {
+	width: 85%;
+}
+
+.flex-container-center {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.flex-container-start {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.container-right-justify {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+}
+
+
+.btn-lg {
+	font-size: 1.5rem;
+}
+
+i.orange {
+	color: #f35b04;
+}
+.fa-facebook-square,
+.fa-instagram,
+.fa-twitter-square {
+	color: #fff;
+}
+
+.fa-facebook-square:hover {
+ color: #3b5998;
+}
+.fa-instagram:hover {
+ color: #007bb6;
+}
+.fa-twitter-square:hover {
+ color: #00aced;
+}
+
+.socialbox {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#login,
+#signup {
+	background-color: #f35b04;
+	margin: 10px 0 10px 10px;
+	color: #fff;
+	font-family: 'Special Elite', cursive;
+	font-weight: 400;
+	border-radius: 5px;
+	padding: 7px 10px 5px 10px;
+}
+
+#city {
+	font-family: 'Special Elite', cursive;
+}
+
+#getAdviceForm {
+	display: none;
+}
+
+#loginForm {
+	display: none;
+}
+
+#signupForm {
+	display: none;
+}
+
+#weatherBox {
+	display: none;
+	background-color: #3d348b;
+	color: #fff;
+}
