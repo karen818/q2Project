@@ -13,12 +13,14 @@ $(function(){
         $('body').css({'background-image': 'url(' + randomBG + ')'});
     });
 
-    var stateCountry = 'TX';
-    var city = 'Austin';
 
-    var locations = {
 
-    }
+    var selectedCity = $('#citySelect').val();
+    var selectedMonth = $('#monthSelect').val();
+    var selectedAdvice = $('#adviceSelect').val();
+
+    var stateCountry = selectedCity.split(',')[1];
+    var city = selectedCity.split(',')[0];
 
     var monthUrls = {
         January: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_01010131/q/' + stateCountry + '/' + city + '.json',
@@ -64,6 +66,9 @@ $(function(){
         var selectedMonth = $('#monthSelect').val();
         var selectedAdvice = $('#adviceSelect').val();
 
+        var stateCountry = selectedCity.split(',')[1];
+        var city = selectedCity.split(',')[0];
+        
         $('#city').text(selectedCity);
         $('#monthTxt').text(selectedMonth);
         $('#initialForm').hide();
