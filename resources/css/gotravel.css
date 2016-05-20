@@ -71,7 +71,7 @@ button.navBtn {
 	color: #fff;
 	font-family: 'Special Elite', cursive;
 	font-weight: 400;
-	margin: 5px 10px;
+	margin: 10px 10px;
 	font-size: 110%;
 }
 
@@ -79,19 +79,12 @@ ul {
 	list-style: none;
 }
 
-
-.ion-ios-snowy,
-.ion-ios-sunny {
-	font-size: 50px;
-	align-self: flex-start;
-}
-
 .well-sm {
 	border-radius: 5px;
-
 }
 
 .well-sm p {
+	font-family: 'Special Elite', cursive;
 	text-align: center;
 	font-size: 130%;
 	display: inline;
@@ -128,7 +121,6 @@ ul {
 	justify-content: flex-end;
 }
 
-
 .btn-lg {
 	font-size: 1.5rem;
 }
@@ -158,6 +150,10 @@ i.orange {
 	align-items: center;
 }
 
+.weatherIcon {
+	height: 50px;
+}
+
 #login,
 #signup {
 	background-color: #f35b04;
@@ -169,11 +165,11 @@ i.orange {
 	padding: 7px 10px 5px 10px;
 }
 
-#city {
-	font-family: 'Special Elite', cursive;
+#getAdviceForm {
+	display: none;
 }
 
-#getAdviceForm {
+#giveAdviceForm {
 	display: none;
 }
 
@@ -189,4 +185,5 @@ i.orange {
 	display: none;
 	background-color: #3d348b;
 	color: #fff;
+	padding-bottom: 20px;
 }

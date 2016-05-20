@@ -40,7 +40,7 @@
             <div class="navbar-header navbar-left">
 
                 <ul class="nav navbar-nav">
-                    <li><a href="index.html">Change City/Season</a></li>
+                    <li><button class="btn navBtn" type="button" name="change" id="changeBtn">Change City/Season</button></li>
                 </ul>
             </div>
             <div class="navbar-header navbar-right">
@@ -130,25 +130,117 @@
                 </div><!-- end getAdviceForm -->
                 <div class="col-xs-2 col-sm-2 col-md-2 transbox" id="weatherBox">
 
-                    <h4>Average Temperatures for</h4>
+                    <h4>Typical Weather for</h4>
                     <h3 id="monthTxt"></h3>
-                    <h5><i class="ion-ios-sunny">&nbsp;</i><i class="ion-ios-snowy"></i></h5>
-                    <h4>&deg;Fahrenheit</h4>
-                    <p id="highF"></p>
-                    <p id="lowF"></p>
-                    <h4>&deg;Celcius</h4>
-                    <p id="highC"></p>
-                    <p id="lowC"></p>
-                </div>
+                    <!-- <h5><i class="ion-ios-sunny">&nbsp;</i><i class="ion-ios-snowy"></i></h5> -->
+                    <h4>High Temperatures</h4>
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <img class="weatherIcon" src="img/hot.png" alt="sun icon" />
+                        </div>
+                        <div class="col-xs-4">
+                            <p id="highF"></p>
+                        </div>
+                        <div class="col-xs-4">
+                            <p id="highC"></p>
+                        </div>
+                    </div>
+
+                    <h4>Low Temperatures</h4>
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <img class="weatherIcon" src="img/cold.png" alt="snow icon" />
+                        </div>
+                        <div class="col-xs-4">
+                            <p id="lowF"></p>
+                        </div>
+                        <div class="col-xs-4">
+                            <p id="lowC"></p>
+                        </div>
+                    </div>
+
+                    <h4>Chance of Rain</h4>
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <img class="weatherIcon" src="img/rain.png" alt="rain icon" />
+                        </div>
+                        <div class="col-xs-2">
+                            <p></p>
+                        </div>
+                        <div class="col-xs-3">
+                            <p id="rainChance"></p>
+                        </div>
+
+                    </div>
+
+                </div><!-- end of weatherBox -->
+                <div class="col-xs-4 col-sm-4 col-md-4 transbox" id="giveAdviceForm">
+                    <form class="homeForm" action="index.html" method="get">
+                        <br><div class="well well-sm">
+                            <p id="cityGive"></p>
+                            <p id="monthGive"></p>
+                            <p id="adviceGive"></p>
+                        </div>
+                        <div class="well well-lg">
+                            <label for="giveAdviceTxt" class="control-label"><i class="fa fa-comments-o orange" aria-hidden="true"></i>&nbsp;&nbsp;Your Advice</label>
+                            <textarea name="giveAdviceTxt" class="form-control" rows="5" placeholder="Type your advice here..." autofocus required></textarea>
+                        </div>
+                        <div class="form-group btn-lg btn-block">
+                            <button class="btn btn-lg btn-block" type="button" name="submitAdvice" id="submitAdvice"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;Submit  advice</button>
+                        </div>
+                        <div class="form-group citySelect">
+                            <h4>Have more advice to give?</h4>
+                            <label for="citySelect" class="control-label"><i class="fa fa-map-marker orange" aria-hidden="true"></i>&nbsp;&nbsp;Choose City</label>
+                            <select class="form-control" name="selectCity" id="citySelectGive">
+                                <option>Austin, Texas</option>
+                                <option>Bali, Indonesia</option>
+                                <option>New York City, New York</option>
+                                <option>Sydney, Australia</option>
+                                <option>Turrialba, Costa Rica</option>
+                                <option>Tokyo, Japan</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="monthSelect" class="control-label"><i class="fa fa-sun-o orange" aria-hidden="true"></i>&nbsp;&nbsp;Choose Month</label>
+                            <select class="form-control" name="selectSeason" id="monthSelectGive">
+                                <option data-month="January">January</option>
+                                <option data-month="February">February</option>
+                                <option data-month="March">March</option>
+                                <option data-month="April">April</option>
+                                <option data-month="May">May</option>
+                                <option data-month="June">June</option>
+                                <option data-month="July">July</option>
+                                <option data-month="August">August</option>
+                                <option data-month="September">September</option>
+                                <option data-month="October">October</option>
+                                <option data-month="November">November</option>
+                                <option data-month="December">December</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+
+                            <label for="adviceSelect" class="control-label"><i class="fa fa-comments-o orange" aria-hidden="true"></i>&nbsp;&nbsp;Choose Type of Advice</label>
+                            <select class="form-control" id="adviceSelectGive">
+                                <option>Things to do</option>
+                                <option>Things to avoid</option>
+                                <option>Things to eat</option>
+                            </select>
+                        </div>
+                        <div class="form-group btn-lg btn-block">
+                            <button class="btn btn-lg btn-block" type="button" name="moreAdvice" id="giveMoreAdvice"><i class="fa fa-plane" aria-hidden="true"></i>&nbsp;&nbsp;Give more advice</button>
+                        </div>
+                    </form>
+                </div><!-- end getAdviceForm -->
                 <div class="col-xs-4 col-sm-4 col-md-4 transbox" id="loginForm">
                     <form class="homeForm" action="index.html" method="get">
                         <div class="form-group">
                             <br><label for="userName" class="control-label">Name</label>
-                            <input type="text" class="form-control" name="userName" autofocus>
+                            <input type="text" class="form-control" name="userName" autofocus required>
                         </div>
                         <div class="form-group">
                             <label for="password" class="control-label">Password</label>
-                            <input type="password" class="form-control" name="password">
+                            <input type="password" class="form-control" name="password" required>
                         </div>
                         <div class="form-group btn-lg btn-block">
                             <button class="btn btn-lg btn-block" type="button" name="login" id="loginBtn">Log In</button>
@@ -162,23 +254,23 @@
                     <form class="homeForm" action="index.html" method="get">
                         <div class="form-group">
                             <br><label for="userName" class="control-label">Name</label>
-                            <input type="text" class="form-control" name="userName" autofocus>
+                            <input type="text" class="form-control" name="userName" autofocus required>
                         </div>
                         <div class="form-group">
                             <label for="password" class="control-label">Password</label>
-                            <input type="password" class="form-control" name="password">
+                            <input type="password" class="form-control" name="password" required>
                         </div>
                         <div class="form-group">
                             <label for="pwAgain" class="control-label">Re-Type Password</label>
-                            <input type="password" class="form-control" name="pwAgain">
+                            <input type="password" class="form-control" name="pwAgain" required>
                         </div>
                         <div class="form-group">
                             <label for="email" class="control-label">Email</label>
-                            <input type="email" class="form-control" name="email">
+                            <input type="email" class="form-control" name="email" required>
                         </div>
                         <div class="form-group">
                             <label for="city" class="control-label">City</label>
-                            <input type="text" class="form-control" name="city">
+                            <input type="text" class="form-control" name="city" required>
                         </div>
                         <div class="form-group btn-lg btn-block">
                             <button class="btn btn-lg btn-block" type="button" name="signupSubmit" id="signupBtn">Sign Up</button>
@@ -201,6 +293,11 @@
         </div>
     </main>
         <footer>
+            <!-- <ul>
+                <li class="social"><a href="https://www.facebook.com/"><i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i></a></li>
+                <li class="social"><a href="https://www.twitter.com/"><i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i></a></li>
+                <li class="social"><a href="https://www.instagram.com/"><i class="fa fa-instagram fa-3x" aria-hidden="true"></i></a></li>
+            </ul> -->
             <p>&copy; All rights reserved Karen Kelly</p>
         </footer>
         <script src="script/gotravel.js" type="text/javascript"></script>
