@@ -17,33 +17,33 @@ $(function(){
     var selectedMonth = $('#monthSelect').val();
     var selectedAdvice = $('#adviceSelect').val();
 
-    var stateCountry = {name: 'New York', value: 'NY'};
-    var city = {name: 'New York City', value: 'New_York_City'};
-
-    var monthUrls = {
-        January: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_01010131/q/' + stateCountry.value + '/' + city.value + '.json',
-        February: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_02010228/q/' + stateCountry.value + '/' + city.value + '.json',
-        March: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_03010331/q/'
-        + stateCountry.value + '/' + city.value + '.json',
-        April: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_04010430/q/'
-        + stateCountry.value + '/' + city.value + '.json',
-        May: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_05010531/q/'
-        + stateCountry.value + '/' + city.value + '.json',
-        June: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_06010630/q/'
-        + stateCountry.value + '/' + city.value + '.json',
-        July: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_07010731/q/'
-        + stateCountry.value + '/' + city.value + '.json',
-        August: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_08010831/q/'
-        + stateCountry.value + '/' + city.value + '.json',
-        September: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_09010930/q/'
-        + stateCountry.value + '/' + city.value + '.json',
-        October: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_10011031/q/'
-        + stateCountry.value + '/' + city.value + '.json',
-        November: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_11011130/q/'
-        + stateCountry.value + '/' + city.value + '.json',
-        December: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_12011231/q/'
-        + stateCountry.value + '/' + city.value + '.json'
-    }
+    var stateCountry = {name: 'Texas', value: 'TX'};
+    var city = {name: 'Austin', value: 'Austin'};
+    var monthUrls;
+    // var monthUrls = {
+    //     January: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_01010131/q/' + stateCountry.value + '/' + city.value + '.json',
+    //     February: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_02010228/q/' + stateCountry.value + '/' + city.value + '.json',
+    //     March: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_03010331/q/'
+    //     + stateCountry.value + '/' + city.value + '.json',
+    //     April: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_04010430/q/'
+    //     + stateCountry.value + '/' + city.value + '.json',
+    //     May: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_05010531/q/'
+    //     + stateCountry.value + '/' + city.value + '.json',
+    //     June: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_06010630/q/'
+    //     + stateCountry.value + '/' + city.value + '.json',
+    //     July: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_07010731/q/'
+    //     + stateCountry.value + '/' + city.value + '.json',
+    //     August: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_08010831/q/'
+    //     + stateCountry.value + '/' + city.value + '.json',
+    //     September: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_09010930/q/'
+    //     + stateCountry.value + '/' + city.value + '.json',
+    //     October: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_10011031/q/'
+    //     + stateCountry.value + '/' + city.value + '.json',
+    //     November: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_11011130/q/'
+    //     + stateCountry.value + '/' + city.value + '.json',
+    //     December: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_12011231/q/'
+    //     + stateCountry.value + '/' + city.value + '.json'
+    // }
 
     function getMonthWeather(month) {
             $.ajax({
@@ -80,6 +80,8 @@ $(function(){
         $('#loginForm').hide();
         $('#signupForm').hide();
         $('#loginSuccess').hide();
+        $('#signupSuccess').hide();
+        $('#submitSuccess').hide();
     });
 
     $('button#getAdvice').click(function(){
@@ -105,6 +107,34 @@ $(function(){
         $('#loginForm').hide();
         $('#signupForm').hide();
         $('#loginSuccess').hide();
+        $('#signupSuccess').hide();
+        $('#submitSuccess').hide();
+
+        monthUrls = {
+            January: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_01010131/q/' + stateCountry.value + '/' + city.value + '.json',
+            February: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_02010228/q/' + stateCountry.value + '/' + city.value + '.json',
+            March: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_03010331/q/'
+            + stateCountry.value + '/' + city.value + '.json',
+            April: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_04010430/q/'
+            + stateCountry.value + '/' + city.value + '.json',
+            May: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_05010531/q/'
+            + stateCountry.value + '/' + city.value + '.json',
+            June: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_06010630/q/'
+            + stateCountry.value + '/' + city.value + '.json',
+            July: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_07010731/q/'
+            + stateCountry.value + '/' + city.value + '.json',
+            August: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_08010831/q/'
+            + stateCountry.value + '/' + city.value + '.json',
+            September: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_09010930/q/'
+            + stateCountry.value + '/' + city.value + '.json',
+            October: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_10011031/q/'
+            + stateCountry.value + '/' + city.value + '.json',
+            November: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_11011130/q/'
+            + stateCountry.value + '/' + city.value + '.json',
+            December: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_12011231/q/'
+            + stateCountry.value + '/' + city.value + '.json'
+        }
+
         getMonthWeather(monthUrls[selectedMonth]);
     });
 
@@ -116,6 +146,21 @@ $(function(){
         $('#signupForm').hide();
         $('#giveAdviceForm').hide();
         $('#loginSuccess').hide();
+        $('#signupSuccess').hide();
+        $('#submitSuccess').hide();
+
+    });
+
+    $('button#submitAdvice').click(function(){
+        $('#initialForm').hide();
+        $('#getAdviceForm').hide();
+        $('#loginForm').hide();
+        $('#weatherBox').hide();
+        $('#signupForm').hide();
+        $('#giveAdviceForm').hide();
+        $('#loginSuccess').hide();
+        $('#signupSuccess').hide();
+        $('#submitSuccess').show();
     });
 
     $('button#loginSubmit').click(function(){
@@ -126,7 +171,8 @@ $(function(){
         $('#signupForm').hide();
         $('#giveAdviceForm').hide();
         $('#loginSuccess').show();
-
+        $('#signupSuccess').hide();
+        $('#submitSuccess').hide();
     });
 
     $('button#signupBtn').click(function(){
@@ -137,22 +183,32 @@ $(function(){
         $('#giveAdviceForm').hide();
         $('#weatherBox').hide();
         $('#loginSuccess').hide();
+        $('#signupSuccess').hide();
+        $('#submitSuccess').hide();
     });
 
     $('button#changeBtn').click(function(){
         $(location).attr('href','index.html');
     });
 
-    $('button#goHome').click(function(){
-        $(location).attr('href','index.html');
+    $('button.goHome').click(function(){
+        $('#initialForm').show();
+        $('#getAdviceForm').hide();
+        $('#loginForm').hide();
+        $('#signupForm').hide();
+        $('#giveAdviceForm').hide();
+        $('#weatherBox').hide();
+        $('#loginSuccess').hide();
+        $('#signupSuccess').hide();
+        $('#submitSuccess').hide();
     });
+
 
     $("form").submit(function(event) {
         event.preventDefault();
     });
 
-    $('button#giveMoreAdvice').click(function(){
-        console.log('clicked');
+    $('button.giveMoreAdvice').click(function(){
         var selectedCity = $('#citySelectGive').val();
         var selectedMonth = $('#monthSelectGive').val();
         var selectedAdvice = $('#adviceSelectGive').val();
@@ -168,6 +224,7 @@ $(function(){
         $('#loginForm').hide();
         $('#signupForm').hide();
         $('#loginSuccess').hide();
+        $('#signupSuccess').hide();
 
         $('html, body').animate({ scrollTop: 0 }, 0);
     });
@@ -195,4 +252,78 @@ $(function(){
             $('p#author').text("Moxxi - resident since 2015");
         }
     });
+
+    var signUpEmail = $("input:text[name='signupEmail']").val();
+
+    $('button#signupSubmit').click(function(event) {
+        signupCheck();
+
+        if (validateEmail(signUpEmail)) {
+            $('#initialForm').hide();
+            $('#getAdviceForm').hide();
+            $('#loginForm').hide();
+            $('#signupForm').hide();
+            $('#giveAdviceForm').hide();
+            $('#weatherBox').hide();
+            $('#loginSuccess').hide();
+            $('#signupSuccess').show();
+        }
+        // else {
+        //     $('#emailCheck').html('Email is not valid. Please re-enter.');
+        //     event.preventDefault();
+        // }
+
+     });
+
+     function validateEmail(sEmail) {
+        var filter = /(\w+)\@(\w+)\.[a-zA-Z]/g;
+            if (filter.test(signUpEmail)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+    function signupCheck(){
+
+        if($("input:text[name='signupName']").val().length < 1){
+            $('#usernameAlert').html("You must enter a user name");
+        }
+        else if($("input:text[name='signupName']").val().length > 0){
+            $('#usernameAlert').hide();
+        }
+
+        if($("input:password[name='signupPW']").val().length < 5){
+            $('#pwAlert').html("Your password must be at least 5 characters");
+        }
+        else if($("input:password[name='signupPW']").val().length < 1){
+            $('#pwAlert').html("You must enter a password");
+        }
+        else if($("input:password[name='signupPW']").val().length > 5){
+            $('#pwAlert').hide();
+        }
+
+        if($("input:password[name='pwAgain']").val() !== $("input:password[name='signupPW']").val()){
+            $('#pwMatch').html("Your passwords don't match &#9785; Please try again");
+        }
+        else if($("input:password[name='pwAgain']").val() === $("input:password[name='signupPW']").val()){
+            $('#pwMatch').hide();
+        }
+
+        if ($("input:text[name='signupEmail']").val().length < 1) {
+            $('#emailCheck').html('Email is required.');
+            event.preventDefault();
+        }
+        else if ($("input:text[name='signupEmail']").val().length > 0){
+            $('#emailCheck').hide();
+        }
+
+        if($("input:text[name='signupCity']").val().length < 1){
+            $('#cityAlert').html("You must enter a city");
+        }
+        else if($("input:text[name='signupCity']").val().length > 0){
+            $('#cityAlert').hide();
+        }
+    }
 });

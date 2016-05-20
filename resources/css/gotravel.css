@@ -87,6 +87,10 @@ ul {
 	list-style: none;
 }
 
+.overlock {
+	font-family: 'Overlock', cursive;
+}
+
 .well-sm {
 	border-radius: 5px;
 }
@@ -190,9 +194,25 @@ i.orange {
 	display: none;
 }
 
+#signupSuccess {
+	display: none;
+}
+
+#submitSuccess {
+	display: none;
+}
+
 #weatherBox {
 	display: none;
 	background-color: #3d348b;
 	color: #fff;
 	padding-bottom: 20px;
+}
+
+#usernameAlert,
+#pwAlert,
+#pwMatch,
+#cityAlert,
+#emailCheck {
+	color: red;
 }

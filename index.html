@@ -8,7 +8,6 @@
 
     <script type="text/javascript" src="vendors/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 
-
     <link href='https://fonts.googleapis.com/css?family=Special+Elite|Overlock' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" type="text/css" href="vendors/node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -43,8 +42,8 @@
             <div class="navbar-header navbar-right">
 
                 <ul class="nav navbar-nav">
-                    <li><button class="btn navBtn" type="button" name="login" id="loginBtn">Log In</button></li>
-                    <li><button class="btn navBtn" type="button" name="signup" id="signupBtn">Sign Up</button></li>
+                    <li><button class="btn navBtn" type="button" name="loginBtn" id="loginBtn">Log In</button></li>
+                    <li><button class="btn navBtn" type="button" name="signupBtn" id="signupBtn">Sign Up</button></li>
                 </ul>
             </div>
         </div>
@@ -186,7 +185,7 @@
                         </div>
                         <div class="well well-lg">
                             <label for="giveAdviceTxt" class="control-label"><i class="fa fa-comments-o orange" aria-hidden="true"></i>&nbsp;&nbsp;Your Advice</label>
-                            <textarea name="giveAdviceTxt" class="form-control" rows="5" placeholder="Type your advice here..." autofocus required></textarea>
+                            <textarea name="giveAdviceTxt" class="form-control" rows="5" placeholder="Type your advice here..." required></textarea>
                         </div>
                         <div class="form-group btn-lg btn-block">
                             <button class="btn btn-lg btn-block" type="button" name="submitAdvice" id="submitAdvice"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;Submit  advice</button>
@@ -231,22 +230,34 @@
                             </select>
                         </div>
                         <div class="form-group btn-lg btn-block">
-                            <button class="btn btn-lg btn-block" type="button" name="moreAdvice" id="giveMoreAdvice"><i class="fa fa-plane" aria-hidden="true"></i>&nbsp;&nbsp;Give more advice</button>
+                            <button class="btn btn-lg btn-block giveMoreAdvice" type="button" name="moreAdvice" id="giveMoreAdvice"><i class="fa fa-plane" aria-hidden="true"></i>&nbsp;&nbsp;Give more advice</button>
                         </div>
                     </form>
                 </div><!-- end getAdviceForm -->
+
+                <div class="col-xs-4 col-sm-4 col-md-4 transbox" id="submitSuccess">
+                    <br>
+                    <div class="well well-lg">
+                        <h3>Advice Submitted</h3>
+                    </div>
+
+                    <p class="overlock">Will be posted upon approval</p>
+
+                    <button class="btn btn-lg btn-block goHome" type="button" name="goHome"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;Back to main page</button><br>
+                </div><!-- end loginForm success -->
+
                 <div class="col-xs-4 col-sm-4 col-md-4 transbox" id="loginForm">
                     <form class="form" action="index.html" method="get">
                         <div class="form-group">
                             <br><label for="userName" class="control-label">Name</label>
-                            <input type="text" class="form-control" name="userName" autofocus required>
+                            <input type="text" class="form-control" name="user">
                         </div>
                         <div class="form-group">
                             <label for="password" class="control-label">Password</label>
-                            <input type="password" class="form-control" name="password" required>
+                            <input type="password" class="form-control" name="password">
                         </div>
                         <div class="form-group btn-lg btn-block">
-                            <button class="btn btn-lg btn-block" type="submit" name="login" id="loginSubmit"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;Log In</button>
+                            <button class="btn btn-lg btn-block" type="submit" name="loginSubmit" id="loginSubmit"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;Log In</button>
                         </div>
                         <div class="form-group flex-container-center">
                             <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Forgot password?</a>
@@ -258,36 +269,47 @@
                     <div class="well well-lg">
                         <h3>You are now logged in</h3>
                     </div>
-                    <button class="btn btn-lg btn-block" type="button" name="change" id="goHome"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;goTravel!</button><br>
+                    <button class="btn btn-lg btn-block goHome" type="button" name="goHome"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;goTravel!</button><br>
                 </div><!-- end loginForm success -->
                 <div class="col-xs-4 col-sm-4 col-md-4 transbox" id="signupForm">
                     <form class="form" action="index.html" method="get">
                         <div class="form-group">
-                            <br><label for="userName" class="control-label">Name</label>
-                            <input type="text" class="form-control" name="userName" autofocus required>
+                            <br><label for="user" class="control-label">Name</label>
+                            <input type="text" class="form-control" name="signupName" required>
+                            <p id="usernameAlert"></p>
                         </div>
                         <div class="form-group">
                             <label for="password" class="control-label">Password</label>
-                            <input type="password" class="form-control" name="password" required>
+                            <input type="password" class="form-control" name="signupPW" required>
+                            <p id="pwAlert"></p>
                         </div>
                         <div class="form-group">
                             <label for="pwAgain" class="control-label">Re-Type Password</label>
                             <input type="password" class="form-control" name="pwAgain" required>
+                            <p id="pwMatch"></p>
                         </div>
                         <div class="form-group">
                             <label for="email" class="control-label">Email</label>
-                            <input type="email" class="form-control" name="email" required>
+                            <input type="text" class="form-control" name="signupEmail" required>
+                            <p id="emailCheck"></p>
                         </div>
                         <div class="form-group">
                             <label for="city" class="control-label">City</label>
-                            <input type="text" class="form-control" name="city" required>
+                            <input type="text" class="form-control" name="signupCity" required>
+                            <p id="cityAlert"></p>
                         </div>
                         <div class="form-group btn-lg btn-block">
-                            <button class="btn btn-lg btn-block" type="button" name="signupSubmit" id="signupSubmit"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;Sign Up</button>
+                            <button class="btn btn-lg btn-block" type="button" id="signupSubmit"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;Sign Up</button>
                         </div>
                     </form>
                 </div><!-- end signupForm -->
-
+                <div class="col-xs-4 col-sm-4 col-md-4 transbox" id="signupSuccess">
+                    <br>
+                    <div class="well well-lg">
+                        <h3>You are now signed up</h3>
+                    </div>
+                    <button class="btn btn-lg btn-block goHome" type="button" name="goHome"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;goTravel!</button><br>
+                </div><!-- end signup success -->
             </div>
         </div> <!-- end flex-container-center -->
     </main>
