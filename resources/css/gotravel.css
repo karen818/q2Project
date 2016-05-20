@@ -9,53 +9,50 @@ $color4: #f18701; //rgba(241, 135, 1, 100)
 $color5: #f35b04; //rgba(243, 91, 4, 100)
 */
 
-
-html,
-body {
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	font-family: 'Overlock', sans-serif;
-	font-weight: 400;
-	font-size: 1em;
-	text-rendering: optimizeLegibility;
-	box-sizing: border-box;
-	height: 100vh;
+html, body {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Overlock', sans-serif;
+    font-weight: 400;
+    font-size: 1em;
+    text-rendering: optimizeLegibility;
+    box-sizing: border-box;
+    height: 100vh;
 }
 
-h3,
-h4,
-h5 {
-	text-align: center;
+h3, h4, h5 {
+    text-align: center;
 }
 
 h3 {
-	font-family: 'Special Elite', cursive;
-	font-weight: bold;
-	margin-top: 10px;
+    font-family: 'Special Elite', cursive;
+    font-weight: bold;
+    margin-top: 10px;
 }
+
 .white {
-	width: 100%;
-	color: #fff;
-	padding-left: 50px;
-	position: absolute;
-	z-index: 9999;
+    width: 100%;
+    color: #fff;
+    padding-left: 50px;
+    position: absolute;
+    z-index: 9999;
 }
 
 footer {
-	/*margin-top: 13%;*/
-	position: fixed;
-	top: 93%;
-	width: 100%;
-	background: #222;
+    /*margin-top: 13%;*/
+    position: fixed;
+    top: 93%;
+    width: 100%;
+    background: #222;
 }
 
 footer p {
-	font-size: 120%;
-	color: #fff;
-	text-align: center;
-	padding: 20px 0;
-	font-family: 'Special Elite', cursive;
+    font-size: 120%;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    font-family: 'Special Elite', cursive;
 }
 
 div.transbox {
@@ -63,106 +60,106 @@ div.transbox {
     background-color: #ffffff;
     border: 1px solid #3a3a3a;
     opacity: 0.8;
-    filter: alpha(opacity=80); /* For IE8 and earlier */
-	border-radius: 5px;
+    filter: alpha(opacity=80);
+    /* For IE8 and earlier */
+    border-radius: 5px;
 }
 
 button.btn-block {
-	background-color: #5479e3;
-	color: #fff;
-	font-family: 'Special Elite', cursive;
-	font-weight: 400;
+    background-color: #5479e3;
+    color: #fff;
+    font-family: 'Special Elite', cursive;
+    font-weight: 400;
 }
 
 button.navBtn {
-	background-color: #f35b04;
-	color: #fff;
-	font-family: 'Special Elite', cursive;
-	font-weight: 400;
-	margin: 10px 10px;
-	font-size: 110%;
+    background-color: #f35b04;
+    color: #fff;
+    font-family: 'Special Elite', cursive;
+    font-weight: 400;
+    margin: 10px 10px;
+    font-size: 110%;
 }
 
 ul {
-	list-style: none;
+    list-style: none;
 }
 
 .overlock {
-	font-family: 'Overlock', cursive;
+    font-family: 'Overlock', cursive;
 }
 
 .well-sm {
-	border-radius: 5px;
+    border-radius: 5px;
 }
 
 .well-sm p {
-	font-family: 'Special Elite', cursive;
-	text-align: center;
-	font-size: 130%;
-	display: inline;
-	font-weight: 700;
+    font-family: 'Special Elite', cursive;
+    text-align: center;
+    font-size: 130%;
+    display: inline;
+    font-weight: 700;
 }
 
 .well-lg p {
-	font-family: 'Special Elite', cursive;
-	color: #3d348b;
-	font-size: 110%;
+    font-family: 'Special Elite', cursive;
+    color: #3d348b;
+    font-size: 110%;
 }
 
 .logo {
-	width: 85%;
+    width: 85%;
 }
 
 .flex-container-center {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .btn-lg {
-	font-size: 1.5rem;
+    font-size: 1.5rem;
 }
 
 i.orange {
-	color: #f35b04;
+    color: #f35b04;
 }
-.fa-facebook-square,
-.fa-instagram,
-.fa-twitter-square,
-.fa-envelope {
-	color: #fff;
+
+.fa-facebook-square, .fa-instagram, .fa-twitter-square, .fa-envelope {
+    color: #fff;
 }
 
 .fa-envelope:hover {
-	color: #f35b04;
-	transition: all 0.8s ease;
+    color: #f35b04;
+    transition: all 0.8s ease;
 }
 
 .fa-facebook-square:hover {
-	color: #3b5998;
-	transition: all 0.8s ease;
+    color: #3b5998;
+    transition: all 0.8s ease;
 }
+
 .fa-instagram:hover {
-	color: #007bb6;
-	transition: all 0.8s ease;
+    color: #007bb6;
+    transition: all 0.8s ease;
 }
+
 .fa-twitter-square:hover {
-	color: #00aced;
-	transition: all 0.8s ease;
+    color: #00aced;
+    transition: all 0.8s ease;
 }
 
 .socialbox {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	background-color: #5479e3;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-	width: 50px;
-	margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #5479e3;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 50px;
+    margin-top: 50px;
 }
-
 
 .socialbox a {
     padding: 5px 0 5px 10px;
@@ -171,48 +168,44 @@ i.orange {
 }
 
 .weatherIcon {
-	height: 50px;
+    height: 50px;
 }
 
 #getAdviceForm {
-	display: none;
+    display: none;
 }
 
 #giveAdviceForm {
-	display: none;
+    display: none;
 }
 
 #loginForm {
-	display: none;
+    display: none;
 }
 
 #loginSuccess {
-	display: none;
+    display: none;
 }
 
 #signupForm {
-	display: none;
+    display: none;
 }
 
 #signupSuccess {
-	display: none;
+    display: none;
 }
 
 #submitSuccess {
-	display: none;
+    display: none;
 }
 
 #weatherBox {
-	display: none;
-	background-color: #3d348b;
-	color: #fff;
-	padding-bottom: 20px;
+    display: none;
+    background-color: #3d348b;
+    color: #fff;
+    padding-bottom: 20px;
 }
 
-#usernameAlert,
-#pwAlert,
-#pwMatch,
-#cityAlert,
-#emailCheck {
-	color: red;
+#usernameAlert, #pwAlert, #pwMatch, #cityAlert, #emailCheck {
+    color: red;
 }

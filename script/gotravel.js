@@ -1,4 +1,13 @@
 $(function(){
+
+    var selectedCity = $('#citySelect').val();
+    var selectedMonth = $('#monthSelect').val();
+    var selectedAdvice = $('#adviceSelect').val();
+
+    var stateCountry = {name: 'Texas', value: 'TX'};
+    var city = {name: 'Austin', value: 'Austin'};
+    var monthUrls;
+
     ///////// Photo Ajax //////////
     $.ajax({
         url: 'https://api.unsplash.com/photos/search?category=4&query=travel&client_id=b21a9e8e8640c016bfff18622954eaa29cb31d67178c80f5e36efeaa02e9cb70',
@@ -13,38 +22,7 @@ $(function(){
         $('body').css({'background-image': 'url(' + randomBG + ')'});
     });
 
-    var selectedCity = $('#citySelect').val();
-    var selectedMonth = $('#monthSelect').val();
-    var selectedAdvice = $('#adviceSelect').val();
-
-    var stateCountry = {name: 'Texas', value: 'TX'};
-    var city = {name: 'Austin', value: 'Austin'};
-    var monthUrls;
-    // var monthUrls = {
-    //     January: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_01010131/q/' + stateCountry.value + '/' + city.value + '.json',
-    //     February: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_02010228/q/' + stateCountry.value + '/' + city.value + '.json',
-    //     March: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_03010331/q/'
-    //     + stateCountry.value + '/' + city.value + '.json',
-    //     April: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_04010430/q/'
-    //     + stateCountry.value + '/' + city.value + '.json',
-    //     May: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_05010531/q/'
-    //     + stateCountry.value + '/' + city.value + '.json',
-    //     June: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_06010630/q/'
-    //     + stateCountry.value + '/' + city.value + '.json',
-    //     July: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_07010731/q/'
-    //     + stateCountry.value + '/' + city.value + '.json',
-    //     August: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_08010831/q/'
-    //     + stateCountry.value + '/' + city.value + '.json',
-    //     September: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_09010930/q/'
-    //     + stateCountry.value + '/' + city.value + '.json',
-    //     October: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_10011031/q/'
-    //     + stateCountry.value + '/' + city.value + '.json',
-    //     November: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_11011130/q/'
-    //     + stateCountry.value + '/' + city.value + '.json',
-    //     December: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_12011231/q/'
-    //     + stateCountry.value + '/' + city.value + '.json'
-    // }
-
+    //////////Weather Ajax call function/////////
     function getMonthWeather(month) {
             $.ajax({
             url: month,
@@ -64,52 +42,19 @@ $(function(){
         });
     }
 
-    $('button#giveAdvice').click(function(){
-        var selectedCity = $('#citySelect').val();
-        var selectedMonth = $('#monthSelect').val();
-        var selectedAdvice = $('#adviceSelect').val();
-
-        $('#cityGive').html(selectedCity + '<br>');
-        $('#monthGive').html(selectedMonth  + '<br>');
-        $('#adviceGive').html(selectedAdvice);
-
-        $('#initialForm').hide();
-        $('#giveAdviceForm').show();
-        $('#getAdviceForm').hide();
-        $('#weatherBox').hide();
-        $('#loginForm').hide();
-        $('#signupForm').hide();
-        $('#loginSuccess').hide();
-        $('#signupSuccess').hide();
-        $('#submitSuccess').hide();
-    });
-
+    //show advice/initial form; create ajax urls
     $('button#getAdvice').click(function(){
 
-        var selectedCity = $('#citySelect').val();
-        var selectedMonth = $('#monthSelect').val();
-        var selectedAdvice = $('#adviceSelect').val();
+        //get the value of the selected items
+        selectedCity = $('#citySelect').val();
+        selectedMonth = $('#monthSelect').val();
+        selectedAdvice = $('#adviceSelect').val();
 
-
+        //split the item values to use in the ajax calls
         city.value = $( "#citySelect option:selected" ).text().split(", ")[0];
         stateCountry.value = $( "#citySelect option:selected" ).text().split(", ")[1];
 
-        console.log('city ' + city.value);
-        console.log('state ' + stateCountry.value);
-
-        $('#city').html(selectedCity);
-        $('#monthTxt').html(selectedMonth);
-
-        $('#initialForm').hide();
-        $('#giveAdviceForm').hide();
-        $('#getAdviceForm').show();
-        $('#weatherBox').show();
-        $('#loginForm').hide();
-        $('#signupForm').hide();
-        $('#loginSuccess').hide();
-        $('#signupSuccess').hide();
-        $('#submitSuccess').hide();
-
+        //ajax calls to Wunderground to grab historical data based on city and state/country
         monthUrls = {
             January: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_01010131/q/' + stateCountry.value + '/' + city.value + '.json',
             February: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_02010228/q/' + stateCountry.value + '/' + city.value + '.json',
@@ -135,9 +80,49 @@ $(function(){
             + stateCountry.value + '/' + city.value + '.json'
         }
 
+        //call Ajax to get weather data
         getMonthWeather(monthUrls[selectedMonth]);
+
+        //fill in html with selections
+        $('#city').html(selectedCity);
+        $('#monthTxt').html(selectedMonth);
+
+        //show the get advice form
+        $('#initialForm').hide();
+        $('#giveAdviceForm').hide();
+        $('#getAdviceForm').show();
+        $('#weatherBox').show();
+        $('#loginForm').hide();
+        $('#signupForm').hide();
+        $('#loginSuccess').hide();
+        $('#signupSuccess').hide();
+        $('#submitSuccess').hide();
     });
 
+
+    //show give advice form
+    $('button#giveAdvice').click(function(){
+        selectedCity = $('#citySelect').val();
+        selectedMonth = $('#monthSelect').val();
+        selectedAdvice = $('#adviceSelect').val();
+
+        //fill in html with selections
+        $('#cityGive').html(selectedCity + '<br>');
+        $('#monthGive').html(selectedMonth  + '<br>');
+        $('#adviceGive').html(selectedAdvice);
+
+        $('#initialForm').hide();
+        $('#giveAdviceForm').show();
+        $('#getAdviceForm').hide();
+        $('#weatherBox').hide();
+        $('#loginForm').hide();
+        $('#signupForm').hide();
+        $('#loginSuccess').hide();
+        $('#signupSuccess').hide();
+        $('#submitSuccess').hide();
+    });
+
+    //show login form
     $('button#loginBtn').click(function(){
         $('#initialForm').hide();
         $('#getAdviceForm').hide();
@@ -148,9 +133,9 @@ $(function(){
         $('#loginSuccess').hide();
         $('#signupSuccess').hide();
         $('#submitSuccess').hide();
-
     });
 
+    //show advice submit success screen
     $('button#submitAdvice').click(function(){
         $('#initialForm').hide();
         $('#getAdviceForm').hide();
@@ -163,6 +148,7 @@ $(function(){
         $('#submitSuccess').show();
     });
 
+    //show login success screen
     $('button#loginSubmit').click(function(){
         $('#initialForm').hide();
         $('#getAdviceForm').hide();
@@ -175,6 +161,7 @@ $(function(){
         $('#submitSuccess').hide();
     });
 
+    //show sign up form
     $('button#signupBtn').click(function(){
         $('#initialForm').hide();
         $('#getAdviceForm').hide();
@@ -187,10 +174,13 @@ $(function(){
         $('#submitSuccess').hide();
     });
 
+
+    //return home
     $('button#changeBtn').click(function(){
         $(location).attr('href','index.html');
     });
 
+    //return home another way
     $('button.goHome').click(function(){
         $('#initialForm').show();
         $('#getAdviceForm').hide();
@@ -203,11 +193,12 @@ $(function(){
         $('#submitSuccess').hide();
     });
 
-
+    //prevent default stuff on form submits
     $("form").submit(function(event) {
         event.preventDefault();
     });
 
+    //show give more advice screen; scrolls to top
     $('button.giveMoreAdvice').click(function(){
         var selectedCity = $('#citySelectGive').val();
         var selectedMonth = $('#monthSelectGive').val();
@@ -229,7 +220,7 @@ $(function(){
         $('html, body').animate({ scrollTop: 0 }, 0);
     });
 
-
+    //change advice
     $('button#moreAdvice').on('click', function(){
         var selectedCity = $('#citySelect').val();
         var selectedMonth = $('#monthSelect').val();
@@ -255,6 +246,7 @@ $(function(){
 
     var signUpEmail = $("input:text[name='signupEmail']").val();
 
+    //sign up form validation hell
     $('button#signupSubmit').click(function(event) {
         signupCheck();
 
@@ -275,6 +267,7 @@ $(function(){
 
      });
 
+     //validate email function
      function validateEmail(sEmail) {
         var filter = /(\w+)\@(\w+)\.[a-zA-Z]/g;
             if (filter.test(signUpEmail)) {
@@ -285,6 +278,7 @@ $(function(){
             }
         }
 
+    //validate sign up form fields
     function signupCheck(){
 
         if($("input:text[name='signupName']").val().length < 1){
@@ -326,4 +320,4 @@ $(function(){
             $('#cityAlert').hide();
         }
     }
-});
+});//end main function
