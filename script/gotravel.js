@@ -79,6 +79,7 @@ $(function(){
         $('#weatherBox').hide();
         $('#loginForm').hide();
         $('#signupForm').hide();
+        $('#loginSuccess').hide();
     });
 
     $('button#getAdvice').click(function(){
@@ -103,6 +104,7 @@ $(function(){
         $('#weatherBox').show();
         $('#loginForm').hide();
         $('#signupForm').hide();
+        $('#loginSuccess').hide();
         getMonthWeather(monthUrls[selectedMonth]);
     });
 
@@ -110,8 +112,21 @@ $(function(){
         $('#initialForm').hide();
         $('#getAdviceForm').hide();
         $('#loginForm').show();
+        $('#weatherBox').hide();
         $('#signupForm').hide();
         $('#giveAdviceForm').hide();
+        $('#loginSuccess').hide();
+    });
+
+    $('button#loginSubmit').click(function(){
+        $('#initialForm').hide();
+        $('#getAdviceForm').hide();
+        $('#loginForm').hide();
+        $('#weatherBox').hide();
+        $('#signupForm').hide();
+        $('#giveAdviceForm').hide();
+        $('#loginSuccess').show();
+
     });
 
     $('button#signupBtn').click(function(){
@@ -120,9 +135,15 @@ $(function(){
         $('#loginForm').hide();
         $('#signupForm').show();
         $('#giveAdviceForm').hide();
+        $('#weatherBox').hide();
+        $('#loginSuccess').hide();
     });
 
     $('button#changeBtn').click(function(){
+        $(location).attr('href','index.html');
+    });
+
+    $('button#goHome').click(function(){
         $(location).attr('href','index.html');
     });
 
@@ -146,6 +167,7 @@ $(function(){
         $('#weatherBox').hide();
         $('#loginForm').hide();
         $('#signupForm').hide();
+        $('#loginSuccess').hide();
 
         $('html, body').animate({ scrollTop: 0 }, 0);
     });

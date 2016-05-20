@@ -26,7 +26,6 @@ body {
 h3,
 h4,
 h5 {
-
 	text-align: center;
 }
 
@@ -35,19 +34,28 @@ h3 {
 	font-weight: bold;
 	margin-top: 10px;
 }
+.white {
+	width: 100%;
+	color: #fff;
+	padding-left: 50px;
+	position: absolute;
+	z-index: 9999;
+}
 
 footer {
 	/*margin-top: 13%;*/
 	position: fixed;
-	top: 95%;
+	top: 93%;
 	width: 100%;
 	background: #222;
 }
 
 footer p {
-	color: #888;
+	font-size: 120%;
+	color: #fff;
 	text-align: center;
-	padding: 10px 0;
+	padding: 20px 0;
+	font-family: 'Special Elite', cursive;
 }
 
 div.transbox {
@@ -108,19 +116,6 @@ ul {
 	align-items: flex-start;
 }
 
-.flex-container-start {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	align-items: center;
-}
-
-.container-right-justify {
-	display: flex;
-	flex-direction: row;
-	justify-content: flex-end;
-}
-
 .btn-lg {
 	font-size: 1.5rem;
 }
@@ -130,39 +125,49 @@ i.orange {
 }
 .fa-facebook-square,
 .fa-instagram,
-.fa-twitter-square {
+.fa-twitter-square,
+.fa-envelope {
 	color: #fff;
 }
 
+.fa-envelope:hover {
+	color: #f35b04;
+	transition: all 0.8s ease;
+}
+
 .fa-facebook-square:hover {
- color: #3b5998;
+	color: #3b5998;
+	transition: all 0.8s ease;
 }
 .fa-instagram:hover {
- color: #007bb6;
+	color: #007bb6;
+	transition: all 0.8s ease;
 }
 .fa-twitter-square:hover {
- color: #00aced;
+	color: #00aced;
+	transition: all 0.8s ease;
 }
 
 .socialbox {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: flex-start;
+	background-color: #5479e3;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	width: 50px;
+	margin-top: 50px;
+}
+
+
+.socialbox a {
+    padding: 5px 0 5px 10px;
+    display: block;
+    color: white;
 }
 
 .weatherIcon {
 	height: 50px;
-}
-
-#login,
-#signup {
-	background-color: #f35b04;
-	margin: 10px 0 10px 10px;
-	color: #fff;
-	font-family: 'Special Elite', cursive;
-	font-weight: 400;
-	border-radius: 5px;
-	padding: 7px 10px 5px 10px;
 }
 
 #getAdviceForm {
@@ -174,6 +179,10 @@ i.orange {
 }
 
 #loginForm {
+	display: none;
+}
+
+#loginSuccess {
 	display: none;
 }
 
