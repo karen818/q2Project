@@ -1,0 +1,31 @@
+{
+  "name": "q2-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karen818/q2Project.git"
+  },
+  "author": "Karen Kelly, Dax Richardson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karen818/q2Project/issues"
+  },
+  "homepage": "https://github.com/karen818/q2Project#readme",
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "body-parser": "^1.15.2",
+    "bookshelf": "^0.9.5",
+    "dotenv": "^2.0.0",
+    "knex": "^0.11.7",
+    "locus": "^1.2.0",
+    "method-override": "^2.3.6",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "pg": "^6.0.1"
+  }
+}
