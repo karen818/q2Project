@@ -4,8 +4,8 @@ $(function(){
     var selectedMonth = $('#monthSelect').val();
     var selectedAdvice = $('#adviceSelect').val();
 
-    var stateCountry = {name: 'Texas', value: 'TX'};
-    var city = {name: 'Austin', value: 'Austin'};
+    var stateCountry = {name: '', value: ''};
+    var city = {name: '', value: ''};
     var monthUrls;
 
     ///////// Photo Ajax //////////
@@ -42,58 +42,31 @@ $(function(){
         });
     }
 
-    //////////Cities Ajax call function/////////
-    $("#f_elem_city").autocomplete({
+    //////////Cities Geobytes call function/////////
+    $(".f_elem_city").autocomplete({
 		source: function (request, response) {
 		 $.getJSON(
 			"http://gd.geobytes.com/AutoCompleteCity?callback=?&sort=size&q="+request.term,
 			function (data) {
 			 response(data);
-			}
-		 );
+			});
 		},
 		minLength: 3,
 		select: function (event, ui) {
 		 var selectedObj = ui.item;
-		 $("#f_elem_city").val(selectedObj.value);
+		 $(".f_elem_city").val(selectedObj.value);
 		getcitydetails(selectedObj.value);
 		 return false;
 		}
 	 });
-	 $("#f_elem_city").autocomplete("option", "delay", 100);
-
-
+	 $(".f_elem_city").autocomplete("option", "delay", 100);
         function getcitydetails(fqcn) {
-
-        	if (typeof fqcn == "undefined") fqcn = $("#f_elem_city").val();
-
+        	if (typeof fqcn == "undefined") fqcn = $(".f_elem_city").val();
         	cityfqcn = fqcn;
-
         	if (cityfqcn) {
-
-        	    $.getJSON(
-        	                "http://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn,
+        	    $.getJSON("http://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn,
                              function (data) {
-        	            $("#geobytesinternet").val(data.geobytesinternet);
-        	            $("#geobytescountry").val(data.geobytescountry);
-        	            $("#geobytesregionlocationcode").val(data.geobytesregionlocationcode);
-        	            $("#geobytesregion").val(data.geobytesregion);
-        	            $("#geobyteslocationcode").val(data.geobyteslocationcode);
-        	            $("#geobytescity").val(data.geobytescity);
-        	            $("#geobytescityid").val(data.geobytescityid);
-        	            $("#geobytesfqcn").val(data.geobytesfqcn);
-        	            $("#geobyteslatitude").val(data.geobyteslatitude);
-        	            $("#geobyteslongitude").val(data.geobyteslongitude);
-        	            $("#geobytescapital").val(data.geobytescapital);
-        	            $("#geobytestimezone").val(data.geobytestimezone);
-        	            $("#geobytesnationalitysingular").val(data.geobytesnationalitysingular);
-        	            $("#geobytespopulation").val(data.geobytespopulation);
-        	            $("#geobytesnationalityplural").val(data.geobytesnationalityplural);
-        	            $("#geobytesmapreference").val(data.geobytesmapreference);
-        	            $("#geobytescurrency").val(data.geobytescurrency);
-        	            $("#geobytescurrencycode").val(data.geobytescurrencycode);
-        	            }
-        	    );
+        	    });
         	}
         }
 
@@ -105,12 +78,23 @@ $(function(){
 
         //get the value of the selected items
         selectedCity = $('#citySelect').val();
+
         selectedMonth = $('#monthSelect').val();
         selectedAdvice = $('#adviceSelect').val();
 
         //split the item values to use in the ajax calls
-        city.value = $( "#citySelect option:selected" ).text().split(", ")[0];
-        stateCountry.value = $( "#citySelect option:selected" ).text().split(", ")[1];
+
+        city.value = selectedCity.split(', ')[0];
+        stateCountry.value = selectedCity.split(', ');
+
+        console.log(stateCountry.value);
+
+        if (stateCountry.value[2] === 'United States') {
+            stateCountry.value = selectedCity.split(', ')[1];
+        }
+
+
+        console.log(city.value + " " + stateCountry.value);
 
         //ajax calls to Wunderground to grab historical data based on city and state/country
         monthUrls = {
