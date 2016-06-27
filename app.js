@@ -35,7 +35,7 @@ passport.use(new TwitterStrat({
     callbackURL: "http://127.0.0.1:3000/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, cb) {
-    console.log(profile);
+    cb(null, profile);
   }
 ));
 
@@ -45,7 +45,7 @@ passport.use(new FacebookStrat({
     callbackURL: "http://localhost:3000/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
-    console.log(profile);
+    cb(null, profile);
   }
 ));
 
@@ -76,15 +76,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser(function(user, done) {
-	done(null, user.id);
+	done(null, user);
 });
 
 passport.deserializeUser(function(id, done) {
-  User({'id': id})
-    .fetch()
-    .then( user => {
-      done(null, user);
-    });
+  done(null, id);
 });
 
 
