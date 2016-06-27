@@ -1,7 +1,6 @@
 var bookshelf = require('../db/bookshelf');
 
 require('advice');
-require('approved_post');
 
 var City = bookshelf.Model.extend({
   table:'cities',
