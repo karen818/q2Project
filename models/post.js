@@ -21,4 +21,4 @@ var Post = bookshelf.Model.extend({
   }
 });
 
-module.exports = bookshelf.Model('Post', Post);
+module.exports = bookshelf.model('Post', Post);

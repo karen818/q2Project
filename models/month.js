@@ -1,6 +1,6 @@
 var bookshelf = require('../db/bookshelf');
 
-require('advice');
+require('./advice');
 
 var Month = bookshelf.Model.extend({
   table:'months',

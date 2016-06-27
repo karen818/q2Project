@@ -1,6 +1,6 @@
 var bookshelf = require('../db/bookshelf');
 
-require('advice');
+require('./post');
 
 var AdviceType = bookshelf.Model.extend({
   table:'advice_types',
