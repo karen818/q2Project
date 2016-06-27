@@ -70,7 +70,7 @@ passport.use(new LocalStrat({
 
 app.use(cookieSession({
   name: 'session',
-  keys: ['what`s good, sukka', 'nammuch hbu tbh imo fam']
+  keys: [process.env.KEY1, process.env.KEY2]
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -80,13 +80,6 @@ passport.serializeUser(function(user, done) {
 });
 
 passport.deserializeUser(function(id, done) {
-  // Users()
-	// 	.where('id', id)
-	// 	.first()
-	// 	.then( user => {
-	// 		done(null, user);
-	// });
-
   User({'id': id})
     .fetch()
     .then( user => {
