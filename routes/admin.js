@@ -3,14 +3,14 @@ var express = require('express'),
 
 router.route('/')
   // Display admin panel.
-  .get((req, res) {
+  .get((req, res) => {
     // Display all posts, and related users.
 
     // Have the option to update/delete?
   })
 
   // Allow admin to make changes to a post/user.
-  .put((req, res) {
+  .put((req, res) => {
 
   })
 

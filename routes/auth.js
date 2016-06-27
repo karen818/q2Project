@@ -1,5 +1,6 @@
 var express = require('express'),
-    router  = express.Router();
+    router  = express.Router(),
+    passport = require('passport');
 
 router.route('/signup')
   // Show sign up page.
@@ -12,28 +13,34 @@ router.route('/signup')
 
   });
 
-router.route('/twitter')
-  // Direct to twitter auth.
+router.route('/login')
+  // Show login page.
   .get((req, res) => {
 
   });
 
+router.route('/twitter')
+  // Direct to twitter auth.
+  .get(passport.authenticate('twitter'));
+
 router.route('/twitter/callback')
   // Route for twitter auth callback.
-  .get((req, res) => {
-
+  .get(passport.authenticate('twitter', { failureRedirect: '/login' }),
+  (req, res) => {
+    // Successful authentication, redirect home.
+    res.redirect('/')
   });
 
 router.route('/facebook')
   // Direct to facebook auth.
-  .get((req, res) => {
-
-  });
+  .get(passport.authenticate('facebook'));
 
 router.route('/facebook/callback')
   // Route for facebook auth callback.
-  .get((req, res) => {
-
+  .get(passport.authenticate('facebook', { failureRedirect: '/login' }),
+  (req, res) => {
+    // Successful authentication, redirect home.
+    res.redirect('/')
   });
 
 module.exports = router;
