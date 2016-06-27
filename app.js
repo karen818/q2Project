@@ -8,7 +8,9 @@ var express        = require('express'),
     passport       = require('passport'),
     TwitterStrat   = require('passport-twitter').Strategy,
     FacebookStrat  = require('passport-facebook').Strategy,
+    LocalStrat     = require('passport-local').Strategy,
     cookieSession  = require('cookie-session'),
+    User           = require('./models/user'),
     app            = express();
 
 require('locus');
@@ -50,6 +52,45 @@ passport.use(new FacebookStrat({
     });
   }
 ));
+
+passport.use(new LocalStrat({
+	usernameField: 'username',
+	passwordField: 'password',
+	session: false
+}, (username, password, done) => {
+	// Check id of user, retrieve row in users table.
+	Users().where('username', username)
+		.first()
+		.then( user => {
+			// compareSync the user's hashed password.
+			if (user && bcrypt.compareSync(password, user.password)){
+				// On match, return confirmation of session.
+				return done(null, user);
+			}
+			// Otherwise, return no session, redirect.
+			return done(null, false);
+		})
+}));
+
+passport.serializeUser(function(user, done) {
+	done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  // Users()
+	// 	.where('id', id)
+	// 	.first()
+	// 	.then( user => {
+	// 		done(null, user);
+	// });
+
+  User({'id': id})
+    .fetch()
+    .then( user => {
+      done(null, user);
+    });
+});
+
 
 // === Routes ==== //
 app.use('/', index);
