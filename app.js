@@ -35,9 +35,7 @@ passport.use(new TwitterStrat({
     callbackURL: "http://127.0.0.1:3000/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, cb) {
-    User.findOrCreate({ twitterId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
+    console.log(profile);
   }
 ));
 
@@ -47,9 +45,7 @@ passport.use(new FacebookStrat({
     callbackURL: "http://localhost:3000/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
+    console.log(profile);
   }
 ));
 
@@ -71,6 +67,13 @@ passport.use(new LocalStrat({
 			return done(null, false);
 		})
 }));
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['what`s good, sukka', 'nammuch hbu tbh imo fam']
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 passport.serializeUser(function(user, done) {
 	done(null, user.id);
