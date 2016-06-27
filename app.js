@@ -3,6 +3,7 @@ var express        = require('express'),
     methodOverride = require('method-override'),
     index          = require('./routes/index'),
     users          = require('./routes/users'),
+    auth           = require('./routes/auth'),
     app            = express();
 
 require('locus');
