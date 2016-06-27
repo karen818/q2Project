@@ -7,6 +7,7 @@
 
     <script src="public/vendors/node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="public/vendors/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 
     <link rel='stylesheet' type='text/css'href='https://fonts.googleapis.com/css?family=Special+Elite|Overlock'>
     <link rel="stylesheet" type="text/css" href="public/vendors/node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -71,15 +72,16 @@
                     <form class="form" action="index.html" method="get">
                         <div class="form-group citySelect">
                             <br>
-                            <label for="citySelect" class="control-label"><i class="fa fa-map-marker orange" aria-hidden="true"></i>&nbsp;&nbsp;Choose City</label>
-                            <select class="form-control" name="selectCity" id="citySelect">
+                            <label for="citySelect" class="control-label"><i class="fa fa-map-marker orange" aria-hidden="true"></i>&nbsp;&nbsp;Enter City</label><br>
+                            <input type="text" name="selectCity" id="f_elem_city">
+                            <!-- <select class="form-control" name="selectCity" id="citySelect">
                                 <option>Austin, Texas</option>
                                 <option>Bali, Indonesia</option>
                                 <option>New York City, New York</option>
                                 <option>Sydney, Australia</option>
                                 <option>Turrialba, Costa Rica</option>
                                 <option>Tokyo, Japan</option>
-                            </select>
+                            </select> -->
                         </div>
                         <div class="form-group">
                             <label for="monthSelect" class="control-label"><i class="fa fa-sun-o orange" aria-hidden="true"></i>&nbsp;&nbsp;Choose Month</label>
@@ -150,7 +152,7 @@
                     <h4>High Temperatures</h4>
                     <div class="row">
                         <div class="col-xs-2">
-                            <img class="weatherIcon" src="img/hot.png" alt="sun icon" />
+                            <img class="weatherIcon" src="public/img/hot.png" alt="sun icon" />
                         </div>
                         <div class="col-xs-4">
                             <p id="highF"></p>
@@ -163,7 +165,7 @@
                     <h4>Low Temperatures</h4>
                     <div class="row">
                         <div class="col-xs-2">
-                            <img class="weatherIcon" src="img/cold.png" alt="snow icon" />
+                            <img class="weatherIcon" src="public/img/cold.png" alt="snow icon" />
                         </div>
                         <div class="col-xs-4">
                             <p id="lowF"></p>
@@ -176,7 +178,7 @@
                     <h4>Chance of Rain</h4>
                     <div class="row">
                         <div class="col-xs-2">
-                            <img class="weatherIcon" src="img/rain.png" alt="rain icon" />
+                            <img class="weatherIcon" src="public/img/rain.png" alt="rain icon" />
                         </div>
                         <div class="col-xs-2">
                             <p></p>
