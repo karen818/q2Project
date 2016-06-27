@@ -4,6 +4,7 @@ var express        = require('express'),
     index          = require('./routes/index'),
     users          = require('./routes/users'),
     auth           = require('./routes/auth'),
+    admin          = require('./routes/admin'),
     app            = express();
 
 require('locus');
@@ -22,6 +23,8 @@ app.use(express.static('public'));
 // === Routes ==== //
 app.use('/', index);
 app.use('/users', users);
+app.use('/auth', auth);
+app.use('/admin', admin);
 
 app.listen((process.env.PORT || 3000), error => {
   console.log('Server is listening.');
