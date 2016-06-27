@@ -85,6 +85,10 @@ ul {
     list-style: none;
 }
 
+.ui-autocomplete-input {
+    background-color: #fff;
+}
+
 .overlock {
     font-family: 'Overlock', cursive;
 }
