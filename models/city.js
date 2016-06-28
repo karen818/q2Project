@@ -1,6 +1,6 @@
 var bookshelf = require('../db/bookshelf');
 
-require('advice');
+require('./post');
 
 var City = bookshelf.Model.extend({
   table:'cities',

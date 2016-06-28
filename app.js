@@ -8,9 +8,12 @@ var express        = require('express'),
     passport       = require('passport'),
     TwitterStrat   = require('passport-twitter').Strategy,
     FacebookStrat  = require('passport-facebook').Strategy,
+    LocalStrat     = require('passport-local').Strategy,
     cookieSession  = require('cookie-session'),
-    app            = express(),
+
     handlebars     = require('handlebars');
+    User           = require('./models/user'),
+    app            = express();
 
 require('locus');
 require('dotenv').config();
@@ -34,9 +37,7 @@ passport.use(new TwitterStrat({
     callbackURL: "http://127.0.0.1:3000/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, cb) {
-    User.findOrCreate({ twitterId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
+    cb(null, profile);
   }
 ));
 
@@ -46,11 +47,44 @@ passport.use(new FacebookStrat({
     callbackURL: "http://localhost:3000/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ facebookId: profile.id }, function (err, user) {
-      return cb(err, user);
-    });
+    cb(null, profile);
   }
 ));
+
+passport.use(new LocalStrat({
+	usernameField: 'username',
+	passwordField: 'password',
+	session: false
+}, (username, password, done) => {
+	// Check id of user, retrieve row in users table.
+	Users().where('username', username)
+		.first()
+		.then( user => {
+			// compareSync the user's hashed password.
+			if (user && bcrypt.compareSync(password, user.password)){
+				// On match, return confirmation of session.
+				return done(null, user);
+			}
+			// Otherwise, return no session, redirect.
+			return done(null, false);
+		})
+}));
+
+app.use(cookieSession({
+  name: 'session',
+  keys: [process.env.KEY1, process.env.KEY2]
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser(function(user, done) {
+	done(null, user);
+});
+
+passport.deserializeUser(function(id, done) {
+  done(null, id);
+});
+
 
 // === Routes ==== //
 app.use('/', index);
