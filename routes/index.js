@@ -7,8 +7,15 @@ var express = require('express'),
 //     res.send('Connection established.');
 //   });
 
-router.get('/', function(req, res) {
-  res.render('index', { title: 'Test' });
+router.get('/', function (req, res, next) {
+    res.render('index');
+});
+
+router.get('/layout', function (req, res, next) {
+    res.render('index', {
+        title: 'goTravel -- Travel Advice App',
+        layout: 'home'
+    });
 });
 
 module.exports = router;

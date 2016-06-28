@@ -12,6 +12,7 @@ var express        = require('express'),
     cookieSession  = require('cookie-session'),
     exphbs         = require('express-handlebars'),
     User           = require('./models/user'),
+    path           = require('path'),
     app            = express();
 
 require('locus');
@@ -29,7 +30,8 @@ app.set('views', __dirname + '/views');
 app.engine('.hbs', exphbs({defaultLayout: 'home', extname: '.hbs'}));
 app.set('view engine', '.hbs');
 
-app.use(express.static('public'));
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 // === Passport === //
 
