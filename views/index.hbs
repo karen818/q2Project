@@ -1,24 +1,42 @@
-<div class="col-xs-4 col-sm-4 col-md-4 transbox" id="getAdviceForm">
-    <form class="form" action="index.html" method="get">
-        <br>
-        <div class="well well-sm flex-container-center">
-            <p id="city"></p>
-        </div>
-        <div class="well well-lg">
-            <p id="adviceText">Watching the bats fly at dusk from the Lady Bird Lake bridge on S. Congress is amazing. You can watch from the bridge or from the water. Watch out for guano if you're down below!
-            </p>
-            <p id="author">Karen K. - resident since 2005</p>
+<!-- initial form container  -->
+<div class="col-xs-4 col-sm-4 col-md-4 transbox" id="initialForm">
+    <form class="form" action="/getAdvice" method="get">
+        <div class="form-group citySelect">
+            <br>
+            <label for="citySelect" class="control-label"><i class="fa fa-map-marker orange" aria-hidden="true"></i>&nbsp;&nbsp;Enter City</label><br>
+            <input type="text" name="selectCity" class="f_elem_city form-control" id="citySelect">
+
         </div>
         <div class="form-group">
-            <label for="adviceSelect" class="control-label"><i class="fa fa-comments-o orange" aria-hidden="true"></i>&nbsp;&nbsp;Change Type of Advice</label>
-            <select class="form-control">
+            <label for="monthSelect" class="control-label"><i class="fa fa-sun-o orange" aria-hidden="true"></i>&nbsp;&nbsp;Choose Month</label>
+            <select class="form-control" name="selectSeason" id="monthSelect">
+                <option data-month="January">January</option>
+                <option data-month="February">February</option>
+                <option data-month="March">March</option>
+                <option data-month="April">April</option>
+                <option data-month="May">May</option>
+                <option data-month="June">June</option>
+                <option data-month="July">July</option>
+                <option data-month="August">August</option>
+                <option data-month="September">September</option>
+                <option data-month="October">October</option>
+                <option data-month="November">November</option>
+                <option data-month="December">December</option>
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="adviceSelect" class="control-label"><i class="fa fa-comments-o orange" aria-hidden="true"></i>&nbsp;&nbsp;Choose Type of Advice</label>
+            <select class="form-control" name="selectAdvice" id="adviceSelect">
                 <option>Things to do</option>
                 <option>Things to avoid</option>
                 <option>Things to eat</option>
             </select>
         </div>
         <div class="form-group btn-lg btn-block">
-            <button class="btn btn-lg btn-block" type="button" name="moreAdvice" id="moreAdvice"><i class="fa fa-plane" aria-hidden="true"></i>&nbsp;&nbsp;Get more advice</button>
+            <button class="btn btn-lg btn-block" type="submit" name="getAdvice" id="getAdvice"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;I want advice</button>
+            <button class="btn btn-lg btn-block" type="button" name="giveAdvice" id="giveAdvice"><i class="fa fa-plane" aria-hidden="true"></i>&nbsp;&nbsp;I have advice</button>
         </div>
     </form>
 </div>
+<!-- end initialForm -->
