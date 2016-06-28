@@ -3,7 +3,7 @@ var bookshelf = require('../db/bookshelf');
 require('./post');
 
 var AdviceType = bookshelf.Model.extend({
-  table:'advice_types',
+  tableName:'advice_types',
   posts: function() {
     return this.hasMany('Post');
   }
