@@ -9,7 +9,14 @@ var express = require('express'),
 router.route('/')
   // Are we going to list all of the posts on a single page?
   .get((req, res) => {
-    res.send('Default posts route.');
+    res.json(
+      Post
+        .fetchAll()
+        .then( results => {
+          console.log(results.toJSON());
+        })
+    )
+
   })
   // User adds new post.
   .post((req, res) => {
