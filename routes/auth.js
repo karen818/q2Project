@@ -10,7 +10,21 @@ router.route('/signup')
 
   // Register a new user.
   .post((req, res) => {
+    var newUser = req.body,
+        hash    = bcrypt.hashSync(newUser.password, 8);
 
+    new User({
+      username: newUser.username,
+      email: newUser.email,
+      img_url: newUser.img_url,
+      password: hash
+    }, 'id')
+      .save()
+      .then( results => {
+        // Should post a new user, then redirect to index page.
+
+        res.redirect('/');
+      });
   });
 
 router.route('/login')
