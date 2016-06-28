@@ -30,6 +30,11 @@ router.get('/giveAdvice', function (req, res, next) {
     });
 });
 
+router.get('/adviceSuccess', function (req, res, next) {
+    res.render('adviceSuccess', {
+        title: 'goTravel -- Give Advice'
+    });
+});
 
 
 module.exports = router;

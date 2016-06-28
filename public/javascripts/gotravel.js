@@ -74,7 +74,7 @@ $(function(){
         }
 
     //show advice/initial form; create ajax urls
-    $('button#getAdvice').click(function(){
+    $('#getAdvice').click(function(){
         //get the value of the selected items
         selectedCity = $('#citySelect').val();
         selectedMonth = $('#monthSelect').val();
@@ -146,7 +146,7 @@ $(function(){
 
     //show login form
     $('button#loginBtn').click(function(){
-        $(location).attr('href','/login');
+        $(location).attr('href','/auth/login');
     });
 
     //show advice submit success screen
@@ -161,7 +161,7 @@ $(function(){
 
     //show sign up form
     $('button#signupBtn').click(function(){
-        $(location).attr('href','/signup');
+        $(location).attr('href','/auth/signup');
     });
 
 
