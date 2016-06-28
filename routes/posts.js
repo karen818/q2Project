@@ -8,13 +8,19 @@ var express = require('express'),
 
 router.route('/')
   // Are we going to list all of the posts on a single page?
-
+  .get((req, res) => {
+    res.send('Default posts route.');
+  })
   // User adds new post.
   .post((req, res) => {
     var newPost = req.body;
 
     new Post({
+<<<<<<< HEAD
     //   user_id: //Logged in user.
+=======
+      user_id: '',//Logged in user.
+>>>>>>> d10d7796dc53ead0bbe03f40f28cd36554d25813
       advice_text: newPost.advice_text,
       advice_type: newPost.advice_type,
       month_id: newPost.month_id,
