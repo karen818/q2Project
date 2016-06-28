@@ -40,7 +40,6 @@ router.route('/facebook/callback')
   .get(passport.authenticate('facebook', { failureRedirect: '/login' }),
   (req, res) => {
     // Successful authentication, redirect home.
-    eval(locus);
     res.redirect('/')
   });
 
