@@ -1,7 +1,7 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('table_name').del()
+  return knex('users').del()
     .then(function () {
       return Promise.all([
         // Inserts seed entries
@@ -67,29 +67,5 @@ exports.seed = function(knex, Promise) {
         knex('months').insert({ month: 'November' }),
         knex('months').insert({ month: 'December' })
       ]);
-    }).then(() => {
-      return Promise.all([
-        knex('advice_post').insert({
-          user_id: 1,
-          advice_text: 'My life is a lie.',
-          advice_type: 2,
-          month_id: 3,
-          city_id: 3,
-        }),
-        knex('advice_post').insert({
-          user_id: 2,
-          advice_text: 'SCREEEE',
-          advice_type: 1,
-          month_id: 2,
-          city_id: 3,
-        }),
-        knex('advice_post').insert({
-          user_id: 1,
-          advice_text: 'Im listening to Tame Impala right now.',
-          advice_type: 1,
-          month_id: 1,
-          city_id: 1,
-        })
-      ]);
-    });
+    })
 };
