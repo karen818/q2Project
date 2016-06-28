@@ -5,7 +5,10 @@ var express = require('express'),
 router.route('/signup')
   // Show sign up page.
   .get((req, res) => {
-    res.send('Placeholder.');
+    res.render('signup', {
+      title: 'goTravel -- Sign Up',
+      layout: 'home'
+    });
   })
 
   // Register a new user.
@@ -36,7 +39,7 @@ router.route('/login')
       });
   });
 
- 
+
 
 router.route('/twitter')
   // Direct to twitter auth.
