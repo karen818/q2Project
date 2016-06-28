@@ -16,11 +16,8 @@ router.route('/')
     var newPost = req.body;
 
     new Post({
-<<<<<<< HEAD
-    //   user_id: //Logged in user.
-=======
+
       user_id: '',//Logged in user.
->>>>>>> d10d7796dc53ead0bbe03f40f28cd36554d25813
       advice_text: newPost.advice_text,
       advice_type: newPost.advice_type,
       month_id: newPost.month_id,
@@ -33,7 +30,7 @@ router.route('/')
       });
   })
 
-router.route('/new')
+router.route('/giveAdvice')
   // Render new post form.
   .get((req, res) => {
     // Get the ID from the user currently logged in.
