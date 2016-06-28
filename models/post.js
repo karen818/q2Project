@@ -6,7 +6,7 @@ require('./month');
 require('./advice');
 
 var Post = bookshelf.Model.extend({
-  table: 'posts',
+  tableName: 'advice_posts',
   user: function(){
     return this.belongsTo('User');
   },

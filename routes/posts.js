@@ -1,15 +1,20 @@
-var express = require('express'),
-    router  = express.Router(),
-    User    = require('../models/user'),
-    Post    = require('../models/post'),
-    Advice  = require('../models/advice'),
-    City    = require('../models/city'),
-    Month   = require('../models/month');
+var express   = require('express'),
+    router    = express.Router(),
+    bookshelf = require('../db/bookshelf'),
+    User      = require('../models/user'),
+    Post      = require('../models/post'),
+    Advice    = require('../models/advice'),
+    City      = require('../models/city'),
+    Month     = require('../models/month');
 
 router.route('/')
   // Are we going to list all of the posts on a single page?
   .get((req, res) => {
-    res.send('Default posts route.');
+    User.fetchAll()
+      .then( results => {
+        res.send(results.toJSON());
+      })
+
   })
   // User adds new post.
   .post((req, res) => {

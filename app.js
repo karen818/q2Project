@@ -14,6 +14,7 @@ var express        = require('express'),
     exphbs         = require('express-handlebars'),
     User           = require('./models/user'),
     path           = require('path'),
+    bookshelf      = require('./db/bookshelf'),
     app            = express();
 
 require('locus');
