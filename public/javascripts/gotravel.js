@@ -8,8 +8,6 @@ $(function(){
     var city = {name: '', value: ''};
     var monthUrls;
 
-    var source   = $("#test-template").html();
-    var test-template = Handlebars.compile(source);
 
     ///////// Photo Ajax //////////
     $.ajax({
@@ -78,6 +76,7 @@ $(function(){
 
     //show advice/initial form; create ajax urls
     $('button#getAdvice').click(function(){
+        $(location).attr('href','/getAdvice');
 
         //get the value of the selected items
         selectedCity = $('#citySelect').val();
@@ -133,15 +132,8 @@ $(function(){
         $('#monthTxt').html(selectedMonth);
 
         //show the get advice form
-        $('#initialForm').hide();
-        $('#giveAdviceForm').hide();
-        $('#getAdviceForm').show();
-        $('#weatherBox').show();
-        $('#loginForm').hide();
-        $('#signupForm').hide();
-        $('#loginSuccess').hide();
-        $('#signupSuccess').hide();
-        $('#submitSuccess').hide();
+
+
     });
 
 
@@ -222,7 +214,7 @@ $(function(){
 
     //return home
     $('button#changeBtn').click(function(){
-        $(location).attr('href','index.html');
+        $(location).attr('href','/');
     });
 
     //return home another way

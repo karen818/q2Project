@@ -18,4 +18,11 @@ router.get('/layout', function (req, res, next) {
     });
 });
 
+router.get('/getAdvice', function (req, res, next) {
+    res.render('getAdvice', {
+        title: 'goTravel -- Travel Advice App',
+        layout: 'home'
+    });
+});
+
 module.exports = router;
