@@ -8,6 +8,9 @@ $(function(){
     var city = {name: '', value: ''};
     var monthUrls;
 
+    var source   = $("#main-template").html();
+    var template = Handlebars.compile(source);
+
     ///////// Photo Ajax //////////
     $.ajax({
         url: 'https://api.unsplash.com/photos/search?category=4&query=travel&client_id=b21a9e8e8640c016bfff18622954eaa29cb31d67178c80f5e36efeaa02e9cb70',

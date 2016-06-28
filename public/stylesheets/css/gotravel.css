@@ -25,7 +25,7 @@ h3, h4, h5 {
     text-align: center;
 }
 
-h3 {
+h3, h5 {
     font-family: 'Special Elite', cursive;
     font-weight: bold;
     margin-top: 10px;
@@ -91,6 +91,11 @@ ul {
 
 .overlock {
     font-family: 'Overlock', cursive;
+    text-align: center;
+}
+
+.centered {
+    text-align: center;
 }
 
 .well-sm {

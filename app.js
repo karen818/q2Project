@@ -9,7 +9,8 @@ var express        = require('express'),
     TwitterStrat   = require('passport-twitter').Strategy,
     FacebookStrat  = require('passport-facebook').Strategy,
     cookieSession  = require('cookie-session'),
-    app            = express();
+    app            = express(),
+    handlebars     = require('handlebars');
 
 require('locus');
 require('dotenv').config();
