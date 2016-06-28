@@ -177,39 +177,11 @@ i.orange {
 }
 
 .weatherIcon {
-    height: 50px;
+  height: 50px;
 }
 
-#getAdviceForm {
-    display: none;
-}
-
-#giveAdviceForm {
-    display: none;
-}
-
-#loginForm {
-    display: none;
-}
-
-#loginSuccess {
-    display: none;
-}
-
-#signupForm {
-    display: none;
-}
-
-#signupSuccess {
-    display: none;
-}
-
-#submitSuccess {
-    display: none;
-}
 
 #weatherBox {
-    display: none;
     background-color: #3d348b;
     color: #fff;
     padding-bottom: 20px;

@@ -84,19 +84,21 @@ $(function(){
         selectedMonth = $('#monthSelect').val();
         selectedAdvice = $('#adviceSelect').val();
 
-        //split the item values to use in the ajax calls
+        console.log(selectedMonth);
 
+        //split the item values to use in the ajax calls
         city.value = selectedCity.split(', ')[0];
         stateCountry.value = selectedCity.split(', ');
 
-        console.log(stateCountry.value);
 
         if (stateCountry.value[2] === 'United States') {
             stateCountry.value = selectedCity.split(', ')[1];
         }
 
+        //fill in html with selections
+        $('#city').html(selectedCity);
+        $('#monthTxt').html(selectedMonth);
 
-        console.log(city.value + " " + stateCountry.value);
 
         //ajax calls to Wunderground to grab historical data based on city and state/country
         monthUrls = {
@@ -126,12 +128,6 @@ $(function(){
 
         //call Ajax to get weather data
         getMonthWeather(monthUrls[selectedMonth]);
-
-        //fill in html with selections
-        $('#city').html(selectedCity);
-        $('#monthTxt').html(selectedMonth);
-
-        //show the get advice form
 
 
     });
