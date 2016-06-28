@@ -62,8 +62,10 @@ $(function(){
 	 });
 	 $(".f_elem_city").autocomplete("option", "delay", 100);
         function getcitydetails(fqcn) {
-        	if (typeof fqcn == "undefined") fqcn = $(".f_elem_city").val();
-        	cityfqcn = fqcn;
+        	if (typeof fqcn == "undefined") {
+                var fqcn = $(".f_elem_city").val();
+        	    var cityfqcn = fqcn;
+            }
         	if (cityfqcn) {
         	    $.getJSON("http://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn,
                              function (data) {
@@ -71,20 +73,15 @@ $(function(){
         	}
         }
 
-
-
-
     //show advice/initial form; create ajax urls
     $('button#getAdvice').click(function(){
-        $(location).attr('href','/getAdvice');
-
         //get the value of the selected items
         selectedCity = $('#citySelect').val();
-
         selectedMonth = $('#monthSelect').val();
         selectedAdvice = $('#adviceSelect').val();
 
-        console.log(selectedMonth);
+        console.log(selectedCity + " " + selectedMonth + " " + selectedAdvice);
+
 
         //split the item values to use in the ajax calls
         city.value = selectedCity.split(', ')[0];
@@ -128,7 +125,7 @@ $(function(){
 
         //call Ajax to get weather data
         getMonthWeather(monthUrls[selectedMonth]);
-
+        $(location).attr('href','/getAdvice');
 
     });
 
