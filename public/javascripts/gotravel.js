@@ -148,86 +148,33 @@ $(function(){
         $('#monthGive').html(selectedMonth  + '<br>');
         $('#adviceGive').html(selectedAdvice);
 
-        $('#initialForm').hide();
-        $('#giveAdviceForm').show();
-        $('#getAdviceForm').hide();
-        $('#weatherBox').hide();
-        $('#loginForm').hide();
-        $('#signupForm').hide();
-        $('#loginSuccess').hide();
-        $('#signupSuccess').hide();
-        $('#submitSuccess').hide();
+        $(location).attr('href','/giveAdvice');
     });
 
     //show login form
     $('button#loginBtn').click(function(){
-        $('#initialForm').hide();
-        $('#getAdviceForm').hide();
-        $('#loginForm').show();
-        $('#weatherBox').hide();
-        $('#signupForm').hide();
-        $('#giveAdviceForm').hide();
-        $('#loginSuccess').hide();
-        $('#signupSuccess').hide();
-        $('#submitSuccess').hide();
+        $(location).attr('href','/login');
     });
 
     //show advice submit success screen
     $('button#submitAdvice').click(function(){
-        $('#initialForm').hide();
-        $('#getAdviceForm').hide();
-        $('#loginForm').hide();
-        $('#weatherBox').hide();
-        $('#signupForm').hide();
-        $('#giveAdviceForm').hide();
-        $('#loginSuccess').hide();
-        $('#signupSuccess').hide();
-        $('#submitSuccess').show();
+        $(location).attr('href','/adviceSuccess');
     });
 
     //show login success screen
     $('button#loginSubmit').click(function(){
-        $('#initialForm').hide();
-        $('#getAdviceForm').hide();
-        $('#loginForm').hide();
-        $('#weatherBox').hide();
-        $('#signupForm').hide();
-        $('#giveAdviceForm').hide();
-        $('#loginSuccess').show();
-        $('#signupSuccess').hide();
-        $('#submitSuccess').hide();
+        $(location).attr('href','/loginSuccess');
     });
 
     //show sign up form
     $('button#signupBtn').click(function(){
-        $('#initialForm').hide();
-        $('#getAdviceForm').hide();
-        $('#loginForm').hide();
-        $('#signupForm').show();
-        $('#giveAdviceForm').hide();
-        $('#weatherBox').hide();
-        $('#loginSuccess').hide();
-        $('#signupSuccess').hide();
-        $('#submitSuccess').hide();
+        $(location).attr('href','/signup');
     });
 
 
     //return home
-    $('button#changeBtn').click(function(){
-        $(location).attr('href','/');
-    });
-
-    //return home another way
     $('button.goHome').click(function(){
-        $('#initialForm').show();
-        $('#getAdviceForm').hide();
-        $('#loginForm').hide();
-        $('#signupForm').hide();
-        $('#giveAdviceForm').hide();
-        $('#weatherBox').hide();
-        $('#loginSuccess').hide();
-        $('#signupSuccess').hide();
-        $('#submitSuccess').hide();
+        $(location).attr('href','/');
     });
 
     //prevent default stuff on form submits
@@ -245,14 +192,7 @@ $(function(){
         $('#monthGive').html(selectedMonth  + '<br>');
         $('#adviceGive').html(selectedAdvice);
 
-        $('#initialForm').hide();
-        $('#giveAdviceForm').show();
-        $('#getAdviceForm').hide();
-        $('#weatherBox').hide();
-        $('#loginForm').hide();
-        $('#signupForm').hide();
-        $('#loginSuccess').hide();
-        $('#signupSuccess').hide();
+        $(location).attr('href','/giveAdvice');
 
         $('html, body').animate({ scrollTop: 0 }, 0);
     });
@@ -288,14 +228,7 @@ $(function(){
         signupCheck();
 
         if (validateEmail(signUpEmail)) {
-            $('#initialForm').hide();
-            $('#getAdviceForm').hide();
-            $('#loginForm').hide();
-            $('#signupForm').hide();
-            $('#giveAdviceForm').hide();
-            $('#weatherBox').hide();
-            $('#loginSuccess').hide();
-            $('#signupSuccess').show();
+            $(location).attr('href','/signupSuccess');
         }
         // else {
         //     $('#emailCheck').html('Email is not valid. Please re-enter.');
