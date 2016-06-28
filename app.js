@@ -10,8 +10,7 @@ var express        = require('express'),
     FacebookStrat  = require('passport-facebook').Strategy,
     LocalStrat     = require('passport-local').Strategy,
     cookieSession  = require('cookie-session'),
-
-    handlebars     = require('handlebars');
+    exphbs         = require('express-handlebars'),
     User           = require('./models/user'),
     app            = express();
 
@@ -26,6 +25,9 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
+
+app.engine('.hbs', exphbs({defaultLayout: 'home', extname: '.hbs'}));
+app.set('view engine', '.hbs');
 
 app.use(express.static('public'));
 

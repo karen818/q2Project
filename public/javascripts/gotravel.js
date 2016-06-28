@@ -8,8 +8,8 @@ $(function(){
     var city = {name: '', value: ''};
     var monthUrls;
 
-    var source   = $("#main-template").html();
-    var template = Handlebars.compile(source);
+    var source   = $("#test-template").html();
+    var test-template = Handlebars.compile(source);
 
     ///////// Photo Ajax //////////
     $.ajax({
