@@ -1,0 +1,52 @@
+<!-- advice submitted success screen -->
+<div class="col-xs-4 col-sm-4 col-md-4 transbox" id="submitSuccess">
+    <br>
+    <div class="well well-lg">
+        <h3>Advice Submitted!</h3>
+        <p class="overlock">Will be posted upon approval</p>
+    </div>
+
+
+    <form class="form" action="index.html" method="post">
+        <div class="form-group">
+            <div class="form-group citySelect">
+                <h5 class="centered">Have more advice to give?</h5>
+                <label for="citySelect" class="control-label"><i class="fa fa-map-marker orange" aria-hidden="true"></i>&nbsp;&nbsp;Choose City</label><br>
+                <input type="text" name="selectCity" class="f_elem_city form-control" id="citySelectGive">
+
+            </div>
+            <div class="form-group">
+                <label for="monthSelect" class="control-label"><i class="fa fa-sun-o orange" aria-hidden="true"></i>&nbsp;&nbsp;Choose Month</label>
+                <select class="form-control" name="selectSeason" id="monthSelectGive">
+                    <option data-month="January">January</option>
+                    <option data-month="February">February</option>
+                    <option data-month="March">March</option>
+                    <option data-month="April">April</option>
+                    <option data-month="May">May</option>
+                    <option data-month="June">June</option>
+                    <option data-month="July">July</option>
+                    <option data-month="August">August</option>
+                    <option data-month="September">September</option>
+                    <option data-month="October">October</option>
+                    <option data-month="November">November</option>
+                    <option data-month="December">December</option>
+
+                </select>
+            </div>
+
+            <label for="adviceSelect" class="control-label"><i class="fa fa-comments-o orange" aria-hidden="true"></i>&nbsp;&nbsp;Choose Type of Advice</label>
+            <select class="form-control" id="adviceSelectGive">
+                <option>Things to do</option>
+                <option>Things to avoid</option>
+                <option>Things to eat</option>
+            </select>
+        </div>
+        <div class="form-group btn-lg btn-block">
+            <button class="btn btn-lg btn-block giveMoreAdvice" type="button" name="moreAdvice" id="giveMoreAdvice"><i class="fa fa-plane" aria-hidden="true"></i>&nbsp;&nbsp;Give more advice</button>
+        </div>
+    </form>
+
+    <button class="btn btn-lg btn-block goHome" type="button" name="goHome"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;Back to main page</button>
+    <br>
+</div>
+<!-- end submitSuccess screen -->

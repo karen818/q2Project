@@ -20,9 +20,16 @@ router.get('/layout', function (req, res, next) {
 
 router.get('/getAdvice', function (req, res, next) {
     res.render('getAdvice', {
-        title: 'goTravel -- Travel Advice App',
-        layout: 'home'
+        title: 'goTravel -- Get Advice'
     });
 });
+
+router.get('/giveAdvice', function (req, res, next) {
+    res.render('giveAdvice', {
+        title: 'goTravel -- Give Advice'
+    });
+});
+
+
 
 module.exports = router;

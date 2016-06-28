@@ -30,8 +30,13 @@ router.route('/signup')
 router.route('/login')
   // Show login page.
   .get((req, res) => {
-
+      res.render('login', {
+          title: 'goTravel -- Login',
+          layout: 'home'
+      });
   });
+
+ 
 
 router.route('/twitter')
   // Direct to twitter auth.
