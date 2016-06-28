@@ -1,5 +1,7 @@
 var express = require('express'),
-    router  = express.Router();
+    router  = express.Router(),
+    bcrypt  = require('bcrypt')
+    User    = require('../models/user');
 
 router.route('/')
   .get((req, res) => {

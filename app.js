@@ -5,6 +5,7 @@ var express        = require('express'),
     users          = require('./routes/users'),
     auth           = require('./routes/auth'),
     admin          = require('./routes/admin'),
+    posts          = require('./routes/posts'),
     passport       = require('passport'),
     TwitterStrat   = require('passport-twitter').Strategy,
     FacebookStrat  = require('passport-facebook').Strategy,
@@ -95,6 +96,8 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/auth', auth);
 app.use('/admin', admin);
+app.use('/posts', posts);
+
 
 app.listen((process.env.PORT || 3000), error => {
   console.log('Server is listening.');
