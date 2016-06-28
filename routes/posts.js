@@ -21,7 +21,11 @@ router.route('/')
     var newPost = req.body;
 
     new Post({
+<<<<<<< HEAD
+    //   user_id: //Logged in user.
+=======
       user_id: '',//Logged in user.
+>>>>>>> d10d7796dc53ead0bbe03f40f28cd36554d25813
       advice_text: newPost.advice_text,
       advice_type: newPost.advice_type,
       month_id: newPost.month_id,
@@ -30,7 +34,7 @@ router.route('/')
       .save()
       .then( results => {
         // Display a message informing the user than the post has been submitted for approval.
-        res.redirect('/');
+        res.redirect('/adviceSuccess');
       });
   })
 
