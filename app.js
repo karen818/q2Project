@@ -10,6 +10,8 @@ var express        = require('express'),
     FacebookStrat  = require('passport-facebook').Strategy,
     LocalStrat     = require('passport-local').Strategy,
     cookieSession  = require('cookie-session'),
+
+    handlebars     = require('handlebars');
     User           = require('./models/user'),
     app            = express();
 

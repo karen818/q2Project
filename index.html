@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>goTravel Travel Advice App</title>
+    <title>goTravel -- Travel Advice App</title>
 
     <script src="public/vendors/node_modules/jquery/dist/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="public/vendors/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -31,6 +31,9 @@
 
 <body>
     <header>
+        <script id="header" type="text/x-handlebars-template">​
+         <div> Name: {{ headerTitle }} </div>​
+        ​</script>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header navbar-left">
@@ -73,7 +76,7 @@
                         <div class="form-group citySelect">
                             <br>
                             <label for="citySelect" class="control-label"><i class="fa fa-map-marker orange" aria-hidden="true"></i>&nbsp;&nbsp;Enter City</label><br>
-                            <input type="text" name="selectCity" class="f_elem_city" id="citySelect">
+                            <input type="text" name="selectCity" class="f_elem_city form-control" id="citySelect">
 
                         </div>
                         <div class="form-group">
@@ -210,15 +213,16 @@
                     <br>
                     <div class="well well-lg">
                         <h3>Advice Submitted!</h3>
+                        <p class="overlock">Will be posted upon approval</p>
                     </div>
 
-                    <p class="overlock">Will be posted upon approval</p>
+
                     <form class="form" action="index.html" method="post">
                         <div class="form-group">
                             <div class="form-group citySelect">
-                                <h4>Have more advice to give?</h4>
-                                <label for="citySelect" class="control-label"><i class="fa fa-map-marker orange" aria-hidden="true"></i>&nbsp;&nbsp;Choose City</label>
-                                <input type="text" name="selectCity" class="f_elem_city" id="citySelectGive">
+                                <h5 class="centered">Have more advice to give?</h5>
+                                <label for="citySelect" class="control-label"><i class="fa fa-map-marker orange" aria-hidden="true"></i>&nbsp;&nbsp;Choose City</label><br>
+                                <input type="text" name="selectCity" class="f_elem_city form-control" id="citySelectGive">
 
                             </div>
                             <div class="form-group">
@@ -315,9 +319,9 @@
                             <p id="emailCheck"></p>
                         </div>
                         <div class="form-group">
-                            <label for="city" class="control-label">City</label>
-                            <input type="text" class="form-control" name="signupCity" required>
-                            <p id="cityAlert"></p>
+                            <label for="imgUrl">Profile Picture</label>
+                            <input type="file" id="profilePic">
+                            <p class="help-block">Upload a profile picture. File should be no larger than 5MB</p>
                         </div>
                         <div class="form-group btn-lg btn-block">
                             <button class="btn btn-lg btn-block" type="button" id="signupSubmit"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;Sign Up</button>
