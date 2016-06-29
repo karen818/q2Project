@@ -56,7 +56,7 @@ router.route('/login')
 
   // Login and authenticate.
   .post(passport.authenticate('local', { failureRedirect: '/auth/login' }), (req, res) => {
-    res.send('You did it.');
+    res.redirect('/');
   });
 
 
