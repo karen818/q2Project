@@ -180,6 +180,18 @@ i.orange {
   height: 50px;
 }
 
+.ui-menu {
+  background-color: #fff;
+  color: #3d348b;
+  border-radius: 4px;
+  border: 1px solid #3d348b;
+  width: 30%;
+}
+
+.ui-menu-item a {
+  text-decoration: none;
+}
+
 
 #weatherBox {
     background-color: #3d348b;
