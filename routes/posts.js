@@ -8,15 +8,8 @@ var express   = require('express'),
     Month     = require('../models/month');
 
 router.route('/')
-  // Are we going to list all of the posts on a single page?
-  // .get((req, res) => {
-  //   User.fetchAll()
-  //     .then( results => {
-  //       res.send(results.toJSON());
-  //     })
-  //
-  // })
-  // User adds new post.
+
+  // Create new user.
   .post((req, res) => {
     var newPost = req.body;
 
