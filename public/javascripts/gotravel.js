@@ -68,7 +68,7 @@ $(function(){
             }
         	if (cityfqcn) {
         	    $.getJSON("http://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn,
-                             function (data) {
+                    function (data) {
         	    });
         	}
         }
@@ -81,8 +81,6 @@ $(function(){
         selectedAdvice = $('#adviceSelect').val();
 
         console.log(selectedCity + " " + selectedMonth + " " + selectedAdvice);
-
-
         //split the item values to use in the ajax calls
         city.value = selectedCity.split(', ')[0];
         stateCountry.value = selectedCity.split(', ');

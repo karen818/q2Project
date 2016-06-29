@@ -8,8 +8,19 @@ var express = require('express'),
     Month     = require('../models/month');
 
 router.get('/', function (req, res, next) {
+
+    router  = express.Router();
+
+router.route('/')
+  // Display main page.
+  .get((req, res) => {
     res.render('index');
-});
+  });
+  // .post((req, res)=> {
+  //
+  // });
+
+
 
 router.get('/layout', function (req, res, next) {
     res.render('index', {
@@ -17,6 +28,7 @@ router.get('/layout', function (req, res, next) {
         layout: 'home'
     });
 });
+
 
 router.route('/getAdvice')
   .get((req, res) => {
