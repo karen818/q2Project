@@ -50,6 +50,7 @@ router.route('/getAdvice')
 
   });
 
+
 router.get('/giveAdvice', function (req, res, next) {
     res.render('giveAdvice', {
         title: 'goTravel -- Give Advice'

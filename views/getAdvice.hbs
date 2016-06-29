@@ -1,7 +1,7 @@
 
 <!-- getAdviceForm container -->
 <div class="col-xs-4 col-sm-4 col-md-4 transbox" id="getAdviceForm">
-    <form class="form" action="/getAdvice" method="get">
+    <form class="form" action="/getAdvice" method="get" enctype="application/x-www-form-urlencoded">
         <br>
         <div class="well well-sm flex-container-center">
             <p id="city">{{city}}</p>
@@ -11,7 +11,7 @@
             <p id="author">-- {{post.user.username}}</p>
 
 
-
+            <p id="upvote"><span class="glyphicon glyphicon-heart"></span></p>
         </div>
         <div class="form-group">
             <label for="adviceSelect" class="control-label"><i class="fa fa-comments-o orange" aria-hidden="true"></i>&nbsp;&nbsp;Change Type of Advice</label>
