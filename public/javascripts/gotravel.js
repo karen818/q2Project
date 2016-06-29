@@ -151,7 +151,14 @@ $(function(){
     //show profile page
     $('button#viewProfile').click(function(){
         $(location).attr('href','/users/viewProfile');
+    });
 
+    $('button#logoutBtn').click( () => {
+      $(location).attr('href','/auth/logout')
+    });
+
+    $('button#showProfile').click(function() {
+      $(location).attr('href', '/') // Find user id??
     });
 
     //show profile page

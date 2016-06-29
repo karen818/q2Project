@@ -9,12 +9,21 @@
           <div class="navbar-header navbar-right">
 
             <ul class="nav navbar-nav">
+              {{#unless session}}
                 <li>
                   <button class="btn navBtn" type="button" name="loginBtn" id="loginBtn">Log In</button>
                 </li>
                 <li>
                   <button class="btn navBtn" type="button" name="signupBtn" id="signupBtn">Sign Up</button>
                 </li>
+              {{else}}
+                <li>
+                  <button class="btn navBtn" type="button" name="logoutBtn" id="logoutBtn">Logout</button>
+                </li>
+                <li>
+                  <button class="btn navBtn" type="button" name="showProfile" id="showProfile">Show Profile</button>
+                </li>
+              {{/unless}}
             </ul>
           </div>
       </div>

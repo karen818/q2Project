@@ -11,7 +11,8 @@ router.route('/')
   // Display main page.
   .get((req, res) => {
     res.render('index', {
-        title: 'goTravel -- Travel Advice App'
+        title: 'goTravel -- Travel Advice App',
+        session: req.session.passport
     });
   });
 

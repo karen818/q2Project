@@ -105,7 +105,7 @@ passport.use(new LocalStrat({
     .fetch()
     .then( results => {
       var user = results.toJSON();
-      
+
       if (user && bcrypt.compareSync(password, user.password)){
         return done(null, user.id);
       } else {
@@ -127,6 +127,15 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(id, done) {
   done(null, id);
+});
+
+app.use((req,res,next) => {
+  if (!req.session.passport){
+    res.locals.session = false;
+  } else {
+    res.locals.session = true;
+  }
+  next();
 });
 
 
