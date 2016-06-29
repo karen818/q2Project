@@ -39,6 +39,11 @@ router.route('/login')
           title: 'goTravel -- Login',
           layout: 'home'
       });
+  })
+
+  // Login and authenticate.
+  .post((req, res) => {
+    eval(locus)
   });
 
 
