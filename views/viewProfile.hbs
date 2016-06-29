@@ -1,0 +1,20 @@
+<!--  profile page -->
+<div class="col-xs-4 col-sm-4 col-md-4 transbox" id="viewProfile">
+  <br>
+  <div class="well well-sm flex-container-center">
+      <h4>Profile Information for {{user.full_name}}</h4>
+  </div>
+  <div class="well well-lg">
+      <img src="{{user.img_url}}" alt="" width="150px" class="profileImg">
+      <p>
+        <br>
+          Username: {{user.username}}<br>
+          Email: {{user.email}}
+      </p>
+
+      <button class="btn btn-lg btn-block" type="button" id="editProfile"><i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;&nbsp;Edit Profile</button>
+
+  </div>
+
+</div>
+<!-- end profile page -->
