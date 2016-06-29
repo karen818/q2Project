@@ -43,9 +43,27 @@ passport.use(new TwitterStrat({
     callbackURL: "http://127.0.0.1:3000/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, cb) {
-    cb(null, profile);
-  }
-));
+    User.where({username: profile.username})
+      .fetchAll()
+      .then( results => {
+        var user = results.toJSON();
+
+        if (user.length){
+          console.log('User already exsists');
+          cb(null, profile)
+        } else {
+          new User({
+            username: profile.username,
+            full_name: profile.displayName,
+            img_url:profile.photos[0].value,
+            email: profile.provider
+          }).save()
+            .then( () => {
+              cb(null, profile)
+            })
+        }
+      });
+}));
 
 passport.use(new FacebookStrat({
     clientID: process.env.FACEBOOK_APP_ID,
@@ -53,6 +71,7 @@ passport.use(new FacebookStrat({
     callbackURL: "http://localhost:3000/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
+    console.log(profile);
     cb(null, profile);
   }
 ));
