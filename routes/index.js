@@ -57,7 +57,7 @@ router.route('/getAdvice')
   .post((req, res) => {
     eval(locus);
 
-  })
+});
 
 router.get('/giveAdvice', function (req, res, next) {
     res.render('giveAdvice', {
