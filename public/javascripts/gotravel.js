@@ -151,6 +151,7 @@ $(function(){
     //show profile page
     $('button#viewProfile').click(function(){
         $(location).attr('href','/users/viewProfile');
+
     });
 
     //show profile page
@@ -222,6 +223,8 @@ $(function(){
             $('p#author').text("Moxxi - resident since 2015");
         }
     });
+
+
 
     var signUpEmail = $("input:text[name='signupEmail']").val();
 

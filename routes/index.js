@@ -34,7 +34,7 @@ router.route('/getAdvice')
         var posts = results.toJSON(),
             random = Math.floor(Math.random() * posts.length);
 
-        eval(locus);
+        // eval(locus);
         // If the advice exists, then return a random index to display.
         res.render('getAdvice', {
             title: 'goTravel -- Get Advice'
@@ -46,7 +46,7 @@ router.route('/getAdvice')
 
   })
   .post((req, res) => {
-    eval(locus);
+    // eval(locus);
 
   });
 
