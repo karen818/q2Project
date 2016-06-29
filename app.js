@@ -71,8 +71,26 @@ passport.use(new FacebookStrat({
     callbackURL: "http://localhost:3000/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
-    console.log(profile);
-    cb(null, profile);
+    User.where({ username: profile.id})
+      .fetchAll()
+      .then( results => {
+        var user = results.toJSON()
+
+        if (user.length){
+          console.log('User already exists');
+          cb(null, profile)
+        } else {
+          new User({
+            username:profile.id,
+            full_name:profile.displayName,
+            img_url:'',
+            email:'facebook'
+          }).save()
+            .then( () => {
+              cb(null, profile);
+            })
+        }
+      })
   }
 ));
 
