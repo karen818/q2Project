@@ -215,9 +215,7 @@ $(function(){
     var signUpEmail = $("input:text[name='signupEmail']").val();
 
     //sign up form validation hell
-    $('button#signupSubmit').click(function(event) {
-        console.log('Testing button.');
-
+    // $('button#signupSubmit').click(function(event) {
         // signupCheck();
         //
         // if (validateEmail(signUpEmail)) {
@@ -227,8 +225,8 @@ $(function(){
         //     $('#emailCheck').html('Email is not valid. Please re-enter.');
         //     event.preventDefault();
         // }
-
-     });
+     // 
+    //  });
 
      //validate email function
      function validateEmail(sEmail) {
