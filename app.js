@@ -11,6 +11,7 @@ var express        = require('express'),
     FacebookStrat  = require('passport-facebook').Strategy,
     LocalStrat     = require('passport-local').Strategy,
     cookieSession  = require('cookie-session'),
+    hbs            = require('handlebars'),
     exphbs         = require('express-handlebars'),
     User           = require('./models/user'),
     path           = require('path'),
@@ -21,16 +22,24 @@ require('locus');
 require('dotenv').config();
 
 
+
+
+
 // === Use Middleware === //
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
 
-app.set('view engine', 'hbs');
+// === Views Engine ===//
 app.set('views', __dirname + '/views');
-
-app.engine('.hbs', exphbs({defaultLayout: 'home', extname: '.hbs'}));
 app.set('view engine', '.hbs');
+hbs.registerHelper('checkOAuth', function(email){
+    // return console.log('test');
+    if(email === 'twitter' || email === 'facebook'){
+        return true;
+    }
+});
+app.engine('.hbs', exphbs({defaultLayout: 'home', extname: '.hbs'}));
 
 
 app.use(express.static(path.join(__dirname, 'public')));

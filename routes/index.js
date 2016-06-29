@@ -33,7 +33,6 @@ router.route('/getAdvice')
       .then( results => {
         var posts = results.toJSON(),
             random = Math.floor(Math.random() * posts.length);
-
         // If the advice exists, then return a random index to display.
         res.render('getAdvice', {
             title: 'goTravel -- Get Advice'
@@ -44,7 +43,7 @@ router.route('/getAdvice')
 
   })
   .post((req, res) => {
-    eval(locus)
+
   });
 
 
@@ -84,7 +83,7 @@ router.route('/giveAdvice')
               // month : newPost.selectSeason
               // city name
 
-              // Render successful post page              
+              // Render successful post page
         }
       })
   });
