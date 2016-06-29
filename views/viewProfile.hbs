@@ -12,13 +12,7 @@
           Email: {{user.email}}
       </p>
 
-
-      <script type="x-handlebars-template">
-      {{#unless (checkOAuth user.email)}}
-        {{>editBtn}}
-      {{/unless}}
-      </script>
-
+      <button class="btn btn-lg btn-block" type="button" id="editProfile"><i class="fa fa-pencil-square" aria-hidden="true"></i>&nbsp;&nbsp;Edit Profile</button>
 
   </div>
 
