@@ -1,5 +1,6 @@
-var express = require('express'),
-    router  = express.Router(),
+var express  = require('express'),
+    router   = express.Router(),
+    bcrypt   = require('bcrypt')
     passport = require('passport');
 
 router.route('/signup')
@@ -13,24 +14,35 @@ router.route('/signup')
 
   // Register a new user.
   .post((req, res) => {
-    eval(locus); // Testing to see if route works.
-
     var newUser = req.body,
-        hash    = bcrypt.hashSync(newUser.password, 8);
+        hash    = bcrypt.hashSync(newUser.signupPW, 8);
 
-    new User({
-      username: newUser.username,
-      email: newUser.email,
-      img_url: newUser.img_url,
-      password: hash
-    }, 'id')
-      .save()
+
+    User.where({ username: newUser.signupUsername })
+      .fetchAll()
       .then( results => {
-        // Should post a new user, then redirect to index page.
+        var user = results.toJSON();
 
-        res.redirect('/');
-      });
-  });
+        if (user.length) {
+          console.log('User already exists.');
+          res.redirect('/');
+        } else {
+          new User({
+            full_name:newUser.signupName,
+            username: newUser.signupUsername,
+            email: newUser.signupEmail,
+            img_url: newUser.profilePic,
+            password: hash
+          }, 'id')
+          .save()
+          .then( results => {
+            // Should post a new user, then redirect to index page.
+
+            res.redirect('/');
+          });
+        }
+      })
+});
 
 router.route('/login')
   // Show login page.
@@ -43,7 +55,7 @@ router.route('/login')
 
   // Login and authenticate.
   .post((req, res) => {
-    eval(locus)
+    // CompareSync password field.
   });
 
 

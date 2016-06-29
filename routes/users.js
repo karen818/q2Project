@@ -24,7 +24,15 @@ router.route('/:id')
 router.route('/:id/editProfile')
   // Display edit page.
   .get((req, res) => {
+    var user_id = req.params.id;
 
+    User.where({ id: user_id })
+      .fetch()
+      .then( results => {
+        var user = results.toJSON();
+
+        res.render('editProfile', { user: user });
+      })
   })
 
   // Allow user to update profile information if not using Twitter/Facebook
