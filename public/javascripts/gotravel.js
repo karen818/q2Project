@@ -179,6 +179,11 @@ $(function(){
         $("form").attr("action", "/auth/facebook");
     });
 
+    //twitter signup
+    $('button#twitterSignup').click(function(){
+        $("form").attr("action", "/auth/twitter");
+    });
+
 
     //return home
     $('button.goHome').click(function(){
