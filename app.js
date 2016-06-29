@@ -7,15 +7,16 @@ var express        = require('express'),
     admin          = require('./routes/admin'),
     posts          = require('./routes/posts'),
     passport       = require('passport'),
+    LocalStrat     = require('passport-local').Strategy,
     TwitterStrat   = require('passport-twitter').Strategy,
     FacebookStrat  = require('passport-facebook').Strategy,
-    LocalStrat     = require('passport-local').Strategy,
     cookieSession  = require('cookie-session'),
     hbs            = require('handlebars'),
     exphbs         = require('express-handlebars'),
     User           = require('./models/user'),
     path           = require('path'),
     bookshelf      = require('./db/bookshelf'),
+    bcrypt         = require('bcrypt'),
     app            = express();
 
 require('locus');
@@ -96,22 +97,21 @@ passport.use(new FacebookStrat({
 ));
 
 passport.use(new LocalStrat({
-	usernameField: 'username',
-	passwordField: 'password',
-	session: false
+	usernameField: 'userName',
+	passwordField: 'password'
 }, (username, password, done) => {
 	// Check id of user, retrieve row in users table.
-	Users().where('username', username)
-		.first()
-		.then( user => {
-			// compareSync the user's hashed password.
-			if (user && bcrypt.compareSync(password, user.password)){
-				// On match, return confirmation of session.
-				return done(null, user);
-			}
-			// Otherwise, return no session, redirect.
-			return done(null, false);
-		})
+  User.where({ username: username })
+    .fetch()
+    .then( results => {
+      var user = results.toJSON();
+      
+      if (user && bcrypt.compareSync(password, user.password)){
+        return done(null, user.id);
+      } else {
+        return done(null, false);
+      }
+    })
 }));
 
 app.use(cookieSession({

@@ -17,7 +17,6 @@ router.route('/signup')
     var newUser = req.body,
         hash    = bcrypt.hashSync(newUser.signupPW, 8);
 
-    eval(locus);
     User.where({ username: newUser.signUpusername })
       .fetchAll()
       .then( results => {
@@ -56,21 +55,8 @@ router.route('/login')
   })
 
   // Login and authenticate.
-  .post((req, res) => {
-    User.where({ username: req.body.userName })
-      .fetch()
-      .then( results => {
-        var user = results.toJSON();
-
-        eval(locus);
-        if (user && bcrypt.compareSync(req.body.password, user.password)){
-          console.log('Good job?');
-          res.redirect('/');
-        } else {
-          console.log('Bad job.');
-          res.redirect('/');
-        }
-      })
+  .post(passport.authenticate('local', { failureRedirect: '/auth/login' }), (req, res) => {
+    res.send('You did it.');
   });
 
 
