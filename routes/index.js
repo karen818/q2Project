@@ -34,11 +34,9 @@ router.route('/getAdvice')
         var posts = results.toJSON(),
             random = Math.floor(Math.random() * posts.length);
 
-        eval(locus);
         // If the advice exists, then return a random index to display.
         res.render('getAdvice', {
             title: 'goTravel -- Get Advice'
-
         });
 
       });
@@ -46,16 +44,52 @@ router.route('/getAdvice')
 
   })
   .post((req, res) => {
-    eval(locus);
-
+    eval(locus)
   });
 
 
-router.get('/giveAdvice', function (req, res, next) {
+router.route('/giveAdvice')
+  // Run authenticate middleware.
+
+  // Show form for new advice.
+  .get((req, res) => {
     res.render('giveAdvice', {
-        title: 'goTravel -- Give Advice'
+      title: 'goTravel -- Give Advice',
+      postInfo : req.body
     });
-});
+  })
+
+  // User adds new advice to to advice_posts
+  .post((req, res) => {
+    var newPost = req.body
+
+    City.where( {city_name: selectCity} )
+      .fetch()
+      .then( results => {
+        var city = results.toJSON();
+
+        if (city){
+          console.log('City name already exists, next.');
+          // If the city exists, grab the id and pass it in.
+        } else {
+          // Otherwise, make a new city
+
+            // Return the new city's id.
+
+            // Create a new post.
+
+              // Username = req.session username where username = whatever.
+              // advice text
+              // advice_type : newPost.selectAdvice
+              // month : newPost.selectSeason
+              // city name
+
+              // Render successful post page              
+        }
+      })
+  });
+
+
 
 router.get('/adviceSuccess', function (req, res, next) {
     res.render('adviceSuccess', {
