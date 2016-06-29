@@ -183,11 +183,13 @@ $(function(){
 
     //facebook signup
     $('button#facebookSignup').click(function(){
+        // $(location).attr('href','/auth/facebook');
         $("form").attr("action", "/auth/facebook");
     });
 
     //twitter signup
     $('button#twitterSignup').click(function(){
+        // $(location).attr('href','/auth/twitter');
         $("form").attr("action", "/auth/twitter");
     });
 
@@ -227,18 +229,18 @@ $(function(){
         $('#monthTxt').text(selectedMonth);
 
 
-        if($('select:visible option:selected').text() === 'Things to avoid'){
-            $('p#adviceText').text("Avoid driving on I-35 anytime of the day or night. The traffic is always terrible and will give you a sad.");
-            $('p#author').text("Patrick K. - resident since 1994");
-        }
-        else if($('select:visible option:selected').text() === 'Things to eat'){
-            $('p#adviceText').text("Torchy's Tacos is mecca for awesome tacos in Austin. Check out their taco of the month. Om nom nom nom!");
-            $('p#author').text("H. Kelly - resident since 2005");
-        }
-        else if($('select:visible option:selected').text() === 'Things to do'){
-            $('p#adviceText').text("Make it a point to visit Hamilton Pool at some point. It's a perfect way to cool off during the summer.");
-            $('p#author').text("Moxxi - resident since 2015");
-        }
+        // if($('select:visible option:selected').text() === 'Things to avoid'){
+        //     $('p#adviceText').text("Avoid driving on I-35 anytime of the day or night. The traffic is always terrible and will give you a sad.");
+        //     $('p#author').text("Patrick K. - resident since 1994");
+        // }
+        // else if($('select:visible option:selected').text() === 'Things to eat'){
+        //     $('p#adviceText').text("Torchy's Tacos is mecca for awesome tacos in Austin. Check out their taco of the month. Om nom nom nom!");
+        //     $('p#author').text("H. Kelly - resident since 2005");
+        // }
+        // else if($('select:visible option:selected').text() === 'Things to do'){
+        //     $('p#adviceText').text("Make it a point to visit Hamilton Pool at some point. It's a perfect way to cool off during the summer.");
+        //     $('p#author').text("Moxxi - resident since 2015");
+        // }
     });
 
 

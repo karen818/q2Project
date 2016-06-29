@@ -1,7 +1,7 @@
 <!-- signup form -->
 <div class="col-xs-4 col-sm-4 col-md-4 transbox" id="signupForm">
 
-    <form class="form" action="/auth/signup" method="POST">
+    <form class="form" action="/auth/signup" method="GET">
 
       <div class="form-group btn-lg btn-block">
           <button class="btn btn-lg btn-block" type="submit" name="facebookSignup" id="facebookSignup">
@@ -16,27 +16,27 @@
       <div class="form-group">
           <br>
           <label for="fullname" class="control-label">Full Name</label>
-          <input type="text" class="form-control" name="signupName" required>
+          <input type="text" class="form-control" name="signupName">
           <p id="fullnameAlert"></p>
       </div>
       <div class="form-group">
           <label for="username" class="control-label">Username</label>
-          <input type="text" class="form-control" name="signUpusername" required>
+          <input type="text" class="form-control" name="signUpusername">
           <p id="usernameAlert"></p>
       </div>
       <div class="form-group">
           <label for="password" class="control-label">Password</label>
-          <input type="password" class="form-control" name="signupPW" required>
+          <input type="password" class="form-control" name="signupPW">
           <p id="pwAlert"></p>
       </div>
       <div class="form-group">
           <label for="pwAgain" class="control-label">Re-Type Password</label>
-          <input type="password" class="form-control" name="pwAgain" required>
+          <input type="password" class="form-control" name="pwAgain">
           <p id="pwMatch"></p>
       </div>
       <div class="form-group">
           <label for="email" class="control-label">Email</label>
-          <input type="text" class="form-control" name="signupEmail" required>
+          <input type="text" class="form-control" name="signupEmail">
           <p id="emailCheck"></p>
       </div>
       <div class="form-group">
