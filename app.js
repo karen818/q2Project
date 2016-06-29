@@ -22,9 +22,6 @@ require('locus');
 require('dotenv').config();
 
 
-
-
-
 // === Use Middleware === //
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
@@ -33,12 +30,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 // === Views Engine ===//
 app.set('views', __dirname + '/views');
 app.set('view engine', '.hbs');
-hbs.registerHelper('checkOAuth', function(email){
-    // return console.log('test');
-    if(email === 'twitter' || email === 'facebook'){
-        return true;
-    }
-});
+
 app.engine('.hbs', exphbs({defaultLayout: 'home', extname: '.hbs'}));
 
 
