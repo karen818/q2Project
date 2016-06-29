@@ -13,6 +13,8 @@ router.route('/signup')
 
   // Register a new user.
   .post((req, res) => {
+    eval(locus); // Testing to see if route works.
+
     var newUser = req.body,
         hash    = bcrypt.hashSync(newUser.password, 8);
 

@@ -169,9 +169,9 @@ $(function(){
     });
 
     //prevent default stuff on form submits
-    $("form").submit(function(event) {
-        event.preventDefault();
-    });
+    // $("form").submit(function(event) {
+    //     event.preventDefault();
+    // });
 
     //show give more advice screen; scrolls to top
     $('button.giveMoreAdvice').click(function(){
@@ -216,11 +216,13 @@ $(function(){
 
     //sign up form validation hell
     $('button#signupSubmit').click(function(event) {
-        signupCheck();
+        console.log('Testing button.');
 
-        if (validateEmail(signUpEmail)) {
-            $(location).attr('href','/signupSuccess');
-        }
+        // signupCheck();
+        //
+        // if (validateEmail(signUpEmail)) {
+        //     $(location).attr('href','/signupSuccess');
+        // }
         // else {
         //     $('#emailCheck').html('Email is not valid. Please re-enter.');
         //     event.preventDefault();

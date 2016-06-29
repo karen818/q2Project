@@ -1,15 +1,11 @@
 var express = require('express'),
-    router  = express.Router()
+    router  = express.Router(),
     bookshelf = require('../db/bookshelf'),
     User      = require('../models/user'),
     Post      = require('../models/post'),
     Advice    = require('../models/advice'),
     City      = require('../models/city'),
     Month     = require('../models/month');
-
-router.get('/', function (req, res, next) {
-
-    router  = express.Router();
 
 router.route('/')
   // Display main page.
@@ -18,11 +14,6 @@ router.route('/')
         title: 'goTravel -- Travel Advice App'
     });
   });
-  // .post((req, res)=> {
-  //
-  // });
-
-
 
 router.get('/layout', function (req, res, next) {
     res.render('index', {
@@ -57,7 +48,7 @@ router.route('/getAdvice')
   .post((req, res) => {
     eval(locus);
 
-  })
+  });
 
 router.get('/giveAdvice', function (req, res, next) {
     res.render('giveAdvice', {
