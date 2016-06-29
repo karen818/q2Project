@@ -29,12 +29,12 @@ router.route('/getAdvice')
 
     // Make Bookshelf query to return a single random bit of advice.
     Post
-      .fetchAll({withRelated: ['user','city','month']})
+      .fetchAll({withRelated: ['user','city','month','advice']})
       .then( results => {
         var posts = results.toJSON(),
             random = Math.floor(Math.random() * posts.length);
 
-        console.log(posts[random]);
+        eval(locus);
         // If the advice exists, then return a random index to display.
         res.render('getAdvice', {
             title: 'goTravel -- Get Advice'
