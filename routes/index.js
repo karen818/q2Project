@@ -1,15 +1,16 @@
 var express = require('express'),
     router  = express.Router();
 
-// router.route('/')
-//   // Display main page.
-//   .get((req, res) => {
-//     res.send('Connection established.');
-//   });
-
-router.get('/', function (req, res, next) {
+router.route('/')
+  // Display main page.
+  .get((req, res) => {
     res.render('index');
-});
+  });
+  // .post((req, res)=> {
+  //
+  // });
+
+
 
 router.get('/layout', function (req, res, next) {
     res.render('index', {
@@ -19,8 +20,11 @@ router.get('/layout', function (req, res, next) {
 });
 
 router.get('/getAdvice', function (req, res, next) {
+    eval(locus);
     res.render('getAdvice', {
-        title: 'goTravel -- Get Advice'
+        title: 'goTravel -- Get Advice',
+        city: req.params.selectCity
+
     });
 });
 
