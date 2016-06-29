@@ -31,14 +31,6 @@ h3, h5 {
     margin-top: 10px;
 }
 
-.white {
-    width: 100%;
-    color: #fff;
-    padding-left: 50px;
-    position: absolute;
-    z-index: 9999;
-}
-
 footer {
     /*margin-top: 13%;*/
     position: fixed;
@@ -70,7 +62,9 @@ button.btn-block {
     color: #fff;
     font-family: 'Special Elite', cursive;
     font-weight: 400;
+    font-size: 80%;
 }
+
 
 button.navBtn {
     background-color: #f35b04;
@@ -78,11 +72,18 @@ button.navBtn {
     font-family: 'Special Elite', cursive;
     font-weight: 400;
     margin: 10px 10px;
-    font-size: 110%;
 }
 
 ul {
     list-style: none;
+}
+
+input[type] {
+  font-size: 80%;
+}
+
+.profileImg {
+  border-radius: 50%;
 }
 
 .ui-autocomplete-input {
@@ -135,6 +136,14 @@ i.orange {
     color: #f35b04;
 }
 
+.white {
+    width: 100%;
+    color: #fff;
+    padding-left: 50px;
+    position: absolute;
+    z-index: 9999;
+}
+
 .fa-facebook-square, .fa-instagram, .fa-twitter-square, .fa-envelope {
     color: #fff;
 }
@@ -183,7 +192,7 @@ i.orange {
 .ui-menu {
   background-color: #fff;
   color: #3d348b;
-  border-radius: 4px;
+  border-radius: 5px;
   border: 1px solid #3d348b;
   width: 30%;
 }
@@ -201,4 +210,9 @@ i.orange {
 
 #usernameAlert, #pwAlert, #pwMatch, #cityAlert, #emailCheck {
     color: red;
+}
+
+#help-block {
+  font-family: 'Overlock', sans-serif;
+  font-size: 80%;
 }

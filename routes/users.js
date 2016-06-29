@@ -8,7 +8,20 @@ router.route('/')
     res.send('Default users route.');
   });
 
-router.route('/:id/edit')
+router.route('/:id')
+    .get((req, res) => {
+        var user_id = req.params.id;
+
+       User.where({ id: user_id })
+         .fetch()
+         .then( results => {
+           var user = results.toJSON();
+
+           res.render('viewProfile', { user: user });
+         })
+    })
+
+router.route('/:id/editProfile')
   // Display edit page.
   .get((req, res) => {
 

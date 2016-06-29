@@ -63,5 +63,20 @@ router.get('/adviceSuccess', function (req, res, next) {
     });
 });
 
+router.get('/:id', function (req, res, next) {
+    res.render('viewProfile', {
+        title: 'goTravel -- View Profile',
+        full_name: req.body.full_name,
+        username: req.body.username,
+        email: req.body.email,
+        img_url: req.body.img_url
+    });
+});
+
+router.get('/:id', function (req, res, next) {
+    res.render('editProfile', {
+        title: 'goTravel -- Edit Profile'
+    });
+});
 
 module.exports = router;

@@ -140,11 +140,22 @@ $(function(){
         $('#adviceGive').html(selectedAdvice);
 
         $(location).attr('href','/giveAdvice');
+        $("form").attr("action", "/giveAdvice");
     });
 
     //show login form
     $('button#loginBtn').click(function(){
         $(location).attr('href','/auth/login');
+    });
+
+    //show profile page
+    $('button#viewProfile').click(function(){
+        $(location).attr('href','/users/viewProfile');
+    });
+
+    //show profile page
+    $('button#editProfile').click(function(){
+        $(location).attr('href','/editProfile');
     });
 
     //show advice submit success screen
@@ -225,7 +236,7 @@ $(function(){
         //     $('#emailCheck').html('Email is not valid. Please re-enter.');
         //     event.preventDefault();
         // }
-     // 
+     //
     //  });
 
      //validate email function

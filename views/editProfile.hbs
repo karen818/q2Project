@@ -1,21 +1,47 @@
-<!-- login form -->
-<div class="col-xs-4 col-sm-4 col-md-4 transbox" id="loginForm">
-    <form class="form" action="/auth" method="post">
+<!--  edit profile page -->
+<div class="col-xs-4 col-sm-4 col-md-4 transbox" id="viewProfile">
+  <br>
+  <div class="well well-sm flex-container-center">
+      <h4>Edit Profile Information for {{user.full_name}}</h4>
+  </div>
+  <div class="well well-lg">
+      <form class="" action="/users" method="POST" enctype="multipart/form-data">
+
         <div class="form-group">
             <br>
-            <label for="userName" class="control-label">User Name</label>
-            <input type="text" class="form-control" name="user">
+            <label for="fullname" class="control-label">Full Name</label>
+            <input type="text" class="form-control" name="editName">
+        </div>
+        <div class="form-group">
+            <br>
+            <label for="username" class="control-label">Username</label>
+            <input type="text" class="form-control" name="editUsername">
         </div>
         <div class="form-group">
             <label for="password" class="control-label">Password</label>
-            <input type="password" class="form-control" name="password">
+            <input type="password" class="form-control" name="editPassword">
         </div>
-        <div class="form-group btn-lg btn-block">
-            <button class="btn btn-lg btn-block" type="submit" name="loginSubmit" id="loginSubmit"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;Log In</button>
+        <div class="form-group">
+            <label for="pwAgain" class="control-label">Re-Type Password</label>
+            <input type="password" class="form-control" name="passwordAgain">
+            <p id="pwMatch"></p>
         </div>
-        <div class="form-group flex-container-center">
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Forgot password?</a>
+        <div class="form-group">
+            <label for="email" class="control-label">Email</label>
+            <input type="text" class="form-control" name="editEmail">
+            <p id="emailCheck"></p>
         </div>
-    </form>
+        <div class="form-group">
+            <label for="imgUrl">Profile Picture</label>
+            <input type="file" name="editProfilePic" class="uploadFile" id="profilePic">
+            <p class="help-block">Upload a new profile picture. File should be no larger than 5MB</p>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-lg btn-block" type="submit" id="editSubmit"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;&nbsp;Submit Edits</button>
+        </div>
+      </form>
+
+  </div>
+
 </div>
-<!-- end loginForm -->
+<!-- end edit profile page -->
