@@ -17,8 +17,8 @@ router.route('/signup')
     var newUser = req.body,
         hash    = bcrypt.hashSync(newUser.signupPW, 8);
 
-
-    User.where({ username: newUser.signupUsername })
+    eval(locus);
+    User.where({ username: newUser.signUpusername })
       .fetchAll()
       .then( results => {
         var user = results.toJSON();
@@ -29,7 +29,7 @@ router.route('/signup')
         } else {
           new User({
             full_name:newUser.signupName,
-            username: newUser.signupUsername,
+            username: newUser.signUpusername,
             email: newUser.signupEmail,
             img_url: newUser.profilePic,
             password: hash
@@ -55,7 +55,20 @@ router.route('/login')
 
   // Login and authenticate.
   .post((req, res) => {
-    // CompareSync password field.
+    User.where({ username: req.body.userName })
+      .fetch()
+      .then( results => {
+        var user = results.toJSON();
+
+        eval(locus);
+        if (user && bcrypt.compareSync(req.body.password, user.password)){
+          console.log('Good job?');
+          res.redirect('/');
+        } else {
+          console.log('Bad job.');
+          res.redirect('/');
+        }
+      })
   });
 
 
