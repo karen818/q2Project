@@ -168,6 +168,14 @@ i.orange {
     transition: all 0.8s ease;
 }
 
+#twitterSignup {
+  background-color: #00aced;
+}
+
+#facebookSignup {
+  background-color: #3b5998;
+}
+
 .socialbox {
     display: flex;
     flex-direction: column;

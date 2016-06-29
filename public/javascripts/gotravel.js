@@ -151,7 +151,7 @@ $(function(){
     //show profile page
     $('button#viewProfile').click(function(){
         $(location).attr('href','/users/viewProfile');
-        
+
     });
 
     //show profile page
@@ -172,6 +172,11 @@ $(function(){
     //show sign up form
     $('button#signupBtn').click(function(){
         $(location).attr('href','/auth/signup');
+    });
+
+    //facebook signup
+    $('button#facebookSignup').click(function(){
+        $("form").attr("action", "/auth/facebook");
     });
 
 
