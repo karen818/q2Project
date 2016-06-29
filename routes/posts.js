@@ -8,6 +8,10 @@ var express   = require('express'),
     Month     = require('../models/month');
 
 router.route('/')
+<<<<<<< HEAD
+
+  // Create new user.
+=======
   // Are we going to list all of the posts on a single page?
   // KK - not for all users...just the admins
   // .get((req, res) => {
@@ -18,6 +22,7 @@ router.route('/')
   //
   // })
   // User adds new post.
+>>>>>>> ab8f83bb56406e7c63c92c7b316428c24d8121f8
   .post((req, res) => {
     var newPost = req.body;
 
