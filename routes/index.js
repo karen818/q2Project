@@ -26,9 +26,11 @@ router.get('/layout', function (req, res, next) {
 
 router.route('/getAdvice')
   .get((req, res) => {
+
   })
 
   .post((req, res) => {
+
     var advice = req.body;
 
     City.where('city_name', advice.selectCity)
@@ -70,7 +72,6 @@ router.route('/getAdvice')
         })
       }
     })
-
   });
 
 
@@ -79,6 +80,7 @@ router.route('/giveAdvice')
 
   // Show form for new advice.
   .get((req, res) => {
+
     res.render('giveAdvice', {
       title: 'goTravel -- Give Advice',
       postInfo : req.body

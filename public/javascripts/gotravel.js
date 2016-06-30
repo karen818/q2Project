@@ -45,11 +45,11 @@ $(function(){
 
     //////////Cities Geobytes call function/////////
     $(".f_elem_city").autocomplete({
-		source: function (request, response) {
+		source: function (req, res) {
 		 $.getJSON(
-			"http://gd.geobytes.com/AutoCompleteCity?callback=?&sort=size&q="+request.term,
+			"http://gd.geobytes.com/AutoCompleteCity?callback=?&sort=size&q="+req.term,
 			function (data) {
-			 response(data);
+			 res(data);
 			});
 		},
 		minLength: 3,
@@ -74,7 +74,7 @@ $(function(){
         }
 
     //show advice/initial form; create ajax urls
-    $('#getAdvice').click(function(){
+    $('#getAdvice').click(function(event){
         //get the value of the selected items
         selectedCity = $('#citySelect').val();
         selectedMonth = $('#monthSelect').val();
