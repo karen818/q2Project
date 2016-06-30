@@ -39,6 +39,18 @@ router.route('/getAdvice')
       // Results checks to see if a city has been found
       if(city) {
         var city_id = city.toJSON().id;
+
+        var cityWeather = advice.selectCity.split(', ')[0];
+        var stateCountry= adviced.selectCity.split(', ');
+
+
+        if (stateCountry[2] === 'United States') {
+            stateCountry = selectCity.split(', ')[1];
+        }
+
+        console.log(cityWeather + " " + stateCountry);
+
+
         Post.where({
           city_id: city_id,
           month_id: advice.selectSeason,

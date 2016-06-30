@@ -74,21 +74,21 @@ $(function(){
         }
 
     //show advice/initial form; create ajax urls
-    $('#getAdvice').click(function(event){
+    $('#weatherBox').ready(function(event){
         //get the value of the selected items
-        selectedCity = $('#citySelect').val();
-        selectedMonth = $('#monthSelect').val();
-        selectedAdvice = $('#adviceSelect').val();
-
-        console.log(selectedCity + " " + selectedMonth + " " + selectedAdvice);
+        // selectedCity = $('#citySelect').val();
+        // selectedMonth = $('#monthSelect').val();
+        // selectedAdvice = $('#adviceSelect').val();
+        //
+        // console.log(selectedCity + " " + selectedMonth + " " + selectedAdvice);
         //split the item values to use in the ajax calls
-        city.value = selectedCity.split(', ')[0];
-        stateCountry.value = selectedCity.split(', ');
-
-
-        if (stateCountry.value[2] === 'United States') {
-            stateCountry.value = selectedCity.split(', ')[1];
-        }
+        // city.value = selectedCity.split(', ')[0];
+        // stateCountry.value = selectedCity.split(', ');
+        //
+        //
+        // if (stateCountry.value[2] === 'United States') {
+        //     stateCountry.value = selectedCity.split(', ')[1];
+        // }
 
         //fill in html with selections
         $('#city').html(selectedCity);
