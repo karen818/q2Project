@@ -91,8 +91,8 @@ $(function(){
         // }
 
         //fill in html with selections
-        $('#city').html(selectedCity);
-        $('#monthTxt').html(selectedMonth);
+        // $('#city').html(selectedCity);
+        // $('#monthTxt').html(selectedMonth);
 
 
         //ajax calls to Wunderground to grab historical data based on city and state/country

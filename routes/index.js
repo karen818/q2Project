@@ -32,6 +32,15 @@ router.route('/getAdvice')
   .post((req, res) => {
 
     var advice = req.body;
+    var cityWeather = advice.selectCity.split(', ')[0];
+    var stateCountry= advice.selectCity.split(', ');
+
+    if (stateCountry[2] === 'United States') {
+        stateCountry = advice.selectCity.split(', ')[1];
+    } else {
+        stateCountry = advice.selectCity.split(', ')[2];
+    }
+    console.log(cityWeather + " " + stateCountry);
 
     City.where('city_name', advice.selectCity)
     .fetch()
@@ -40,15 +49,8 @@ router.route('/getAdvice')
       if(city) {
         var city_id = city.toJSON().id;
 
-        var cityWeather = advice.selectCity.split(', ')[0];
-        var stateCountry= adviced.selectCity.split(', ');
 
 
-        if (stateCountry[2] === 'United States') {
-            stateCountry = selectCity.split(', ')[1];
-        }
-
-        console.log(cityWeather + " " + stateCountry);
 
 
         Post.where({
@@ -69,13 +71,15 @@ router.route('/getAdvice')
               title: 'goTravel -- Get Advice',
               advice:posts[random],
               city:city.toJSON().city_name,
-              month: advice.selectSeason
+              month: advice.selectSeason,
+              cityWeather: cityWeather
             });
           } else {
             res.render('getAdvice', {
               title: 'goTravel -- Get Advice',
               advice: null,
-              month: advice.selectSeason
+              month: advice.selectSeason,
+              cityWeather: cityWeather
             });
           }
         });
@@ -83,7 +87,8 @@ router.route('/getAdvice')
         res.render('getAdvice', {
           title: 'goTravel -- Get Advice',
           advice: null,
-          month: advice.selectSeason
+          month: advice.selectSeason,
+          cityWeather: cityWeather
         })
       }
     })
