@@ -14,6 +14,7 @@ router.route('/signup')
 
   // Register a new user.
   .post((req, res) => {
+    
     var newUser = req.body,
         hash    = bcrypt.hashSync(newUser.signupPW, 8);
 
