@@ -1,12 +1,38 @@
 $(function(){
 
-    var selectedCity = $('#citySelect').val();
-    var selectedMonth = $('#monthSelect').val();
+    var selectedCity = $('#cityWeather').val();
+    var selectedState = $('#stateCountry').val()
+    var selectedMonth = $('#monthWeather').val();
     var selectedAdvice = $('#adviceSelect').val();
+    console.log(selectedMonth + " " + selectedCity + " " + selectedState);
 
     var stateCountry = {name: '', value: ''};
     var city = {name: '', value: ''};
-    var monthUrls;
+    var monthUrls = {
+        January: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_01010131/q/' + selectedState + '/' + selectedCity + '.json',
+        February: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_02010228/q/' + selectedState + '/' + selectedCity + '.json',
+        March: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_03010331/q/'
+        + selectedState + '/' + selectedCity + '.json',
+        April: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_04010430/q/'
+        + selectedState + '/' + selectedCity + '.json',
+        May: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_05010531/q/'
+        + selectedState + '/' + selectedCity + '.json',
+        June: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_06010630/q/'
+        + selectedState + '/' + selectedCity + '.json',
+        July: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_07010731/q/'
+        + selectedState + '/' + selectedCity + '.json',
+        August: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_08010831/q/'
+        + selectedState + '/' + selectedCity + '.json',
+        September: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_09010930/q/'
+        + selectedState + '/' + selectedCity + '.json',
+        October: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_10011031/q/'
+        + selectedState + '/' + selectedCity + '.json',
+        November: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_11011130/q/'
+        + selectedState + '/' + selectedCity + '.json',
+        December: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_12011231/q/'
+        + selectedState + '/' + selectedCity + '.json'
+    }
+
 
 
     ///////// Photo Ajax //////////
@@ -42,6 +68,7 @@ $(function(){
             $('#rainChance').text(chanceRain);
         });
     }
+    getMonthWeather(monthUrls[selectedMonth]);
 
     //////////Cities Geobytes call function/////////
     $(".f_elem_city").autocomplete({
@@ -73,60 +100,64 @@ $(function(){
         	}
         }
 
-    //show advice/initial form; create ajax urls
-    $('#weatherBox').ready(function(event){
-        //get the value of the selected items
-        // selectedCity = $('#citySelect').val();
-        // selectedMonth = $('#monthSelect').val();
-        // selectedAdvice = $('#adviceSelect').val();
-        //
-        // console.log(selectedCity + " " + selectedMonth + " " + selectedAdvice);
-        //split the item values to use in the ajax calls
-        // city.value = selectedCity.split(', ')[0];
-        // stateCountry.value = selectedCity.split(', ');
-        //
-        //
-        // if (stateCountry.value[2] === 'United States') {
-        //     stateCountry.value = selectedCity.split(', ')[1];
-        // }
+    // //show advice/initial form; create ajax urls
+    // $(document).ready(function(event){
+    //     //get the value of the selected items
+    //     // selectedCity = $('#citySelect').val();
+    //     // selectedMonth = $('#monthSelect').val();
+    //     // selectedAdvice = $('#adviceSelect').val();
+    //     //
+    //     // console.log(selectedCity + " " + selectedMonth + " " + selectedAdvice);
+    //     //split the item values to use in the ajax calls
+    //     // selectedCity = selectedCity.split(', ')[0];
+    //     // selectedState = selectedCity.split(', ');
+    //     //
+    //     //
+    //     // if (selectedState[2] === 'United States') {
+    //     //     selectedState = selectedCity.split(', ')[1];
+    //     // }
+    //
+    //     //fill in html with selections
+    //     // $('#city').html(selectedCity);
+    //     // $('#monthTxt').html(selectedMonth);
+    //
+    //
+    //     //ajax calls to Wunderground to grab historical data based on city and state/country
+    //     monthUrls = {
+    //         January: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_01010131/q/' + selectedState + '/' + selectedCity + '.json',
+    //         February: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_02010228/q/' + selectedState + '/' + selectedCity + '.json',
+    //         March: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_03010331/q/'
+    //         + selectedState + '/' + selectedCity + '.json',
+    //         April: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_04010430/q/'
+    //         + selectedState + '/' + selectedCity + '.json',
+    //         May: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_05010531/q/'
+    //         + selectedState + '/' + selectedCity + '.json',
+    //         June: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_06010630/q/'
+    //         + selectedState + '/' + selectedCity + '.json',
+    //         July: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_07010731/q/'
+    //         + selectedState + '/' + selectedCity + '.json',
+    //         August: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_08010831/q/'
+    //         + selectedState + '/' + selectedCity + '.json',
+    //         September: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_09010930/q/'
+    //         + selectedState + '/' + selectedCity + '.json',
+    //         October: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_10011031/q/'
+    //         + selectedState + '/' + selectedCity + '.json',
+    //         November: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_11011130/q/'
+    //         + selectedState + '/' + selectedCity + '.json',
+    //         December: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_12011231/q/'
+    //         + selectedState + '/' + selectedCity + '.json'
+    //     }
+    //
+    //     //call Ajax to get weather data
+    //     getMonthWeather(monthUrls[selectedMonth]);
+    //     $(location).attr('href','/getAdvice');
+    //
+    // });
+    //show give advice form
+    $('button#getAdvice').click(function(){
 
-        //fill in html with selections
-        // $('#city').html(selectedCity);
-        // $('#monthTxt').html(selectedMonth);
-
-
-        //ajax calls to Wunderground to grab historical data based on city and state/country
-        monthUrls = {
-            January: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_01010131/q/' + stateCountry.value + '/' + city.value + '.json',
-            February: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_02010228/q/' + stateCountry.value + '/' + city.value + '.json',
-            March: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_03010331/q/'
-            + stateCountry.value + '/' + city.value + '.json',
-            April: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_04010430/q/'
-            + stateCountry.value + '/' + city.value + '.json',
-            May: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_05010531/q/'
-            + stateCountry.value + '/' + city.value + '.json',
-            June: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_06010630/q/'
-            + stateCountry.value + '/' + city.value + '.json',
-            July: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_07010731/q/'
-            + stateCountry.value + '/' + city.value + '.json',
-            August: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_08010831/q/'
-            + stateCountry.value + '/' + city.value + '.json',
-            September: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_09010930/q/'
-            + stateCountry.value + '/' + city.value + '.json',
-            October: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_10011031/q/'
-            + stateCountry.value + '/' + city.value + '.json',
-            November: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_11011130/q/'
-            + stateCountry.value + '/' + city.value + '.json',
-            December: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_12011231/q/'
-            + stateCountry.value + '/' + city.value + '.json'
-        }
-
-        //call Ajax to get weather data
-        getMonthWeather(monthUrls[selectedMonth]);
-        $(location).attr('href','/getAdvice');
-
+        $("form").attr("action", "/getAdvice");
     });
-
 
     //show give advice form
     $('button#giveAdvice').click(function(){

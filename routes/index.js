@@ -40,7 +40,8 @@ router.route('/getAdvice')
     } else {
         stateCountry = advice.selectCity.split(', ')[2];
     }
-    console.log(cityWeather + " " + stateCountry);
+
+    console.log("City:" + cityWeather + ", State:  " + stateCountry);
 
     Month.where({ id: advice.selectSeason })
     .fetch()
