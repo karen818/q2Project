@@ -42,55 +42,55 @@ router.route('/getAdvice')
     }
     console.log(cityWeather + " " + stateCountry);
 
-    City.where('city_name', advice.selectCity)
+    Month.where({ id: advice.selectSeason })
     .fetch()
-    .then( city => {
-      // Results checks to see if a city has been found
-      if(city) {
-        var city_id = city.toJSON().id;
+    .then( month => {
+      var month_name = month.toJSON().month;
 
-
-
-
-
-        Post.where({
-          city_id: city_id,
-          month_id: advice.selectSeason,
-          advice_type: advice.selectAdvice,
-          approved: true
-        })
-        .fetchAll({withRelated:['user']})
-        .then( results => {
-          var posts = results.toJSON();
-          if(posts.length > 0){
-            // Make Bookshelf query to return a single random bit of advice.
-            random = Math.floor(Math.random() * posts.length);
-            // If the advice exists, then return a random index to display.
-            eval(locus);
-            res.render('getAdvice', {
-              title: 'goTravel -- Get Advice',
-              advice:posts[random],
-              city:city.toJSON().city_name,
-              month: advice.selectSeason,
-              cityWeather: cityWeather
-            });
-          } else {
-            res.render('getAdvice', {
-              title: 'goTravel -- Get Advice',
-              advice: null,
-              month: advice.selectSeason,
-              cityWeather: cityWeather
-            });
-          }
-        });
-      } else {
-        res.render('getAdvice', {
-          title: 'goTravel -- Get Advice',
-          advice: null,
-          month: advice.selectSeason,
-          cityWeather: cityWeather
-        })
-      }
+      City.where('city_name', advice.selectCity)
+      .fetch()
+      .then( city => {
+        // Results checks to see if a city has been found
+        if(city) {
+          var city_id = city.toJSON().id;
+          Post.where({
+            city_id: city_id,
+            month_id: advice.selectSeason,
+            advice_type: advice.selectAdvice,
+            approved: true
+          })
+          .fetchAll({withRelated:['user']})
+          .then( results => {
+            var posts = results.toJSON();
+            if(posts.length > 0){
+              // Make Bookshelf query to return a single random bit of advice.
+              random = Math.floor(Math.random() * posts.length);
+              // If the advice exists, then return a random index to display.
+              res.render('getAdvice', {
+                title: 'goTravel -- Get Advice',
+                advice:posts[random],
+                city:city.toJSON().city_name,
+                month: month_name,
+                cityWeather: cityWeather
+              });
+            } else {
+              res.render('getAdvice', {
+                title: 'goTravel -- Get Advice',
+                advice: null,
+                month: month_name,
+                cityWeather: cityWeather
+              });
+            }
+          });
+        } else {
+          res.render('getAdvice', {
+            title: 'goTravel -- Get Advice',
+            advice: null,
+            month: month_name,
+            cityWeather: cityWeather
+          })
+        }
+      })
     })
   });
 

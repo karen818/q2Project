@@ -51,7 +51,6 @@ passport.use(new TwitterStrat({
         var user = results.toJSON();
         if (user.length){
           console.log('User already exsists');
-
           cb(null, profile)
         } else {
           new User({
@@ -131,6 +130,7 @@ passport.deserializeUser(function(id, done) {
 });
 
 app.use((req,res,next) => {
+
   if (!req.session.passport){
     res.locals.session = false;
   } else {
