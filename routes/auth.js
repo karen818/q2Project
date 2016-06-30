@@ -37,7 +37,7 @@ router.route('/signup')
           .then( results => {
             // Should post a new user, then redirect to index page.
 
-            res.redirect('/signupSuccess', {
+            res.render('signupSuccess', {
                 layout: 'userHome'
             });
           });
@@ -56,7 +56,7 @@ router.route('/login')
 
   // Login and authenticate.
   .post(passport.authenticate('local', { failureRedirect: '/auth/login' }), (req, res) => {
-    res.redirect('/loginSuccess');
+    res.render('loginSuccess');
   });
 
 
@@ -70,7 +70,7 @@ router.route('/twitter/callback')
   .get(passport.authenticate('twitter', { failureRedirect: '/login' }),
   (req, res) => {
     // Successful authentication, redirect signupSuccess.
-    res.redirect('/signupSuccess')
+    res.render('signupSuccess')
   });
 
 router.route('/facebook')
@@ -82,7 +82,7 @@ router.route('/facebook/callback')
   .get(passport.authenticate('facebook', { failureRedirect: '/login' }),
   (req, res) => {
     // Successful authentication, redirect signupSuccess.
-    res.redirect('/signupSuccess')
+    res.render('signupSuccess')
   });
 
 router.route('/logout')
