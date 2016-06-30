@@ -102,6 +102,8 @@ router.route('/getAdvice')
 router.route('/giveAdvice')
   // Run authenticate middleware.
 
+  //add all months choice and have that go into a pool
+
   // Show form for new advice.
   .get((req, res) => {
 

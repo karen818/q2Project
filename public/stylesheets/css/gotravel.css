@@ -25,10 +25,14 @@ h3, h4, h5 {
     text-align: center;
 }
 
-h3, h5 {
+h1, h3, h5 {
     font-family: 'Special Elite', cursive;
     font-weight: bold;
     margin-top: 10px;
+}
+
+h1 {
+  margin-left: 50px;
 }
 
 footer {
@@ -47,13 +51,13 @@ footer p {
     font-family: 'Special Elite', cursive;
 }
 
-div.transbox {
+div.transbox,
+table {
     margin: 30px;
     background-color: #ffffff;
     border: 1px solid #3a3a3a;
     opacity: 0.8;
     filter: alpha(opacity=80);
-    /* For IE8 and earlier */
     border-radius: 5px;
 }
 
@@ -81,6 +85,7 @@ ul {
 input[type] {
   font-size: 80%;
 }
+
 
 .profileImg {
   border-radius: 50%;

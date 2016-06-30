@@ -5,7 +5,10 @@ router.route('/')
   // Display admin panel.
   .get((req, res) => {
     // Display all posts, and related users.
-
+    res.render('admin', {
+        title: 'goTravel -- Administrator Page',
+        layout: 'adminPage'
+    });
     // Have the option to update/delete?
   })
 
