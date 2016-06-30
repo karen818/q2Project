@@ -19,6 +19,7 @@ html, body {
     text-rendering: optimizeLegibility;
     box-sizing: border-box;
     height: 100vh;
+    overflow-x: hidden;
 }
 
 h3, h4, h5 {
@@ -126,7 +127,7 @@ input[type] {
 }
 
 .logo {
-    width: 85%;
+    width: 65%;
 }
 
 .flex-container-center {
@@ -144,13 +145,6 @@ i.orange {
     color: #f35b04;
 }
 
-.white {
-    width: 100%;
-    color: #fff;
-    padding-left: 50px;
-    position: absolute;
-    z-index: 9999;
-}
 
 .fa-facebook-square, .fa-instagram, .fa-twitter-square, .fa-envelope {
     color: #fff;
@@ -174,14 +168,6 @@ i.orange {
 .fa-twitter-square:hover {
     color: #00aced;
     transition: all 0.8s ease;
-}
-
-#twitterSignup {
-  background-color: #00aced;
-}
-
-#facebookSignup {
-  background-color: #3b5998;
 }
 
 .socialbox {
@@ -217,6 +203,13 @@ i.orange {
   text-decoration: none;
 }
 
+#twitterSignup {
+  background-color: #00aced;
+}
+
+#facebookSignup {
+  background-color: #3b5998;
+}
 
 #weatherBox {
     background-color: #3d348b;
