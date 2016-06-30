@@ -26,6 +26,7 @@ router.get('/layout', function (req, res, next) {
 
 router.route('/getAdvice')
   .get((req, res) => {
+
     var advice = req.body;
 
     // Make Bookshelf query to return a single random bit of advice.
@@ -44,7 +45,7 @@ router.route('/getAdvice')
 
   })
   .post((req, res) => {
-
+      
   });
 
 
@@ -53,6 +54,7 @@ router.route('/giveAdvice')
 
   // Show form for new advice.
   .get((req, res) => {
+
     res.render('giveAdvice', {
       title: 'goTravel -- Give Advice',
       postInfo : req.body
