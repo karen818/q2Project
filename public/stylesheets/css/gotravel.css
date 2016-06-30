@@ -86,6 +86,9 @@ input[type] {
   font-size: 80%;
 }
 
+.smallTxt {
+  font-size: 70%;
+}
 
 .profileImg {
   border-radius: 50%;
