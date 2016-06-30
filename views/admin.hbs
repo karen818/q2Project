@@ -15,11 +15,11 @@
             <th style="width:15%">Approve</th>
           </thead>
           <tbody>
-            {{#each post}}
+            {{#each posts}}
               <tr>
-                <td> {{advice_posts.user_id}}</td>
-                <td> {{advice_posts.advice_text}}</td>
-                <td> <a href="/posts/{{advice_posts.id}}">Delete Post</a></td>
+                <td> {{this.user_id}}</td>
+                <td> {{this.advice_text}}</td>
+                <td> <form action="/admin?_method=DELETE" method="POST">DELETE BUTTON GOES HERE.</td>
                 <td> <input type="checkbox" name="postApproved">&nbsp;&nbsp;Approve Post</td>
               </tr>
             {{/each}}
@@ -35,12 +35,12 @@
             <th style="width:30%">Profile Image URL</th>
           </thead>
           <tbody>
-            {{#each user}}
+            {{#each users}}
               <tr>
-                <td> {{users.id}}</td>
-                <td> {{users.full_name}}</td>
-                <td> {{users.email}}</td>
-                <td> {{users.img_url}}</td>
+                <td> {{this.id}}</td>
+                <td> {{this.full_name}}</td>
+                <td> {{this.email}}</td>
+                <td> {{this.img_url}}</td>
               </tr>
             {{/each}}
           </tbody>
