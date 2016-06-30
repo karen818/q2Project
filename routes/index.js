@@ -56,19 +56,22 @@ router.route('/getAdvice')
             res.render('getAdvice', {
               title: 'goTravel -- Get Advice',
               advice:posts[random],
-              city:city.toJSON().city_name
+              city:city.toJSON().city_name,
+              month: advice.selectSeason
             });
           } else {
             res.render('getAdvice', {
               title: 'goTravel -- Get Advice',
-              advice: null
+              advice: null,
+              month: advice.selectSeason
             });
           }
         });
       } else {
         res.render('getAdvice', {
           title: 'goTravel -- Get Advice',
-          advice: null
+          advice: null,
+          month: advice.selectSeason
         })
       }
     })
