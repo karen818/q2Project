@@ -40,7 +40,7 @@ router.route('/getAdvice')
     } else {
         stateCountry = advice.selectCity.split(', ')[2];
     }
-    console.log(cityWeather + " " + stateCountry);
+
 
     City.where('city_name', advice.selectCity)
     .fetch()
@@ -48,10 +48,6 @@ router.route('/getAdvice')
       // Results checks to see if a city has been found
       if(city) {
         var city_id = city.toJSON().id;
-
-
-
-
 
         Post.where({
           city_id: city_id,
@@ -72,14 +68,16 @@ router.route('/getAdvice')
               advice:posts[random],
               city:city.toJSON().city_name,
               month: advice.selectSeason,
-              cityWeather: cityWeather
+              cityWeather: cityWeather,
+              stateCountry: stateCountry
             });
           } else {
             res.render('getAdvice', {
               title: 'goTravel -- Get Advice',
               advice: null,
               month: advice.selectSeason,
-              cityWeather: cityWeather
+              cityWeather: cityWeather,
+              stateCountry: stateCountry
             });
           }
         });
@@ -88,7 +86,8 @@ router.route('/getAdvice')
           title: 'goTravel -- Get Advice',
           advice: null,
           month: advice.selectSeason,
-          cityWeather: cityWeather
+          cityWeather: cityWeather,
+          stateCountry: stateCountry
         })
       }
     })
