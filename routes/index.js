@@ -127,10 +127,13 @@ router.route('/giveAdvice')
           // If the city exists, grab the id and pass it in.
         } else {
           // Otherwise, make a new city
+          new City({
+            city_name:city
+          }).save()
+            .then(() => {
+              // Return the new city's id.
 
-            // Return the new city's id.
-
-            // Create a new post.
+              // Create a new post.
 
               // Username = req.session username where username = whatever.
               // advice text
@@ -139,6 +142,7 @@ router.route('/giveAdvice')
               // city name
 
               // Render successful post page
+            })
         }
       })
   });
