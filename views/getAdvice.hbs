@@ -1,16 +1,21 @@
 
 <!-- getAdviceForm container -->
 <div class="col-xs-4 col-sm-4 col-md-4 transbox" id="getAdviceForm">
-    <form class="form" action="/getAdvice" method="get" enctype="application/x-www-form-urlencoded">
+    <form class="form" action="/getAdvice" method="post" enctype="application/x-www-form-urlencoded">
         <br>
+      {{#if advice}}
         <div class="well well-sm flex-container-center">
             <p id="city">{{city}}</p>
         </div>
         <div class="well well-lg">
-            <p id="adviceText">{{post.advice_text}}</p>
+            <p id="adviceText">{{advice.advice_text}}</p>
             <p id="author">-- {{post.user.username}}</p>
-
         </div>
+      {{else}}
+        <div class="well well-sm flex-container-center">
+          <p>No advice found!</p>
+        </div>
+      {{/if}}
         <div class="form-group">
             <label for="adviceSelect" class="control-label"><i class="fa fa-comments-o orange" aria-hidden="true"></i>&nbsp;&nbsp;Change Type of Advice</label>
             <select class="form-control">
