@@ -36,10 +36,7 @@ router.route('/signup')
           .save()
           .then( results => {
             // Should post a new user, then redirect to index page.
-
-            res.render('signupSuccess', {
-                layout: 'userHome'
-            });
+            res.redirect('/signupSuccess');
           });
         }
       })
@@ -56,7 +53,7 @@ router.route('/login')
 
   // Login and authenticate.
   .post(passport.authenticate('local', { failureRedirect: '/auth/login' }), (req, res) => {
-    res.render('loginSuccess');
+    res.redirect('/loginSuccess');
   });
 
 
