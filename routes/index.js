@@ -26,25 +26,23 @@ router.get('/layout', function (req, res, next) {
 
 router.route('/getAdvice')
   .get((req, res) => {
+  })
+  .post((req, res) => {
     var advice = req.body;
 
     // Make Bookshelf query to return a single random bit of advice.
     Post
-      .fetchAll({withRelated: ['user','city','month','advice']})
-      .then( results => {
-        var posts = results.toJSON(),
-            random = Math.floor(Math.random() * posts.length);
-        // If the advice exists, then return a random index to display.
-        res.render('getAdvice', {
-            title: 'goTravel -- Get Advice'
-        });
+    .fetchAll()
+    .then( results => {
+      var posts = results.toJSON(),
+      random = Math.floor(Math.random() * posts.length);
+      // If the advice exists, then return a random index to display.
+      eval(locus);
 
+      res.render('getAdvice', {
+        title: 'goTravel -- Get Advice'
       });
-
-
-  })
-  .post((req, res) => {
-
+    });
   });
 
 
@@ -112,5 +110,10 @@ router.get('/:id', function (req, res, next) {
         title: 'goTravel -- Edit Profile'
     });
 });
+
+router.route('/signupSuccess')
+  .get((req, res) => {
+    res.render('signupSuccess')
+  })
 
 module.exports = router;
