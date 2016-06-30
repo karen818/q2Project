@@ -72,14 +72,16 @@ router.route('/getAdvice')
                 advice:posts[random],
                 city:city.toJSON().city_name,
                 month: month_name,
-                cityWeather: cityWeather
+                cityWeather: cityWeather,
+                stateCountry: stateCountry
               });
             } else {
               res.render('getAdvice', {
                 title: 'goTravel -- Get Advice',
                 advice: null,
                 month: month_name,
-                cityWeather: cityWeather
+                cityWeather: cityWeather,
+                stateCountry: stateCountry
               });
             }
           });
@@ -88,7 +90,8 @@ router.route('/getAdvice')
             title: 'goTravel -- Get Advice',
             advice: null,
             month: month_name,
-            cityWeather: cityWeather
+            cityWeather: cityWeather,
+            stateCountry: stateCountry
           })
         }
       })

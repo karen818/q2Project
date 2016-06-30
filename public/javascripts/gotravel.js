@@ -1,10 +1,10 @@
-$(function(){
+$(document).ready(() => {
 
     var selectedCity = $('#cityWeather').val();
-    var selectedState = $('#stateCountry').val()
     var selectedMonth = $('#monthWeather').val();
+    var selectedState = $('#stateCountry').val()
     var selectedAdvice = $('#adviceSelect').val();
-    console.log(selectedMonth + " " + selectedCity + " " + selectedState);
+    console.log("Month: " + selectedMonth + ", City: " + selectedCity + ", State: " + selectedState);
 
     var stateCountry = {name: '', value: ''};
     var city = {name: '', value: ''};
@@ -56,6 +56,7 @@ $(function(){
             type: "GET",
             dataType: 'json',
         }).done(function(data){
+          console.log(data);
             var highF = data.trip.temp_high.avg ['F'] + ' F';
             var lowF = data.trip.temp_low.avg ['F'] + ' F';
             var highC = data.trip.temp_high.avg ['C'] + ' C';
