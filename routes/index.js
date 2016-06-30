@@ -41,6 +41,8 @@ router.route('/getAdvice')
         stateCountry = advice.selectCity.split(', ')[2];
     }
 
+    console.log(cityWeather + " " + stateCountry);
+
 
     City.where('city_name', advice.selectCity)
     .fetch()
@@ -72,6 +74,7 @@ router.route('/getAdvice')
               stateCountry: stateCountry
             });
           } else {
+              console.log(cityWeather + " " + stateCountry);
             res.render('getAdvice', {
               title: 'goTravel -- Get Advice',
               advice: null,
@@ -82,6 +85,7 @@ router.route('/getAdvice')
           }
         });
       } else {
+          console.log(cityWeather + " " + stateCountry);
         res.render('getAdvice', {
           title: 'goTravel -- Get Advice',
           advice: null,
