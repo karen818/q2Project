@@ -82,7 +82,7 @@ router.route('/:id/editProfile')
         img_url: updateUser.img_url
       }, { patch: true })
       .then(() => {
-        res.redirect('/');
+        res.redirect('/viewProfile');
       })
   });
 

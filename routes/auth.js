@@ -37,7 +37,7 @@ router.route('/signup')
           .then( results => {
             // Should post a new user, then redirect to index page.
 
-            res.redirect('/', {
+            res.redirect('/signupSuccess', {
                 layout: 'userHome'
             });
           });

@@ -34,7 +34,7 @@ router.route('/')
       .save()
       .then( results => {
         // Display a message informing the user than the post has been submitted for approval.
-        res.redirect('/');
+        res.redirect('/adviceSuccess');
       });
   })
 
