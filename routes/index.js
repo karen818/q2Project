@@ -45,7 +45,7 @@ router.route('/getAdvice')
           advice_type: advice.selectAdvice,
           approved: true
         })
-        .fetchAll({withRelated:['users']})
+        .fetchAll({withRelated:['user']})
         .then( results => {
           var posts = results.toJSON();
           if(posts.length > 0){
