@@ -36,8 +36,8 @@ router.route('/signup')
           }, 'id')
           .save()
           .then( results => {
-            // Should post a new user, then redirect to index page.
-            res.render('/signupSuccess');
+            // Should post a new user, then redirect to signupSuccess page.
+            res.render('auth/signupSuccess');
           });
         }
       })
