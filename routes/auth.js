@@ -1,6 +1,8 @@
+'use strict';
+
 var express  = require('express'),
     router   = express.Router(),
-    bcrypt   = require('bcrypt')
+    bcrypt   = require('bcrypt'),
     passport = require('passport');
 
 router.route('/signup')
@@ -37,7 +39,7 @@ router.route('/signup')
           .save()
           .then( results => {
             // Should post a new user, then redirect to signupSuccess page.
-            res.render('auth/signupSuccess');
+            res.render('signupSuccess');
           });
         }
       })
@@ -55,7 +57,7 @@ router.route('/login')
   // Login and authenticate.
   .post(passport.authenticate('local', { failureRedirect: '/auth/login' }), (req, res) => {
 
-    res.render('/loginSuccess');
+    res.render('loginSuccess');
   });
 
 
