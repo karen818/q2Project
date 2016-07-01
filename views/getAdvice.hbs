@@ -7,9 +7,12 @@
         <div class="well well-sm flex-container-center">
           <input type="hidden" id="cityWeather" value="{{cityWeather}}">
           <input type="hidden" id="stateCountry" value="{{stateCountry}}">
-            <p id="city">{{city}}</p>
+            <p id="city">{{city}} <br></p>
+            <p id="month">{{month}}</p>
         </div>
         <div class="well well-lg">
+          <input type="hidden" id="cityWeather" value="{{cityWeather}}">
+          <input type="hidden" id="stateCountry" value="{{stateCountry}}">
             <p id="adviceText">{{advice.advice_text}}</p>
             <p id="author">-- {{advice.user.username}}</p>
         </div>
@@ -21,7 +24,7 @@
       <div class="form-group citySelect">
           <br>
           <label for="citySelect" class="control-label"><i class="fa fa-map-marker orange" aria-hidden="true"></i>&nbsp;&nbsp;Enter City</label><br>
-          <input type="text" name="selectCity" class="f_elem_city form-control" id="citySelect" value="{{city}}">
+          <input type="text" name="selectCity" class="f_elem_city form-control" id="citySelect">
 
       </div>
       <div class="form-group">
@@ -54,7 +57,6 @@
           <button class="btn btn-lg btn-block" type="submit" name="getAdvice" id="getAdvice"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;I want advice</button>
           <button class="btn btn-lg btn-block" type="submit" name="giveAdvice" id="giveAdvice"><i class="fa fa-plane" aria-hidden="true"></i>&nbsp;&nbsp;I have advice</button>
       </div>
-    </form>
 </div>
 <!-- end getAdviceForm -->
 <!-- weatherBox container -->
