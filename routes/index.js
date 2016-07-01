@@ -27,6 +27,8 @@ router.get('/layout', function (req, res, next) {
 });
 
 
+// Refactor advice.
+
 router.route('/getAdvice')
   .get((req, res) => {
 
@@ -72,7 +74,7 @@ router.route('/getAdvice')
               // Make Bookshelf query to return a single random bit of advice.
               var random = Math.floor(Math.random() * posts.length);
               // If the advice exists, then return a random index to display.
-              res.render('getAdvice', {
+              res.render('advice/getAdvice', {
                 title: 'goTravel -- Get Advice',
                 advice:posts[random],
                 city:city.toJSON().city_name,
@@ -81,7 +83,7 @@ router.route('/getAdvice')
                 stateCountry: stateCountry
               });
             } else {
-              res.render('getAdvice', {
+              res.render('advice/getAdvice', {
                 title: 'goTravel -- Get Advice',
                 advice: null,
                 city:null,
@@ -92,7 +94,7 @@ router.route('/getAdvice')
             }
           });
         } else {
-          res.render('getAdvice', {
+          res.render('advice/getAdvice', {
             title: 'goTravel -- Get Advice',
             advice: null,
             city:null,
@@ -125,7 +127,7 @@ router.route('/giveAdvice')
       .then( results => {
         var city = results.toJSON();
         if (city.length > 0) {
-          res.render('giveAdvice', {
+          res.render('auth/giveAdvice', {
             post: advice,
             city: city[0],
             cityWeather: cityWeather,
@@ -139,7 +141,7 @@ router.route('/giveAdvice')
               var newCity = results.toJSON();
 
 
-              res.render('giveAdvice', {
+              res.render('auth/giveAdvice', {
                 post: advice,
                 city: newCity,
                 cityWeather: cityWeather,
@@ -206,14 +208,14 @@ router.route('/newAdvice')
 
 
 router.get('/adviceSuccess', function (req, res, next) {
-    res.render('adviceSuccess', {
+    res.render('auth/adviceSuccess', {
         title: 'goTravel -- Give Advice Success'
     });
 });
 
 router.route('/signupSuccess')
   .get((req, res) => {
-    res.render('signupSuccess')
+    res.render('auth/signupSuccess')
   })
 
 module.exports = router;

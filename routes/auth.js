@@ -8,7 +8,7 @@ var express  = require('express'),
 router.route('/signup')
   // Show sign up page.
   .get((req, res) => {
-    res.render('signup', {
+    res.render('auth/signup', {
       title: 'goTravel -- Sign Up',
       layout: 'home'
     });
@@ -39,7 +39,7 @@ router.route('/signup')
           .save()
           .then( results => {
             // Should post a new user, then redirect to signupSuccess page.
-            res.render('signupSuccess');
+            res.render('auth/signupSuccess');
           });
         }
       })
@@ -48,7 +48,7 @@ router.route('/signup')
 router.route('/login')
   // Show login page.
   .get((req, res) => {
-      res.render('login', {
+      res.render('auth/login', {
           title: 'goTravel -- Login',
           layout: 'home'
       });
@@ -57,7 +57,7 @@ router.route('/login')
   // Login and authenticate.
   .post(passport.authenticate('local', { failureRedirect: '/auth/login' }), (req, res) => {
 
-    res.render('loginSuccess');
+    res.render('auth/loginSuccess');
   });
 
 
@@ -72,7 +72,7 @@ router.route('/twitter/callback')
   (req, res) => {
     // Successful authentication, redirect signupSuccess.
     res.locals.session = true;
-    res.render('signupSuccess')
+    res.render('auth/signupSuccess')
   });
 
 router.route('/facebook')
@@ -84,7 +84,7 @@ router.route('/facebook/callback')
   .get(passport.authenticate('facebook', { failureRedirect: '/auth/login' }),
   (req, res) => {
     // Successful authentication, redirect signupSuccess.
-    res.render('signupSuccess')
+    res.render('auth/signupSuccess')
   });
 
 router.route('/logout')

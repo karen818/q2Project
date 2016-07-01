@@ -38,7 +38,7 @@ router.route('/:id')
          .then( results => {
            var user = results.toJSON();
 
-           res.render('viewProfile', {user: user});
+           res.render('users/viewProfile', {user: user});
          })
     })
 
@@ -52,7 +52,7 @@ router.route('/:id/editProfile')
       .then( results => {
         var user = results.toJSON();
 
-        res.render('editProfile', { user: user });
+        res.render('users/editProfile', { user: user });
       })
   })
 

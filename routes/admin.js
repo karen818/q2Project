@@ -18,7 +18,7 @@ router.route('/', checkAdmin)
           .then( posts => {
             var allPosts = posts.toJSON();
 
-            res.render('admin', {
+            res.render('auth/admin', {
               title: 'goTravel -- Administrator Page',
               layout: 'adminPage',
               users: allUsers,
