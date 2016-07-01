@@ -1,6 +1,8 @@
+'use strict';
+
 var express  = require('express'),
     router   = express.Router(),
-    bcrypt   = require('bcrypt')
+    bcrypt   = require('bcrypt'),
     passport = require('passport');
 
 router.route('/signup')

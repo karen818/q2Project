@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express'),
     router  = express.Router(),
     User    = require('../models/user'),
@@ -29,11 +31,18 @@ router.route('/')
 
   // Allow admin to make changes to a post/user.
   .put((req, res) => {
+    var post = req.body;
 
+    new Post({ id: post.approve_post })
+      .save({ approved: true }, { patch: true })
+      .then( results => {
+        res.redirect('/admin');
+      });
   })
 
   // Allow admin to delete post/user.
   .delete((req, res) => {
+    
 
   });
 

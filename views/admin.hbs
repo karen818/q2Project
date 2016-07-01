@@ -22,7 +22,10 @@
                 <td> {{this.id}}</td>
                 <td> {{this.advice_text}}</td>
                 <td> <form action="/admin?_method=DELETE" method="POST"><a href="#"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a></td>
-                <td> <input type="checkbox" name="postApproved">&nbsp;&nbsp;Approve Post</td>
+                <td><form action="/admin?_method=PUT" method="POST">
+                  <input type="hidden" value="{this.id}" name="approve_post">
+                  <button class="btn btn-primary" type="submit">Approve Post</button>
+                </td>
               </tr>
             {{/each}}
           </tbody>
