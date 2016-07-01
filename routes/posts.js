@@ -10,17 +10,6 @@ var express   = require('express'),
 router.route('/')
   // Create new user.
 
-  // Are we going to list all of the posts on a single page?
-  // KK - not for all users...just the admins
-  // .get((req, res) => {
-  //   User.fetchAll()
-  //     .then( results => {
-  //       res.send(results.toJSON());
-  //     })
-  //
-  // })
-  // User adds new post.
-
   .post((req, res) => {
     var newPost = req.body;
 
