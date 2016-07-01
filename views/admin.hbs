@@ -21,10 +21,14 @@
                 <td> {{this.user_id}}</td>
                 <td> {{this.id}}</td>
                 <td> {{this.advice_text}}</td>
-                <td> <form action="/admin?_method=DELETE" method="POST"><a href="#"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a></td>
+                <td> <form action="/admin?_method=DELETE" method="POST">
+                  <button class="btn"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button></a>
+                  <input type="hidden" value="{{this.id}}" name="delete_post">
+                </form></td>
                 <td><form action="/admin?_method=PUT" method="POST">
-                  <input type="hidden" value="{this.id}" name="approve_post">
+                  <input type="hidden" value="{{this.id}}" name="approve_post">
                   <button class="btn btn-primary" type="submit">Approve Post</button>
+                </form>
                 </td>
               </tr>
             {{/each}}
