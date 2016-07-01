@@ -54,7 +54,7 @@ router.route('/login')
 
   // Login and authenticate.
   .post(passport.authenticate('local', { failureRedirect: '/auth/login' }), (req, res) => {
-    res.redirect('/loginSuccess');
+    res.redirect('/');
   });
 
 
@@ -65,7 +65,7 @@ router.route('/twitter')
 
 router.route('/twitter/callback')
   // Route for twitter auth callback.
-  .get(passport.authenticate('twitter', { failureRedirect: '/login' }),
+  .get(passport.authenticate('twitter', { failureRedirect: '/auth/login' }),
   (req, res) => {
     // Successful authentication, redirect signupSuccess.
     res.render('signupSuccess')
@@ -77,7 +77,7 @@ router.route('/facebook')
 
 router.route('/facebook/callback')
   // Route for facebook auth callback.
-  .get(passport.authenticate('facebook', { failureRedirect: '/login' }),
+  .get(passport.authenticate('facebook', { failureRedirect: '/auth/login' }),
   (req, res) => {
     // Successful authentication, redirect signupSuccess.
     res.render('signupSuccess')

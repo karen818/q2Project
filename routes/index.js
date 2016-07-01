@@ -123,39 +123,56 @@ router.route('/giveAdvice')
       .then( results => {
         var city = results.toJSON();
         if (city.length > 0) {
-          console.log(city);
           res.render('giveAdvice', { post: advice, city: city[0] });
+          res.end;
+        } else {
+          new City({
+            city_name: advice.selectCity
+          }).save()
+            .then( results => {
+              var newCity = results.toJSON();
+              console.log(newCity);
+              res.render('giveAdvice', { post: advice, city: newCity });
+              res.end;
+            })
         }
-
-        new City({
-          city_name: advice.selectCity
-        }).save()
-          .then( results => {
-            var newCity = results.toJSON();
-            res.render('giveAdvice', { post: advice, city: newCity });
-          })
-      })
+      });
   });
 
 
 router.route('/newAdvice')
   .post((req, res) => {
     var newAdvice = req.body;
-
-    eval(locus);
-
-    // This ALMOST works.
-
-    new Post({
-      user_id: parseInt(req.session.passport.user.id),
-      advice_text: newAdvice.advice_text,
-      advice_type: parseInt(newAdvice.advice_type),
-      month: parseInt(newAdvice.selectSeason),
-      city_id: newAdvice.selectCity
-    }).save()
+    console.log(typeof req.session.passport.user);
+    if (typeof req.session.passport.user === 'number') {
+      new Post({
+        user_id: req.session.passport.user,
+        advice_text: newAdvice.giveAdviceTxt,
+        advice_type: newAdvice.advice_type,
+        month_id: newAdvice.month,
+        city_id: newAdvice.selectCity
+      }).save()
       .then( results => {
         res.render('adviceSuccess');
       });
+    } else {
+      User.where({ username: req.session.passport.user.id })
+        .fetch()
+        .then( results => {
+          var user_id = results.toJSON().id;
+
+          new Post({
+            user_id: user_id,
+            advice_text: newAdvice.giveAdviceTxt,
+            advice_type: newAdvice.advice_type,
+            month_id: newAdvice.month,
+            city_id: newAdvice.selectCity
+          }).save()
+          .then( results => {
+            res.render('adviceSuccess');
+          });
+        });
+    }
   });
 
 

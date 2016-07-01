@@ -51,7 +51,7 @@ passport.use(new TwitterStrat({
         var user = results.toJSON();
         if (user.length){
           console.log('User already exsists');
-          cb(null, profile)
+          cb(null, user.id);
         } else {
           new User({
             username: profile.username,
@@ -59,9 +59,9 @@ passport.use(new TwitterStrat({
             img_url:profile.photos[0].value,
             email: profile.provider
           }).save()
-            .then( () => {
-
-              cb(null, profile)
+            .then( results => {
+              var user = results.toJSON().id;
+              cb(null, user);
             })
         }
       });
@@ -76,14 +76,13 @@ passport.use(new FacebookStrat({
     User.where({ username: profile.id})
       .fetchAll()
       .then( results => {
-        var user = results.toJSON()
-
-        if (user.length){
+        var user = results.toJSON();
+        if (user.length > 0){
           console.log('User already exists');
-          cb(null, profile)
+          cb(null, profile);
         } else {
           new User({
-            username:profile.id,
+            username:profile,
             full_name:profile.displayName,
             img_url:'',
             email:'facebook'
