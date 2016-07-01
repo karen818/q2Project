@@ -72,7 +72,7 @@ router.route('/twitter/callback')
   (req, res) => {
     // Successful authentication, redirect signupSuccess.
     res.locals.session = true;
-    res.render('signupSuccess')
+    res.render('auth/signupSuccess')
   });
 
 router.route('/facebook')
@@ -84,7 +84,7 @@ router.route('/facebook/callback')
   .get(passport.authenticate('facebook', { failureRedirect: '/auth/login' }),
   (req, res) => {
     // Successful authentication, redirect signupSuccess.
-    res.render('signupSuccess')
+    res.render('auth/signupSuccess')
   });
 
 router.route('/logout')
