@@ -70,7 +70,7 @@ router.route('/getAdvice')
             var posts = results.toJSON();
             if(posts.length > 0){
               // Make Bookshelf query to return a single random bit of advice.
-              random = Math.floor(Math.random() * posts.length);
+              var random = Math.floor(Math.random() * posts.length);
               // If the advice exists, then return a random index to display.
               res.render('getAdvice', {
                 title: 'goTravel -- Get Advice',
