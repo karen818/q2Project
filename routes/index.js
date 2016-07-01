@@ -123,7 +123,11 @@ router.route('/giveAdvice')
       .then( results => {
         var city = results.toJSON();
         if (city.length > 0) {
-          res.render('giveAdvice', { post: advice, city: city[0] });
+          res.render('giveAdvice', {
+            post: advice,
+            city: city[0],
+            cityWeather: cityWeather,
+            stateCountry: stateCountry});
           res.end;
         } else {
           new City({
@@ -131,8 +135,14 @@ router.route('/giveAdvice')
           }).save()
             .then( results => {
               var newCity = results.toJSON();
-              console.log(newCity);
-              res.render('giveAdvice', { post: advice, city: newCity });
+
+
+              res.render('giveAdvice', {
+                post: advice,
+                city: newCity,
+                cityWeather: cityWeather,
+                stateCountry: stateCountry
+              });
               res.end;
             })
         }
@@ -143,7 +153,6 @@ router.route('/giveAdvice')
 router.route('/newAdvice')
   .post((req, res) => {
     var newAdvice = req.body;
-    eval(locus);
     if (req.session.passport.user && typeof req.session.passport.user === 'number') {
       new Post({
         user_id: req.session.passport.user,
@@ -190,6 +199,7 @@ router.route('/newAdvice')
         });
     }
   });
+
 
 
 

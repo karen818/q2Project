@@ -101,59 +101,7 @@ $(document).ready(() => {
         	}
         }
 
-    // //show advice/initial form; create ajax urls
-    // $(document).ready(function(event){
-    //     //get the value of the selected items
-    //     // selectedCity = $('#citySelect').val();
-    //     // selectedMonth = $('#monthSelect').val();
-    //     // selectedAdvice = $('#adviceSelect').val();
-    //     //
-    //     // console.log(selectedCity + " " + selectedMonth + " " + selectedAdvice);
-    //     //split the item values to use in the ajax calls
-    //     // selectedCity = selectedCity.split(', ')[0];
-    //     // selectedState = selectedCity.split(', ');
-    //     //
-    //     //
-    //     // if (selectedState[2] === 'United States') {
-    //     //     selectedState = selectedCity.split(', ')[1];
-    //     // }
-    //
-    //     //fill in html with selections
-    //     // $('#city').html(selectedCity);
-    //     // $('#monthTxt').html(selectedMonth);
-    //
-    //
-    //     //ajax calls to Wunderground to grab historical data based on city and state/country
-    //     monthUrls = {
-    //         January: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_01010131/q/' + selectedState + '/' + selectedCity + '.json',
-    //         February: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_02010228/q/' + selectedState + '/' + selectedCity + '.json',
-    //         March: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_03010331/q/'
-    //         + selectedState + '/' + selectedCity + '.json',
-    //         April: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_04010430/q/'
-    //         + selectedState + '/' + selectedCity + '.json',
-    //         May: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_05010531/q/'
-    //         + selectedState + '/' + selectedCity + '.json',
-    //         June: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_06010630/q/'
-    //         + selectedState + '/' + selectedCity + '.json',
-    //         July: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_07010731/q/'
-    //         + selectedState + '/' + selectedCity + '.json',
-    //         August: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_08010831/q/'
-    //         + selectedState + '/' + selectedCity + '.json',
-    //         September: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_09010930/q/'
-    //         + selectedState + '/' + selectedCity + '.json',
-    //         October: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_10011031/q/'
-    //         + selectedState + '/' + selectedCity + '.json',
-    //         November: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_11011130/q/'
-    //         + selectedState + '/' + selectedCity + '.json',
-    //         December: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_12011231/q/'
-    //         + selectedState + '/' + selectedCity + '.json'
-    //     }
-    //
-    //     //call Ajax to get weather data
-    //     getMonthWeather(monthUrls[selectedMonth]);
-    //     $(location).attr('href','/getAdvice');
-    //
-    // });
+
     //show give advice form
     $('button#getAdvice').click(function(){
 
@@ -231,10 +179,6 @@ $(document).ready(() => {
         $(location).attr('href','/');
     });
 
-    //prevent default stuff on form submits
-    // $("form").submit(function(event) {
-    //     event.preventDefault();
-    // });
 
     //show give more advice screen; scrolls to top
     $('button.giveMoreAdvice').click(function(){
@@ -260,19 +204,6 @@ $(document).ready(() => {
         $('#city').text(selectedCity);
         $('#monthTxt').text(selectedMonth);
 
-
-        // if($('select:visible option:selected').text() === 'Things to avoid'){
-        //     $('p#adviceText').text("Avoid driving on I-35 anytime of the day or night. The traffic is always terrible and will give you a sad.");
-        //     $('p#author').text("Patrick K. - resident since 1994");
-        // }
-        // else if($('select:visible option:selected').text() === 'Things to eat'){
-        //     $('p#adviceText').text("Torchy's Tacos is mecca for awesome tacos in Austin. Check out their taco of the month. Om nom nom nom!");
-        //     $('p#author').text("H. Kelly - resident since 2005");
-        // }
-        // else if($('select:visible option:selected').text() === 'Things to do'){
-        //     $('p#adviceText').text("Make it a point to visit Hamilton Pool at some point. It's a perfect way to cool off during the summer.");
-        //     $('p#author').text("Moxxi - resident since 2015");
-        // }
     });
 
 
@@ -280,18 +211,18 @@ $(document).ready(() => {
     var signUpEmail = $("input:text[name='signupEmail']").val();
 
     //sign up form validation hell
-    // $('button#signupSubmit').click(function(event) {
-        // signupCheck();
-        //
-        // if (validateEmail(signUpEmail)) {
-        //     $(location).attr('href','/signupSuccess');
-        // }
-        // else {
-        //     $('#emailCheck').html('Email is not valid. Please re-enter.');
-        //     event.preventDefault();
-        // }
-     //
-    //  });
+    $('button#signupSubmit').click(function(event) {
+        signupCheck();
+        
+        if (validateEmail(signUpEmail)) {
+            $(location).attr('href','/signupSuccess');
+        }
+        else {
+            $('#emailCheck').html('Email is not valid. Please re-enter.');
+            event.preventDefault();
+        }
+
+     });
 
      //validate email function
      function validateEmail(sEmail) {
