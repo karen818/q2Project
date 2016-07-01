@@ -1,5 +1,6 @@
 'use stritct';
 
+// === Modules === //
 var express        = require('express'),
     bodyParser     = require('body-parser'),
     methodOverride = require('method-override'),
@@ -7,7 +8,7 @@ var express        = require('express'),
     users          = require('./routes/users'),
     auth           = require('./routes/auth'),
     admin          = require('./routes/admin'),
-    posts          = require('./routes/posts'),
+    posts          = require('./routes/advice'),
     passport       = require('passport'),
     LocalStrat     = require('passport-local').Strategy,
     TwitterStrat   = require('passport-twitter').Strategy,
@@ -102,7 +103,6 @@ passport.use(new LocalStrat({
 	usernameField: 'userName',
 	passwordField: 'password'
 }, (username, password, done) => {
-	// Check id of user, retrieve row in users table.
   User.where({ username: username })
     .fetch()
     .then( results => {
@@ -150,6 +150,7 @@ app.use('/admin', admin);
 app.use('/posts', posts);
 
 
+// === Listen === //
 app.listen((process.env.PORT || 3000), error => {
   console.log('Server is listening.');
 });
