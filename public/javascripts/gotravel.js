@@ -53,7 +53,7 @@ $(document).ready(() => {
     $(".f_elem_city").autocomplete({
         source: function (req, res) {
          $.getJSON(
-            "https://gd.geobytes.com/AutoCompleteCity?callback=?&sort=size&q="+req.term,
+            "http://gd.geobytes.com/AutoCompleteCity?callback=?&sort=size&q="+req.term,
             function (data) {
              res(data);
             });
@@ -73,7 +73,7 @@ $(document).ready(() => {
                 var cityfqcn = fqcn;
             }
             if (cityfqcn) {
-                $.getJSON("https://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn,
+                $.getJSON("http://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn,
                     function (data) {
                 });
             }
@@ -106,6 +106,12 @@ $(document).ready(() => {
 
     //show give advice form
     $('button#getAdvice').click(function(){
+
+        $("form").attr("action", "/getAdvice");
+    });
+
+    //show give advice form
+    $('button#moreAdvice').click(function(){
 
         $("form").attr("action", "/getAdvice");
     });
