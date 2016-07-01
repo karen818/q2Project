@@ -11,12 +11,12 @@
             <p id="month">{{month}}</p>
         </div>
         <div class="well well-lg">
-          <input type="hidden" id="cityWeather" value="{{cityWeather}}">
-          <input type="hidden" id="stateCountry" value="{{stateCountry}}">
             <p id="adviceText">{{advice.advice_text}}</p>
             <p id="author">-- {{advice.user.username}}</p>
         </div>
       {{else}}
+      <input type="hidden" id="cityWeather" value="{{cityWeather}}">
+      <input type="hidden" id="stateCountry" value="{{stateCountry}}">
         <div class="well well-sm flex-container-center">
           <p>No advice found!</p>
         </div>
