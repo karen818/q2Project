@@ -68,6 +68,7 @@ router.route('/twitter/callback')
   .get(passport.authenticate('twitter', { failureRedirect: '/auth/login' }),
   (req, res) => {
     // Successful authentication, redirect signupSuccess.
+    res.locals.session = true;
     res.render('signupSuccess')
   });
 

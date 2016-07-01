@@ -143,19 +143,19 @@ router.route('/giveAdvice')
 router.route('/newAdvice')
   .post((req, res) => {
     var newAdvice = req.body;
-    console.log(typeof req.session.passport.user);
-    if (typeof req.session.passport.user === 'number') {
+    eval(locus);
+    if (req.session.passport.user && typeof req.session.passport.user === 'number') {
       new Post({
         user_id: req.session.passport.user,
         advice_text: newAdvice.giveAdviceTxt,
         advice_type: newAdvice.advice_type,
         month_id: newAdvice.month,
-        city_id: newAdvice.selectCity
+        city_id: newAdvice.city
       }).save()
       .then( results => {
         res.render('adviceSuccess');
       });
-    } else {
+    } else if (req.session.passport.user.id) {
       User.where({ username: req.session.passport.user.id })
         .fetch()
         .then( results => {
@@ -166,7 +166,23 @@ router.route('/newAdvice')
             advice_text: newAdvice.giveAdviceTxt,
             advice_type: newAdvice.advice_type,
             month_id: newAdvice.month,
-            city_id: newAdvice.selectCity
+            city_id: newAdvice.city
+          }).save()
+          .then( results => {
+            res.render('adviceSuccess');
+          });
+        });
+    } else if (req.session.user.username) {
+      User.where({ username: req.session.passport.user.username})
+        .fetch()
+        .then( results => {
+          var user_id = results.toJSON().id;
+          new Post({
+            user_id: user_id,
+            advice_text: newAdvice.giveAdviceTxt,
+            advice_type: newAdvice.advice_type,
+            month_id: newAdvice.month,
+            city_id: newAdvice.city
           }).save()
           .then( results => {
             res.render('adviceSuccess');

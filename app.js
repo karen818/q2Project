@@ -50,8 +50,8 @@ passport.use(new TwitterStrat({
       .then( results => {
         var user = results.toJSON();
         if (user.length){
-          console.log('User already exsists');
-          cb(null, user.id);
+          console.log('User already exsists', profile);
+          cb(null, profile);
         } else {
           new User({
             username: profile.username,
@@ -61,7 +61,7 @@ passport.use(new TwitterStrat({
           }).save()
             .then( results => {
               var user = results.toJSON().id;
-              cb(null, user);
+              cb(null, profile);
             })
         }
       });

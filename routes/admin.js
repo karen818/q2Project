@@ -5,7 +5,7 @@ var express = require('express'),
 
 router.route('/')
   // Display admin panel.
-  .get((req, res) => {
+  .get(checkAdmin, (req, res) => {
     User.fetchAll()
       .then( users => {
         var allUsers = users.toJSON();
@@ -37,3 +37,21 @@ router.route('/')
   });
 
 module.exports = router;
+
+function checkAdmin(req, res, next){
+  if (req.session.passport.user.id){
+    User.where({ username: req.session.passport.user.id })
+      .fetch()
+      .then(results => {
+        var user = results.toJSON().is_admin;
+        if (user){
+          console.log(user);
+          next();
+        }
+
+        res.redirect('/auth/login');
+      })
+  }
+
+  res.redirect('/auth/login');
+}
