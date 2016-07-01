@@ -107,6 +107,7 @@ router.route('/giveAdvice')
 .post((req, res) => {
 
   var advice = req.body;
+  var adviceType = advice.adviceSelect;
   var cityWeather = advice.selectCity.split(', ')[0];
   var stateCountry= advice.selectCity.split(', ');
 
@@ -116,7 +117,7 @@ router.route('/giveAdvice')
       stateCountry = advice.selectCity.split(', ')[2];
   }
 
-  console.log("City:" + cityWeather + ", State:  " + stateCountry);
+  console.log("City:" + cityWeather + ", State:  " + stateCountry + ", Advice type: " + adviceType);
 
   Month.where({ id: advice.selectSeason })
   .fetch()
@@ -148,7 +149,8 @@ router.route('/giveAdvice')
               city:city.toJSON().city_name,
               month: month_name,
               cityWeather: cityWeather,
-              stateCountry: stateCountry
+              stateCountry: stateCountry,
+              advice: adviceType
             });
           } else {
             res.render('giveAdvice', {
