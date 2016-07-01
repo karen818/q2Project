@@ -68,7 +68,6 @@ button.btn-block {
     color: #fff;
     font-family: 'Special Elite', cursive;
     font-weight: 400;
-    font-size: 80%;
 }
 
 
@@ -101,10 +100,6 @@ input[type] {
 
 .profileImg {
   border-radius: 50%;
-}
-
-.ui-autocomplete-input {
-    background-color: #fff;
 }
 
 .overlock {
