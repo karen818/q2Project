@@ -49,6 +49,36 @@ $(document).ready(() => {
         $('body').css({'background-image': 'url(' + randomBG + ')'});
     });
 
+    //////////Cities Geobytes call function/////////
+    $(".f_elem_city").autocomplete({
+        source: function (req, res) {
+         $.getJSON(
+            "http://gd.geobytes.com/AutoCompleteCity?callback=?&sort=size&q="+req.term,
+            function (data) {
+             res(data);
+            });
+        },
+        minLength: 3,
+        select: function (event, ui) {
+         var selectedObj = ui.item;
+         $(".f_elem_city").val(selectedObj.value);
+        getcitydetails(selectedObj.value);
+         return false;
+        }
+     });
+     $(".f_elem_city").autocomplete("option", "delay", 100);
+        function getcitydetails(fqcn) {
+            if (typeof fqcn == "undefined") {
+                var fqcn = $(".f_elem_city").val();
+                var cityfqcn = fqcn;
+            }
+            if (cityfqcn) {
+                $.getJSON("http://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn,
+                    function (data) {
+                });
+            }
+        }
+
     //////////Weather Ajax call function/////////
     function getMonthWeather(month) {
             $.ajax({
@@ -71,35 +101,7 @@ $(document).ready(() => {
     }
     getMonthWeather(monthUrls[selectedMonth]);
 
-    //////////Cities Geobytes call function/////////
-    $(".f_elem_city").autocomplete({
-		source: function (req, res) {
-		 $.getJSON(
-			"http://gd.geobytes.com/AutoCompleteCity?callback=?&sort=size&q="+req.term,
-			function (data) {
-			 res(data);
-			});
-		},
-		minLength: 3,
-		select: function (event, ui) {
-		 var selectedObj = ui.item;
-		 $(".f_elem_city").val(selectedObj.value);
-		getcitydetails(selectedObj.value);
-		 return false;
-		}
-	 });
-	 $(".f_elem_city").autocomplete("option", "delay", 100);
-        function getcitydetails(fqcn) {
-        	if (typeof fqcn == "undefined") {
-                var fqcn = $(".f_elem_city").val();
-        	    var cityfqcn = fqcn;
-            }
-        	if (cityfqcn) {
-        	    $.getJSON("http://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn,
-                    function (data) {
-        	    });
-        	}
-        }
+
 
 
     //show give advice form
@@ -213,7 +215,7 @@ $(document).ready(() => {
     //sign up form validation hell
     $('button#signupSubmit').click(function(event) {
         signupCheck();
-        
+
         if (validateEmail(signUpEmail)) {
             $(location).attr('href','/signupSuccess');
         }
