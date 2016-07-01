@@ -1,12 +1,12 @@
 <!-- giveAdviceForm container -->
 <div class="col-xs-4 col-sm-4 col-md-4 transbox" id="giveAdviceForm">
-    <form class="form" action="/giveAdvice" method="POST">
+    <form class="form" action="/newAdvice" method="POST">
         <br>
 
         <!-- Transfer values from previous screen, and include them here. -->
-        <input type="hidden" value="{{postInfo.selectSeason}}" name="month">
-        <input type="hidden" value="{{postInfo.selectCity}}" name="city">
-        <input type="hidden" value="{{postInfo.selectAdvice}}" name="advice_type">
+        <input type="hidden" value="{{post.selectSeason}}" name="month">
+        <input type="hidden" value="{{city.city_name}}" name="city">
+        <input type="hidden" value="{{post.selectAdvice}}" name="advice_type">
         <!-- END -->
 
         <div class="well well-sm">

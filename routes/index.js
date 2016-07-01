@@ -5,7 +5,8 @@ var express = require('express'),
     Post      = require('../models/post'),
     Advice    = require('../models/advice'),
     City      = require('../models/city'),
-    Month     = require('../models/month');
+    Month     = require('../models/month'),
+    passport  = require('passport');
 
 router.route('/')
   // Display main page.
@@ -48,6 +49,8 @@ router.route('/getAdvice')
     .then( month => {
       var month_name = month.toJSON().month;
 
+      console.log(month_name);
+
       City.where('city_name', advice.selectCity)
       .fetch()
       .then( city => {
@@ -79,6 +82,7 @@ router.route('/getAdvice')
               res.render('getAdvice', {
                 title: 'goTravel -- Get Advice',
                 advice: null,
+                city:null,
                 month: month_name,
                 cityWeather: cityWeather,
                 stateCountry: stateCountry
@@ -89,6 +93,7 @@ router.route('/getAdvice')
           res.render('getAdvice', {
             title: 'goTravel -- Get Advice',
             advice: null,
+            city:null,
             month: month_name,
             cityWeather: cityWeather,
             stateCountry: stateCountry
@@ -100,51 +105,57 @@ router.route('/getAdvice')
 
 
 router.route('/giveAdvice')
-  // Run authenticate middleware.
-
-  //add all months choice and have that go into a pool
-
-  // Show form for new advice.
-  .get((req, res) => {
-
-    res.render('giveAdvice', {
-      title: 'goTravel -- Give Advice',
-      postInfo : req.body
-    });
-  })
-
-  // User adds new advice to to advice_posts
+  // User is directed to the give advice page with information passed through.
   .post((req, res) => {
-    var newPost = req.body
+    var advice = req.body;
+    var cityWeather = advice.selectCity.split(', ')[0];
+    var stateCountry= advice.selectCity.split(', ');
 
-    City.where( {city_name: selectCity} )
-      .fetch()
+
+    if (stateCountry[2] === 'United States') {
+        stateCountry = advice.selectCity.split(', ')[1];
+    } else {
+        stateCountry = advice.selectCity.split(', ')[2];
+    }
+
+    City.where({ 'city_name': advice.selectCity })
+      .fetchAll()
       .then( results => {
         var city = results.toJSON();
-
-        if (city){
-          console.log('City name already exists, next.');
-          // If the city exists, grab the id and pass it in.
-        } else {
-          // Otherwise, make a new city
-          new City({
-            city_name:city
-          }).save()
-            .then(() => {
-              // Return the new city's id.
-
-              // Create a new post.
-
-              // Username = req.session username where username = whatever.
-              // advice text
-              // advice_type : newPost.selectAdvice
-              // month : newPost.selectSeason
-              // city name
-
-              // Render successful post page
-            })
+        if (city.length > 0) {
+          console.log(city);
+          res.render('giveAdvice', { post: advice, city: city[0] });
         }
+
+        new City({
+          city_name: advice.selectCity
+        }).save()
+          .then( results => {
+            var newCity = results.toJSON();
+            res.render('giveAdvice', { post: advice, city: newCity });
+          })
       })
+  });
+
+
+router.route('/newAdvice')
+  .post((req, res) => {
+    var newAdvice = req.body;
+
+    eval(locus);
+
+    // This ALMOST works.
+
+    new Post({
+      user_id: parseInt(req.session.passport.user.id),
+      advice_text: newAdvice.advice_text,
+      advice_type: parseInt(newAdvice.advice_type),
+      month: parseInt(newAdvice.selectSeason),
+      city_id: newAdvice.selectCity
+    }).save()
+      .then( results => {
+        res.render('adviceSuccess');
+      });
   });
 
 

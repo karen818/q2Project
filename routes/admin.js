@@ -14,7 +14,6 @@ router.route('/')
           .fetchAll()
           .then( posts => {
             allPosts = posts.toJSON();
-            eval(locus)
             res.render('admin', {
               title: 'goTravel -- Administrator Page',
               layout: 'adminPage',
