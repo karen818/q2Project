@@ -28,6 +28,7 @@ require('dotenv').config();
 // === Use Middleware === //
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(methodOverride('_method'));
 
 
 // === Views Engine ===//
