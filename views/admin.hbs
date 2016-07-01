@@ -21,9 +21,10 @@
                 <td> {{this.user_id}}</td>
                 <td> {{this.id}}</td>
                 <td> {{this.advice_text}}</td>
-                <td> <form action="/admin?_method=DELETE" method="POST">
-                  <button class="btn"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button></a>
-                  <input type="hidden" value="{{this.id}}" name="delete_post">
+                <td>
+                  <form action="/admin?_method=DELETE" method="POST">
+                    <button class="btn"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button></a>
+                    <input type="hidden" value="{{this.id}}" name="delete_post">
                 </form></td>
                 <td><form action="/admin?_method=PUT" method="POST">
                   <input type="hidden" value="{{this.id}}" name="approve_post">
@@ -51,7 +52,12 @@
                 <td> {{this.full_name}}</td>
                 <td> {{this.email}}</td>
                 <td> {{this.img_url}}</td>
-                <td> <form action="/admin?_method=DELETE" method="POST"><a href="#"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a> </td>
+                <td>
+                  <form action="/admin/user?_method=DELETE" method="POST">
+                    <button type="submit" class="btn"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></button></a>
+                    <input type="hidden" value="{{this.id}}" name="delete_user">
+                </form>
+                 </td>
               </tr>
             {{/each}}
           </tbody>

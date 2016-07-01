@@ -51,6 +51,15 @@ router.route('/')
 
   });
 
+router.route('/user')
+  .delete((req, res) => {
+    new User({id: req.body.delete_user})
+      .destroy()
+      .then( () => {
+        res.redirect('/admin');
+      })
+  });
+
 module.exports = router;
 
 function checkAdmin(req,res,next){
