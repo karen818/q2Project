@@ -9,27 +9,27 @@ $(document).ready(() => {
     var stateCountry = {name: '', value: ''};
     var city = {name: '', value: ''};
     var monthUrls = {
-        January: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_01010131/q/' + selectedState + '/' + selectedCity + '.json',
-        February: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_02010228/q/' + selectedState + '/' + selectedCity + '.json',
-        March: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_03010331/q/'
+        January: 'https://api.wunderground.com/api/9ac21c72ca6041ef/planner_01010131/q/' + selectedState + '/' + selectedCity + '.json',
+        February: 'https://api.wunderground.com/api/9ac21c72ca6041ef/planner_02010228/q/' + selectedState + '/' + selectedCity + '.json',
+        March: 'https://api.wunderground.com/api/9ac21c72ca6041ef/planner_03010331/q/'
         + selectedState + '/' + selectedCity + '.json',
-        April: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_04010430/q/'
+        April: 'https://api.wunderground.com/api/9ac21c72ca6041ef/planner_04010430/q/'
         + selectedState + '/' + selectedCity + '.json',
-        May: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_05010531/q/'
+        May: 'https://api.wunderground.com/api/9ac21c72ca6041ef/planner_05010531/q/'
         + selectedState + '/' + selectedCity + '.json',
-        June: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_06010630/q/'
+        June: 'https://api.wunderground.com/api/9ac21c72ca6041ef/planner_06010630/q/'
         + selectedState + '/' + selectedCity + '.json',
-        July: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_07010731/q/'
+        July: 'https://api.wunderground.com/api/9ac21c72ca6041ef/planner_07010731/q/'
         + selectedState + '/' + selectedCity + '.json',
-        August: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_08010831/q/'
+        August: 'https://api.wunderground.com/api/9ac21c72ca6041ef/planner_08010831/q/'
         + selectedState + '/' + selectedCity + '.json',
-        September: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_09010930/q/'
+        September: 'https://api.wunderground.com/api/9ac21c72ca6041ef/planner_09010930/q/'
         + selectedState + '/' + selectedCity + '.json',
-        October: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_10011031/q/'
+        October: 'https://api.wunderground.com/api/9ac21c72ca6041ef/planner_10011031/q/'
         + selectedState + '/' + selectedCity + '.json',
-        November: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_11011130/q/'
+        November: 'https://api.wunderground.com/api/9ac21c72ca6041ef/planner_11011130/q/'
         + selectedState + '/' + selectedCity + '.json',
-        December: 'http://api.wunderground.com/api/9ac21c72ca6041ef/planner_12011231/q/'
+        December: 'https://api.wunderground.com/api/9ac21c72ca6041ef/planner_12011231/q/'
         + selectedState + '/' + selectedCity + '.json'
     }
 
@@ -37,7 +37,7 @@ $(document).ready(() => {
 
     ///////// Photo Ajax //////////
     $.ajax({
-        url: 'https://api.unsplash.com/photos/search?category=4&query=nature&client_id=b21a9e8e8640c016bfff18622954eaa29cb31d67178c80f5e36efeaa02e9cb70',
+        url: 'httpss://api.unsplash.com/photos/search?category=4&query=nature&client_id=b21a9e8e8640c016bfff18622954eaa29cb31d67178c80f5e36efeaa02e9cb70',
         type: "GET",
         dataType: 'json',
     }).done(function(data){
@@ -53,7 +53,7 @@ $(document).ready(() => {
     $(".f_elem_city").autocomplete({
         source: function (req, res) {
          $.getJSON(
-            "http://gd.geobytes.com/AutoCompleteCity?callback=?&sort=size&q="+req.term,
+            "https://gd.geobytes.com/AutoCompleteCity?callback=?&sort=size&q="+req.term,
             function (data) {
              res(data);
             });
@@ -73,7 +73,7 @@ $(document).ready(() => {
                 var cityfqcn = fqcn;
             }
             if (cityfqcn) {
-                $.getJSON("http://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn,
+                $.getJSON("https://gd.geobytes.com/GetCityDetails?callback=?&fqcn="+cityfqcn,
                     function (data) {
                 });
             }
