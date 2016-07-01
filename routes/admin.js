@@ -5,7 +5,7 @@ var express = require('express'),
     User    = require('../models/user'),
     Post    = require('../models/post');
 
-router.route('/')
+router.route('/', checkAdmin)
   // Display admin panel.
   .get((req, res) => {
 
@@ -63,16 +63,16 @@ router.route('/user')
 module.exports = router;
 
 function checkAdmin(req,res,next){
-User.where({ username: req.session.passport.user.id })
+  User.where({ id: req.session.passport.user })
     .fetch()
     .then(results => {
       var user = results.toJSON().is_admin;
-      if (user){
-        console.log(user);
+      if (user === true){
         next();
+      } else {
+        res.redirect('/auth/login');
       }
-
-      res.redirect('/auth/login');
     })
+
     res.redirect('/auth/login');
 }

@@ -217,3 +217,18 @@ router.route('/signupSuccess')
   })
 
 module.exports = router;
+
+
+function isAdmin(req,res,next) {
+  User.where({id: req.session.passport.id})
+    .fetch()
+    .then( results => {
+      var user = results.toJSON();
+
+      if (user.is_admin) {
+        next()
+      }
+
+      res.redirect('/');
+    })
+}
