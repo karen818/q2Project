@@ -107,7 +107,7 @@ router.route('/giveAdvice')
 .post((req, res) => {
 
   var advice = req.body;
-  var adviceType = advice.adviceSelect;
+  var adviceType = advice.selectAdvice;
   var cityWeather = advice.selectCity.split(', ')[0];
   var stateCountry= advice.selectCity.split(', ');
 
@@ -134,6 +134,7 @@ router.route('/giveAdvice')
           city_id: city_id,
           month_id: advice.selectSeason,
           advice_type: advice.selectAdvice,
+          advice: adviceType,
           approved: true
         })
         .fetchAll({withRelated:['user']})
