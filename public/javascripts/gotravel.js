@@ -37,7 +37,7 @@ $(document).ready(() => {
 
     ///////// Photo Ajax //////////
     $.ajax({
-        url: 'httpss://api.unsplash.com/photos/search?category=4&query=nature&client_id=b21a9e8e8640c016bfff18622954eaa29cb31d67178c80f5e36efeaa02e9cb70',
+        url: 'https://api.unsplash.com/photos/search?category=4&query=nature&client_id=b21a9e8e8640c016bfff18622954eaa29cb31d67178c80f5e36efeaa02e9cb70',
         type: "GET",
         dataType: 'json',
     }).done(function(data){
