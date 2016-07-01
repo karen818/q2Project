@@ -112,7 +112,16 @@ $(document).ready(() => {
 
     //show give advice form
     $('button#moreAdvice').click(function(){
+        selectedCity = $('#citySelect').val();
+        selectedMonth = $('#monthSelect').val();
+        selectedAdvice = $('#adviceSelect').val();
 
+        //fill in html with selections
+        $('#cityGive').html(selectedCity + '<br>');
+        $('#monthGive').html(selectedMonth  + '<br>');
+        $('#adviceGive').html(selectedAdvice);
+
+        $(location).attr('href','/getAdvice');
         $("form").attr("action", "/getAdvice");
     });
 
