@@ -45,7 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 passport.use(new TwitterStrat({
     consumerKey: process.env.TWITTER_CONSUMER_KEY,
     consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-    callbackURL: "https://127.0.0.1:3000/auth/twitter/callback"
+    callbackURL: "https://go-travel-q2.herokuapp.com/auth/twitter/callback"
   },
   function(token, tokenSecret, profile, cb) {
     User.where({username: profile.username})
@@ -73,7 +73,7 @@ passport.use(new TwitterStrat({
 passport.use(new FacebookStrat({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: "https://localhost:3000/auth/facebook/callback"
+    callbackURL: "https://go-travel-q2.herokuapp.com/auth/facebook/callback"
   },
   function(accessToken, refreshToken, profile, cb) {
     User.where({ username: profile.id})
