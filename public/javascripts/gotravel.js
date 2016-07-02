@@ -107,7 +107,7 @@ $(document).ready(() => {
     //show give advice form
     $('button#getAdvice').click(function(){
 
-        $("form").attr("action", "/getAdvice");
+        $("form").attr("action", "/advice/get");
     });
 
     //show give advice form
@@ -137,7 +137,7 @@ $(document).ready(() => {
         $('#adviceGive').html(selectedAdvice);
 
         $(location).attr('href','/giveAdvice');
-        $("form").attr("action", "/giveAdvice");
+        $("form").attr("action", "/advice/give");
     });
 
     //show login form

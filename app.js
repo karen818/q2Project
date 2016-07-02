@@ -8,7 +8,7 @@ var express        = require('express'),
     users          = require('./routes/users'),
     auth           = require('./routes/auth'),
     admin          = require('./routes/admin'),
-    posts          = require('./routes/advice'),
+    advice         = require('./routes/advice'),
     passport       = require('passport'),
     LocalStrat     = require('passport-local').Strategy,
     TwitterStrat   = require('passport-twitter').Strategy,
@@ -147,7 +147,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/auth', auth);
 app.use('/admin', admin);
-app.use('/posts', posts);
+app.use('/advice', advice);
 
 
 // === Listen === //
