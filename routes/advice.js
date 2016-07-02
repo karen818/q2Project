@@ -37,8 +37,9 @@ router.route('/get')
               weather:weather
             });
           });
+      } else {
+        res.redirect('/');
       }
-      res.redirect('/');
     });
   });
 
