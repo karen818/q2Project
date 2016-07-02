@@ -18,12 +18,31 @@ router.route('/get')
       Month.where({id: advice.selectSeason}).fetch(),
       City.where({city_name: advice.selectCity}).fetch()
     ]).then( results => {
-      console.log('Promise done!');
-      var city  = results[1].toJSON(),
-          month = results[0].toJSON();
+      if (results[1]){
+        var city  = results[1].toJSON(),
+            month = results[0].toJSON();
 
-      res.send('Made it!');
-    })
+        Post.where({
+          city_id:city.id,
+          month_id:month.id,
+          advice_type:advice.selectAdvice
+        }).fetchAll({withRelated:['user']})
+          .then(posts => {
+            var getPost = posts.toJSON(),
+                random  = Math.floor(Math.random() * getPost.length);
+
+            res.render('advice/getAdvice',{
+              title: 'goTravel -- Get Advice',
+              advice:posts[random],
+              city:city.name,
+              month: month.name
+              // cityWeather: weather.city,
+              // stateCountry: weather.state
+            });
+          });
+      }
+      res.redirect('/');
+    });
   });
 
     // Month.where({ id: advice.selectSeason })
