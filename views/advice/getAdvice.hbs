@@ -7,16 +7,16 @@
         <div class="well well-sm flex-container-center">
           <input type="hidden" id="cityWeather" value="{{cityWeather}}">
           <input type="hidden" id="stateCountry" value="{{stateCountry}}">
-            <p id="city">{{city}}</p>&nbsp;&nbsp;&nbsp;
-            <p id="month">{{month}}</p>
+            <p id="city">{{weather.city}}, {{weather.state}}</p>&nbsp;&nbsp;&nbsp;
+            <p id="month">{{advice.month.month}}</p>
         </div>
         <div class="well well-lg">
             <p id="adviceText">{{advice.advice_text}}</p>
             <p id="author">-- {{advice.user.username}}</p>
         </div>
       {{else}}
-      <input type="hidden" id="cityWeather" value="{{cityWeather}}">
-      <input type="hidden" id="stateCountry" value="{{stateCountry}}">
+      <input type="hidden" id="cityWeather" value="{{weather.city}}">
+      <input type="hidden" id="stateCountry" value="{{weather.state}}">
         <div class="well well-sm flex-container-center">
           <p>No advice found!</p>
         </div>
@@ -25,7 +25,6 @@
           <br>
           <label for="citySelect" class="control-label"><i class="fa fa-map-marker orange" aria-hidden="true"></i>&nbsp;&nbsp;Enter City</label><br>
           <input type="text" name="selectCity" class="f_elem_city form-control" id="citySelect">
-
       </div>
       <div class="form-group">
           <label for="monthSelect" class="control-label"><i class="fa fa-sun-o orange" aria-hidden="true"></i>&nbsp;&nbsp;Choose Month</label>

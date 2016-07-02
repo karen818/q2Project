@@ -26,7 +26,7 @@ router.route('/get')
           city_id:city.id,
           month_id:month.id,
           advice_type:advice.selectAdvice
-        }).fetchAll({withRelated:['user']})
+        }).fetchAll({withRelated:['user','month']})
           .then(posts => {
             var getPost = posts.toJSON(),
                 random  = Math.floor(Math.random() * getPost.length);
@@ -34,76 +34,13 @@ router.route('/get')
             res.render('advice/getAdvice',{
               title: 'goTravel -- Get Advice',
               advice:posts[random],
-              city:city.name,
-              month: month.name
-              // cityWeather: weather.city,
-              // stateCountry: weather.state
+              weather:weather
             });
           });
       }
       res.redirect('/');
     });
   });
-
-    // Month.where({ id: advice.selectSeason })
-    // .fetch()
-    // .then( month => {
-    //   var month_name = month.toJSON().month;
-    //
-    //   console.log(month_name);
-    //
-    //   City.where('city_name', advice.selectCity)
-    //   .fetch()
-    //   .then( city => {
-    //     // Results checks to see if a city has been found
-    //     if(city) {
-    //       var city_id = city.toJSON().id;
-    //       Post.where({
-    //         city_id: city_id,
-    //         month_id: advice.selectSeason,
-    //         advice_type: advice.selectAdvice,
-    //         approved: true
-    //       })
-    //       .fetchAll({withRelated:['user']})
-    //       .then( results => {
-    //         var posts = results.toJSON();
-    //         if(posts.length > 0){
-    //           // Make Bookshelf query to return a single random bit of advice.
-    //           var random = Math.floor(Math.random() * posts.length);
-    //           // If the advice exists, then return a random index to display.
-    //           res.render('advice/getAdvice', {
-    //             title: 'goTravel -- Get Advice',
-    //             advice:posts[random],
-    //             city:city.toJSON().city_name,
-    //             month: month_name,
-    //             cityWeather: cityWeather,
-    //             stateCountry: stateCountry
-    //           });
-    //         } else {
-    //           res.render('advice/getAdvice', {
-    //             title: 'goTravel -- Get Advice',
-    //             advice: null,
-    //             city:null,
-    //             month: month_name,
-    //             cityWeather: cityWeather,
-    //             stateCountry: stateCountry
-    //           });
-    //         }
-    //       });
-    //     } else {
-    //       res.render('advice/getAdvice', {
-    //         title: 'goTravel -- Get Advice',
-    //         advice: null,
-    //         city:null,
-    //         month: month_name,
-    //         cityWeather: cityWeather,
-    //         stateCountry: stateCountry
-    //       })
-    //     }
-    //   })
-    // })
-
-
 
 router.route('/give')
   // User is directed to the give advice page with information passed through.
