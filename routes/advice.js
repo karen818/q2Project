@@ -33,7 +33,7 @@ router.route('/get')
 
             res.render('advice/getAdvice',{
               title: 'goTravel -- Get Advice',
-              advice:posts[random],
+              advice:getPost[random],
               weather:weather
             });
           });
