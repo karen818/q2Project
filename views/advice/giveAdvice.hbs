@@ -1,6 +1,6 @@
 <!-- giveAdviceForm container -->
 <div class="col-xs-4 col-sm-4 col-md-4 transbox" id="giveAdviceForm">
-    <form class="form" action="/newAdvice" method="POST">
+    <form class="form" action="/advice/new" method="POST">
         <br>
 
         <!-- Transfer values from previous screen, and include them here. -->
@@ -10,9 +10,9 @@
         <!-- END -->
 
         <div class="well well-sm">
-          <input type="hidden" id="cityWeather" value="{{cityWeather}}">
-          <input type="hidden" id="stateCountry" value="{{stateCountry}}">
-            <p>{{cityWeather}}, {{stateCountry}}</p><br>
+          <input type="hidden" id="cityWeather" value="{{weather.city}}">
+          <input type="hidden" id="stateCountry" value="{{weather.state}}">
+            <p>{{weather.city}}, {{weather.state}}</p><br>
             <p>{{month}}</p>
             <p>{{adviceType}}</p>
         </div>

@@ -46,44 +46,26 @@ router.route('/get')
 router.route('/give')
   // User is directed to the give advice page with information passed through.
   .post((req, res) => {
-    var advice = req.body;
-    var cityWeather = advice.selectCity.split(', ')[0];
-    var stateCountry= advice.selectCity.split(', ');
+    var advice      = req.body,
+        advice_type = advice.selectAdvice,
+        weather     = weatherAPIVariables(req);
 
-
-    if (stateCountry[2] === 'United States') {
-        stateCountry = advice.selectCity.split(', ')[1];
-    } else {
-        stateCountry = advice.selectCity.split(', ')[2];
-    }
+        eval(locus);
 
     City.where({ 'city_name': advice.selectCity })
       .fetchAll()
       .then( results => {
         var city = results.toJSON();
         if (city.length > 0) {
-          res.render('auth/giveAdvice', {
-            post: advice,
-            city: city[0],
-            cityWeather: cityWeather,
-            stateCountry: stateCountry});
-          res.end;
+          renderAdvice(res, advice, city[0], weather);
         } else {
           new City({
             city_name: advice.selectCity
           }).save()
-            .then( results => {
-              var newCity = results.toJSON();
-
-
-              res.render('auth/giveAdvice', {
-                post: advice,
-                city: newCity,
-                cityWeather: cityWeather,
-                stateCountry: stateCountry
-              });
-              res.end;
-            })
+          .then( results => {
+            var newCity = results.toJSON();
+            renderAdvice(res, advice, newCity, weather);
+          });
         }
       });
   });
@@ -161,4 +143,12 @@ function weatherAPIVariables(req){
   }
 
   return {city: cityWeather, state: stateCountry}
+}
+
+function renderAdvice(res, advice, city, weather){
+  res.render('advice/giveAdvice', {
+    post: advice,
+    city: city,
+    weather:weather
+  });
 }

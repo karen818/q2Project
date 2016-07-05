@@ -5,8 +5,8 @@
         <br>
       {{#if advice}}
         <div class="well well-sm flex-container-center">
-          <input type="hidden" id="cityWeather" value="{{cityWeather}}">
-          <input type="hidden" id="stateCountry" value="{{stateCountry}}">
+          <input type="hidden" id="cityWeather" value="{{weather.city}}">
+          <input type="hidden" id="stateCountry" value="{{weather.state}}">
             <p id="city">{{weather.city}}, {{weather.state}}</p>&nbsp;&nbsp;&nbsp;
             <p id="month">{{advice.month.month}}</p>
         </div>
