@@ -75,6 +75,7 @@ router.route('/new')
   .post((req, res) => {
     var newAdvice = req.body;
     if (req.session.passport.user && typeof req.session.passport.user === 'number') {
+      // TOOD: refactor how these are getting passed in.
       new Post({
         user_id: req.session.passport.user,
         advice_text: newAdvice.giveAdviceTxt,
