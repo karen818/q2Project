@@ -68,6 +68,7 @@ button.btn-block {
     color: #fff;
     font-family: 'Special Elite', cursive;
     font-weight: 400;
+    font-size: 80%;
 }
 
 
@@ -206,16 +207,22 @@ i.orange {
   text-decoration: none;
 }
 
+#bigTxt {
+  font-size: 100%;
+}
+
 #smallTxt {
   font-family: 'Overlock', sans-serif;
   font-size: 80%;
 }
 
 #twitterSignup {
+  font-size: 80%;
   background-color: #00aced;
 }
 
 #facebookSignup {
+  font-size: 80%;
   background-color: #3b5998;
 }
 
